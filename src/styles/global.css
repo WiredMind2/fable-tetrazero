@@ -18,6 +18,7 @@
 html {
 	scroll-behavior: smooth;
 	background-color: var(--color-night);
+	min-height: 100dvh;
 	overflow-x: clip;
 	scrollbar-gutter: stable;
 }
@@ -163,13 +164,28 @@ video {
 	color: var(--color-acid);
 }
 
+.section-header {
+	container-type: inline-size;
+	min-width: 0;
+}
+
 .section-title {
 	font-family: var(--font-display);
 	font-weight: 800;
 	text-transform: uppercase;
 	letter-spacing: -0.02em;
 	line-height: 0.95;
-	font-size: clamp(2.5rem, 6vw, 4.5rem);
+	max-width: 100%;
+	min-width: 0;
+	text-wrap: balance;
+	/* Syne 800 uppercase: ~11 chars fit one line at 100cqi / 11 */
+	font-size: clamp(1.375rem, calc(100cqi / 11), 4.5rem);
+}
+
+@supports not (font-size: 1cqi) {
+	.section-title {
+		font-size: clamp(1.375rem, calc((100vw - 2.5rem) / 11), 4.5rem);
+	}
 }
 
 /* Huge ghost numerals behind sections */
@@ -244,7 +260,7 @@ video {
 		1.75rem,
 		min(
 			11vw,
-			calc((100svh - var(--hero-reserved)) / 1.85),
+			calc((100dvh - var(--hero-reserved)) / 1.85),
 			calc((100vw - 2.5rem) / 9.25)
 		),
 		8.5rem

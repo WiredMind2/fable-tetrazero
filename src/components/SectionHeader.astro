@@ -8,7 +8,7 @@ interface Props {
 const { index, label, title } = Astro.props;
 ---
 
-<div data-reveal class="relative mb-14 overflow-hidden md:mb-20">
+<div data-reveal class="section-header relative mb-14 min-w-0 md:mb-20">
 	<span class="ghost-index absolute -top-6 right-0 text-[4rem] sm:text-[5.5rem] md:-top-10 md:text-[9rem] lg:text-[12rem]">{index}</span>
 	<p class="kicker mb-4">{index}. {label}</p>
 	<h2 class="section-title">{title}</h2>
