@@ -11,7 +11,7 @@ const socials = [
 
 <section
 	id="top"
-	class="relative min-h-dvh lg:grid lg:h-dvh lg:min-h-0 lg:grid-rows-[minmax(0,1fr)_auto] lg:overflow-hidden"
+	class="relative flex min-h-dvh flex-col lg:grid lg:h-dvh lg:min-h-0 lg:grid-rows-[minmax(0,1fr)_auto] lg:overflow-hidden"
 >
 	<div class="grid-field absolute inset-0"></div>
 
@@ -21,7 +21,8 @@ const socials = [
 	</div>
 
 	<Container
-		class="relative flex min-w-0 flex-col justify-start pt-20 pb-[calc(var(--hero-footer-h,6.5rem)+1.5rem)] lg:min-h-0 lg:justify-center lg:pt-16 lg:pb-4"
+		data-hero-content
+		class="relative flex min-w-0 flex-1 flex-col justify-start pt-20 lg:min-h-0 lg:justify-center lg:pt-16 lg:pb-4"
 	>
 		<div class="flex min-w-0 flex-col items-start lg:items-center">
 			<div class="w-fit max-w-full">
@@ -63,7 +64,7 @@ const socials = [
 
 	<div
 		data-hero-footer
-		class="hero-footer fixed inset-x-0 bottom-0 z-40 border-t border-line bg-night/90 backdrop-blur-md pb-[max(1.5rem,env(safe-area-inset-bottom))] lg:static lg:z-auto lg:shrink-0 lg:bg-transparent lg:backdrop-blur-none lg:pb-0"
+		class="hero-footer relative shrink-0 border-t border-line lg:static lg:shrink-0"
 	>
 		<Container class="pt-6 pb-6 md:pb-8 lg:pb-8">
 			<div

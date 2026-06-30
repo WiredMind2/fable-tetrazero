@@ -1,5 +1,7 @@
 const LG_BREAKPOINT = 1024;
 
+type FooterState = 'static' | 'floating' | 'attached';
+
 function updateFooterHeight(footer: HTMLElement) {
 	document.documentElement.style.setProperty(
 		'--hero-footer-h',
@@ -7,19 +9,43 @@ function updateFooterHeight(footer: HTMLElement) {
 	);
 }
 
-function updateFooterPosition(
-	hero: HTMLElement,
-	footer: HTMLElement,
-	reducedMotion: boolean
-) {
-	const heroBottom = hero.getBoundingClientRect().bottom;
-	const vh = window.innerHeight;
+function heroOverflows(hero: HTMLElement) {
+	return hero.offsetHeight > window.innerHeight;
+}
 
-	if (reducedMotion || window.scrollY === 0 || heroBottom >= vh) {
-		footer.style.transform = '';
-	} else {
-		footer.style.transform = `translateY(${heroBottom - vh}px)`;
+function shouldAttach(hero: HTMLElement) {
+	return (
+		window.scrollY > 0 &&
+		hero.getBoundingClientRect().bottom <= window.innerHeight
+	);
+}
+
+function applyState(hero: HTMLElement, footer: HTMLElement, state: FooterState) {
+	footer.classList.toggle('is-floating', state === 'floating');
+	footer.classList.toggle('is-attached', state === 'attached');
+	hero.classList.toggle('is-footer-floating', state === 'floating');
+	footer.style.transform = '';
+}
+
+function clearState(hero: HTMLElement, footer: HTMLElement) {
+	footer.classList.remove('is-floating', 'is-attached');
+	hero.classList.remove('is-footer-floating');
+	footer.style.transform = '';
+}
+
+function resolveState(
+	hero: HTMLElement,
+	reducedMotion: boolean
+): FooterState {
+	if (shouldAttach(hero)) {
+		return 'attached';
 	}
+
+	if (!reducedMotion && heroOverflows(hero)) {
+		return 'floating';
+	}
+
+	return 'static';
 }
 
 function initHeroFooter() {
@@ -33,11 +59,12 @@ function initHeroFooter() {
 	const update = () => {
 		rafId = 0;
 		if (window.innerWidth >= LG_BREAKPOINT) {
-			footer.style.transform = '';
+			clearState(hero, footer);
 			return;
 		}
+
 		updateFooterHeight(footer);
-		updateFooterPosition(hero, footer, reducedMotion);
+		applyState(hero, footer, resolveState(hero, reducedMotion));
 	};
 
 	const scheduleUpdate = () => {
