@@ -247,11 +247,28 @@ video {
 /* Hero display title: height-budget sizing (see #top --hero-reserved) */
 #top {
 	--hero-reserved: 26rem;
+	--hero-footer-h: 6.5rem;
+}
+
+@media (min-width: 640px) {
+	#top {
+		--hero-footer-h: 5.5rem;
+	}
 }
 
 @media (min-width: 1024px) {
 	#top {
 		--hero-reserved: 22rem;
+	}
+}
+
+.hero-footer {
+	will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-footer {
+		will-change: auto;
 	}
 }
 

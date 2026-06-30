@@ -9,7 +9,10 @@ const socials = [
 ];
 ---
 
-<section id="top" class="relative grid h-dvh grid-rows-[minmax(0,1fr)_auto] overflow-hidden">
+<section
+	id="top"
+	class="relative min-h-dvh lg:grid lg:h-dvh lg:min-h-0 lg:grid-rows-[minmax(0,1fr)_auto] lg:overflow-hidden"
+>
 	<div class="grid-field absolute inset-0"></div>
 
 	<div
@@ -17,7 +20,9 @@ const socials = [
 	>
 	</div>
 
-	<Container class="relative flex min-h-0 min-w-0 flex-col justify-start overflow-y-auto overscroll-y-contain pt-20 pb-8 lg:overflow-visible lg:justify-center lg:pt-16 lg:pb-4">
+	<Container
+		class="relative flex min-w-0 flex-col justify-start pt-20 pb-[calc(var(--hero-footer-h,6.5rem)+1.5rem)] lg:min-h-0 lg:justify-center lg:pt-16 lg:pb-4"
+	>
 		<div class="flex min-w-0 flex-col items-start lg:items-center">
 			<div class="w-fit max-w-full">
 				<p data-hero-fade class="kicker mb-6">Hi, I'm</p>
@@ -56,32 +61,37 @@ const socials = [
 		</div>
 	</Container>
 
-	<Container class="relative min-w-0 shrink-0 border-t border-line pt-6 pb-6 md:pb-8">
-		<div
-			data-hero-fade
-			class="flex flex-col items-start gap-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
-		>
-			<div class="flex flex-wrap items-center gap-6">
-				{
-					socials.map((s) => (
-						<a
-							href={s.href}
-							target={s.href.startsWith('mailto') ? undefined : '_blank'}
-							rel="noopener noreferrer"
-							class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
-						>
-							{s.label} ↗
-						</a>
-					))
-				}
-			</div>
-			<a
-				href="#stats"
-				class="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-muted uppercase"
+	<div
+		data-hero-footer
+		class="hero-footer fixed inset-x-0 bottom-0 z-40 border-t border-line bg-night/90 backdrop-blur-md pb-[max(1.5rem,env(safe-area-inset-bottom))] lg:static lg:z-auto lg:shrink-0 lg:bg-transparent lg:backdrop-blur-none lg:pb-0"
+	>
+		<Container class="pt-6 pb-6 md:pb-8 lg:pb-8">
+			<div
+				data-hero-fade
+				class="flex flex-col items-start gap-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
 			>
-				Scroll to explore
-				<span class="inline-block animate-bounce text-acid">↓</span>
-			</a>
-		</div>
-	</Container>
+				<div class="flex flex-wrap items-center gap-6">
+					{
+						socials.map((s) => (
+							<a
+								href={s.href}
+								target={s.href.startsWith('mailto') ? undefined : '_blank'}
+								rel="noopener noreferrer"
+								class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
+							>
+								{s.label} ↗
+							</a>
+						))
+					}
+				</div>
+				<a
+					href="#stats"
+					class="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-muted uppercase"
+				>
+					Scroll to explore
+					<span class="inline-block animate-bounce text-acid">↓</span>
+				</a>
+			</div>
+		</Container>
+	</div>
 </section>
