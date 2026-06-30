@@ -247,40 +247,12 @@ video {
 /* Hero display title: height-budget sizing (see #top --hero-reserved) */
 #top {
 	--hero-reserved: 26rem;
-	--hero-footer-h: 6.5rem;
-}
-
-@media (min-width: 640px) {
-	#top {
-		--hero-footer-h: 5.5rem;
-	}
 }
 
 @media (min-width: 1024px) {
 	#top {
 		--hero-reserved: 22rem;
 	}
-}
-
-.hero-footer.is-floating {
-	position: fixed;
-	inset-inline: 0;
-	bottom: 0;
-	z-index: 40;
-	border-top: 1px solid var(--color-line);
-	background: color-mix(in srgb, var(--color-night) 90%, transparent);
-	backdrop-filter: blur(12px);
-	padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
-}
-
-.hero-footer.is-attached {
-	position: absolute;
-	inset-inline: 0;
-	bottom: 0;
-}
-
-#top.is-footer-floating [data-hero-content] {
-	padding-bottom: calc(var(--hero-footer-h, 6.5rem) + 1.5rem);
 }
 
 .hero-title {

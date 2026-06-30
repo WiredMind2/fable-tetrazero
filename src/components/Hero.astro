@@ -21,7 +21,6 @@ const socials = [
 	</div>
 
 	<Container
-		data-hero-content
 		class="relative flex min-w-0 flex-1 flex-col justify-start pt-20 lg:min-h-0 lg:justify-center lg:pt-16 lg:pb-4"
 	>
 		<div class="flex min-w-0 flex-col items-start lg:items-center">
@@ -62,37 +61,32 @@ const socials = [
 		</div>
 	</Container>
 
-	<div
-		data-hero-footer
-		class="hero-footer relative shrink-0 border-t border-line lg:static lg:shrink-0"
-	>
-		<Container class="pt-6 pb-6 md:pb-8 lg:pb-8">
-			<div
-				data-hero-fade
-				class="flex flex-col items-start gap-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
-			>
-				<div class="flex flex-wrap items-center gap-6">
-					{
-						socials.map((s) => (
-							<a
-								href={s.href}
-								target={s.href.startsWith('mailto') ? undefined : '_blank'}
-								rel="noopener noreferrer"
-								class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
-							>
-								{s.label} ↗
-							</a>
-						))
-					}
-				</div>
-				<a
-					href="#stats"
-					class="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-muted uppercase"
-				>
-					Scroll to explore
-					<span class="inline-block animate-bounce text-acid">↓</span>
-				</a>
+	<Container class="relative shrink-0 border-t border-line pt-6 pb-6 md:pb-8">
+		<div
+			data-hero-fade
+			class="flex flex-col items-start gap-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
+		>
+			<div class="flex flex-wrap items-center gap-6">
+				{
+					socials.map((s) => (
+						<a
+							href={s.href}
+							target={s.href.startsWith('mailto') ? undefined : '_blank'}
+							rel="noopener noreferrer"
+							class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
+						>
+							{s.label} ↗
+						</a>
+					))
+				}
 			</div>
-		</Container>
-	</div>
+			<a
+				href="#stats"
+				class="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-muted uppercase"
+			>
+				Scroll to explore
+				<span class="inline-block animate-bounce text-acid">↓</span>
+			</a>
+		</div>
+	</Container>
 </section>
