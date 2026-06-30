@@ -27,7 +27,7 @@ const links = [
 								data-section={link.href.slice(1)}
 								class="nav-link font-mono text-xs tracking-[0.18em] uppercase"
 							>
-								<span class="nav-link-prefix">0{i + 1}/</span> {link.label}
+								<span class="nav-link-prefix">0{i + 1}<span class="text-acid">.</span></span> {link.label}
 							</a>
 						</li>
 					))
@@ -71,7 +71,7 @@ const links = [
 							data-section={link.href.slice(1)}
 							class="nav-link block py-3 font-mono text-sm tracking-[0.18em] uppercase"
 						>
-							<span class="nav-link-prefix">0{i + 1}/</span> {link.label}
+							<span class="nav-link-prefix">0{i + 1}<span class="text-acid">.</span></span> {link.label}
 						</a>
 					</li>
 				))

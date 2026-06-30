@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Container from './Container.astro';
 import SectionHeader from './SectionHeader.astro';
+import AcidText from './AcidText.astro';
 
 const idOrder = [
 	'buddimm',
@@ -81,14 +82,14 @@ const experiences = (await getCollection('experiences'))
 							{exp.title}
 						</h3>
 						<p class="mt-1 font-mono text-sm text-muted">{exp.org}</p>
-						<p class="mt-4 max-w-2xl leading-relaxed text-muted">{exp.description}</p>
+						<AcidText as="p" class="mt-4 max-w-2xl leading-relaxed text-muted" text={exp.description} />
 
 						{exp.achievements.length > 0 && (
 							<ul class="mt-5 space-y-2.5">
 								{exp.achievements.map((achievement) => (
 									<li class="flex max-w-2xl items-start gap-3 text-sm leading-relaxed text-ink/85 md:text-base">
-										<span class="mt-[9px] h-px w-4 shrink-0 bg-acid" />
-										{achievement}
+										<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-acid" />
+										<AcidText as="span" text={achievement} />
 									</li>
 								))}
 							</ul>

@@ -1,5 +1,6 @@
 ---
 import Container from './Container.astro';
+import AcidText from './AcidText.astro';
 ---
 
 <section class="border-t border-line bg-raised py-16 md:py-20">
@@ -13,9 +14,11 @@ import Container from './Container.astro';
 				<h2 class="font-display text-2xl font-bold md:text-3xl">
 					Download my resume<span class="text-acid">.</span>
 				</h2>
-				<p class="mt-3 max-w-xl text-muted">
-					One-page PDF - experience, skills, and contact details.
-				</p>
+				<AcidText
+					as="p"
+					class="mt-3 max-w-xl text-muted"
+					text="One-page PDF - experience, skills, and contact details."
+				/>
 			</div>
 			<a href="/Resume.pdf" download rel="noopener noreferrer" class="btn-acid shrink-0">
 				Download resume

@@ -1,6 +1,7 @@
 ---
 import Container from './Container.astro';
 import SectionHeader from './SectionHeader.astro';
+import AcidText from './AcidText.astro';
 
 const details = [
 	{ label: 'Availability', value: 'Consulting, 6-month internship, or full-time, from January 2027' },
@@ -20,13 +21,16 @@ const socials = [
 
 		<div class="grid gap-14 md:grid-cols-12">
 			<div data-reveal class="md:col-span-5">
-				<p class="font-display text-2xl leading-snug font-bold md:text-3xl">
-					Always interested in new projects and opportunities<span class="text-acid">.</span>
-				</p>
-				<p class="mt-5 leading-relaxed text-muted md:text-lg">
-					Whether you have a consulting project, a question, or just want to say hi, feel free to
-					reach out.
-				</p>
+				<AcidText
+					as="p"
+					class="font-display text-2xl leading-snug font-bold md:text-3xl"
+					text="Always interested in new projects and opportunities."
+				/>
+				<AcidText
+					as="p"
+					class="mt-5 leading-relaxed text-muted md:text-lg"
+					text="Whether you have a consulting project, a question, or just want to say hi, feel free to reach out."
+				/>
 
 				<dl class="mt-10 space-y-px border border-line bg-line">
 					{

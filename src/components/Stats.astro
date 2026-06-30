@@ -1,5 +1,6 @@
 ---
 import Container from './Container.astro';
+import AcidText from './AcidText.astro';
 
 const stats = [
 	{
@@ -38,9 +39,11 @@ const stats = [
 					<div class="font-display text-5xl font-extrabold tracking-tight text-acid md:text-6xl">
 						{stat.prefix && <span class="text-[0.65em]">{stat.prefix}</span>}<span data-count={stat.value}>{stat.value}</span>{stat.suffix && <span class="text-[0.65em]">{stat.suffix}</span>}
 					</div>
-					<p class="mt-4 max-w-[30ch] font-mono text-xs leading-relaxed tracking-wide break-words text-muted uppercase md:text-sm">
-						{stat.caption}
-					</p>
+					<AcidText
+						as="p"
+						class="mt-4 max-w-[30ch] font-mono text-xs leading-relaxed tracking-wide break-words text-muted uppercase md:text-sm"
+						text={stat.caption}
+					/>
 				</div>
 			))
 		}

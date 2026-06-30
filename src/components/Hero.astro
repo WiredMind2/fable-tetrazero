@@ -1,5 +1,6 @@
 ---
 import Container from './Container.astro';
+import AcidText from './AcidText.astro';
 
 const socials = [
 	{ href: 'https://github.com/WiredMind2', label: 'GitHub' },
@@ -41,11 +42,11 @@ const socials = [
 				<p class="font-mono text-sm tracking-[0.12em] text-balance text-acid uppercase sm:tracking-[0.18em]">
 					CS Engineering @ INSA Lyon - Class of 2027
 				</p>
-				<p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-					I build compilers, trading systems, AI tooling, and consult on technical problems,
-					from AI adoption and security to low-level engineering. Currently CTO at Buddimm, I'm open to consulting missions, or starting from January 2027, I'm looking for a 6-month internship or
-					a full-time role.
-				</p>
+				<AcidText
+					as="p"
+					class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg"
+					text="I build compilers, trading systems, AI tooling, and consult on technical problems, from AI adoption and security to low-level engineering. Currently CTO at Buddimm, I'm open to consulting missions, or starting from January 2027, I'm looking for a 6-month internship or a full-time role."
+				/>
 			</div>
 
 			<div data-hero-fade class="flex flex-wrap items-center gap-4 md:col-span-6 md:justify-end">
