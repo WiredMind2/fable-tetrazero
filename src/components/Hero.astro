@@ -8,7 +8,7 @@ const socials = [
 ];
 ---
 
-<section id="top" class="relative flex min-h-svh flex-col justify-end overflow-hidden">
+<section id="top" class="relative grid h-svh grid-rows-[minmax(0,1fr)_auto] overflow-hidden">
 	<div class="grid-field absolute inset-0"></div>
 
 	<div
@@ -16,27 +16,27 @@ const socials = [
 	>
 	</div>
 
-	<Container class="relative pt-32 pb-16 md:pb-20">
-		<div class="flex flex-col items-start lg:items-center">
-			<div class="w-fit">
-			<p data-hero-fade class="kicker mb-6">Hi, I'm</p>
+	<Container class="relative flex min-h-0 min-w-0 flex-col justify-center pt-16 pb-6 lg:pb-4">
+		<div class="flex min-w-0 flex-col items-start lg:items-center">
+			<div class="w-fit max-w-full">
+				<p data-hero-fade class="kicker mb-6">Hi, I'm</p>
 
-			<h1
-				class="font-display text-[clamp(2.75rem,11vw,9.5rem)] leading-[0.92] font-extrabold tracking-[-0.03em] uppercase"
-			>
-				<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.2em]">
-					<span class="hero-line-inner block">William</span>
-				</span>
-				<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.2em]">
-					<span class="hero-line-inner block">
-						Michaud<span class="text-acid">.</span>
+				<h1
+					class="hero-title font-display leading-[0.92] font-extrabold tracking-[-0.03em] uppercase"
+				>
+					<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.2em]">
+						<span class="hero-line-inner block">William</span>
 					</span>
-				</span>
-			</h1>
+					<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.2em]">
+						<span class="hero-line-inner block">
+							Michaud<span class="text-acid">.</span>
+						</span>
+					</span>
+				</h1>
 			</div>
 		</div>
 
-		<div class="mt-10 grid gap-10 md:grid-cols-12 md:items-end">
+		<div class="mt-10 grid gap-10 lg:mt-6 md:grid-cols-12 md:items-end">
 			<div data-hero-fade class="md:col-span-6">
 				<p class="font-mono text-sm tracking-[0.12em] text-balance text-acid uppercase sm:tracking-[0.18em]">
 					CS Engineering @ INSA Lyon - Class of 2027
@@ -53,10 +53,12 @@ const socials = [
 				<a href="#contact" class="btn-ghost">Get in touch</a>
 			</div>
 		</div>
+	</Container>
 
+	<Container class="relative min-w-0 shrink-0 border-t border-line pt-6 pb-6 md:pb-8">
 		<div
 			data-hero-fade
-			class="mt-14 flex flex-col items-start gap-6 border-t border-line pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
+			class="flex flex-col items-start gap-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
 		>
 			<div class="flex flex-wrap items-center gap-6">
 				{

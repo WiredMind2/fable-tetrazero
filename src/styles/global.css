@@ -173,9 +173,38 @@ video {
 	transform: translateY(-2px);
 }
 
+/* Hero display title: height-budget sizing (see #top --hero-reserved) */
+#top {
+	--hero-reserved: 26rem;
+}
+
+@media (min-width: 1024px) {
+	#top {
+		--hero-reserved: 22rem;
+	}
+}
+
+.hero-title {
+	font-size: clamp(
+		1.75rem,
+		min(
+			11vw,
+			calc((100svh - var(--hero-reserved)) / 1.85),
+			calc((100vw - 2.5rem) / 9.25)
+		),
+		8.5rem
+	);
+}
+
 /* Hero line-reveal masks: expand clip so glyph/period ink isn't cropped */
 [data-hero-line] {
 	overflow-clip-margin: 0.2em;
+}
+
+@media (max-width: 1023px) {
+	[data-hero-line] {
+		overflow-clip-margin: 0.1em;
+	}
 }
 
 /* Reveal-on-scroll initial state (GSAP animates in; visible fallback without JS) */
