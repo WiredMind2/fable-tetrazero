@@ -173,6 +173,11 @@ video {
 	transform: translateY(-2px);
 }
 
+/* Hero line-reveal masks: expand clip so glyph/period ink isn't cropped */
+[data-hero-line] {
+	overflow-clip-margin: 0.2em;
+}
+
 /* Reveal-on-scroll initial state (GSAP animates in; visible fallback without JS) */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
 	[data-reveal] {

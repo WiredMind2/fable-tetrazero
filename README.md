@@ -28,3 +28,12 @@ Personal portfolio of William Michaud - rebuilt from scratch with [Astro](https:
 ## Deployment
 
 `npm run build` produces a fully static `dist/` folder deployable to any static host (Vercel, Netlify, Cloudflare Pages, GitHub Pages...).
+
+Production runs on **tetrazero.com** from `/var/www/fable-tetrazero/dist` (Apache).
+
+```bash
+npm run deploy                  # commit (if needed), push, rebuild on server
+npm run deploy -- "fix hero copy" # same, with a custom commit message
+```
+
+In Cursor, `/deploy` runs the same workflow via the agent.
