@@ -1,0 +1,52 @@
+[
+  {
+    "group": "Languages",
+    "items": [
+      { "name": "Python", "icon": "python-svgrepo-com.svg" },
+      { "name": "C++", "icon": "cpp3-svgrepo-com.svg" },
+      { "name": "C#", "icon": "csharp2-svgrepo-com.svg" },
+      { "name": "Java", "icon": "jar-svgrepo-com.svg" },
+      { "name": "TypeScript", "icon": "typescript-icon-svgrepo-com.svg" },
+      { "name": "JavaScript", "icon": "js-official-svgrepo-com.svg" },
+      { "name": "Kotlin", "icon": "kotlin-svgrepo-com.svg" },
+      { "name": "Rust", "icon": "light-rust-svgrepo-com.svg" },
+      { "name": "Swift", "icon": "swift-svgrepo-com.svg" },
+      { "name": "Ruby", "icon": "ruby-svgrepo-com.svg" },
+      { "name": "PHP", "icon": "php-svgrepo-com.svg" },
+      { "name": "HTML", "icon": "html-svgrepo-com.svg" },
+      { "name": "CSS", "icon": "css-svgrepo-com.svg" },
+      { "name": "TeX", "icon": "tex-svgrepo-com.svg" }
+    ]
+  },
+  {
+    "group": "Frameworks & Runtimes",
+    "items": [
+      { "name": "React", "icon": "reactjs-svgrepo-com.svg" },
+      { "name": "Astro", "icon": "astro-icon.svg" },
+      { "name": "Svelte", "icon": "svelte-svgrepo-com.svg" },
+      { "name": "Tailwind", "icon": "tailwind-svgrepo-com.svg" },
+      { "name": "Node.js", "icon": "node-svgrepo-com.svg" },
+      { "name": "Sequelize", "icon": "sequelize-svgrepo-com.svg" },
+      { "name": "Qt", "icon": "qml-svgrepo-com.svg" },
+      { "name": "Unity", "icon": "light-shaderlab-svgrepo-com.svg" }
+    ]
+  },
+  {
+    "group": "Tools & Platforms",
+    "items": [
+      { "name": "Git", "icon": "git-svgrepo-com.svg" },
+      { "name": "GitLab", "icon": "gitlab-svgrepo-com.svg" },
+      { "name": "Docker", "icon": "docker-svgrepo-com.svg" },
+      { "name": "Conda", "icon": "conda-svgrepo-com.svg" },
+      { "name": "Jupyter", "icon": "jupyter-svgrepo-com.svg" },
+      { "name": "LangChain", "icon": "langchain-icon.svg" },
+      { "name": "NPM", "icon": "npm-svgrepo-com.svg" },
+      { "name": "MySQL", "icon": "mysql-svgrepo-com.svg" },
+      { "name": "SQLite", "icon": "db-svgrepo-com.svg" },
+      { "name": "Firebase", "icon": "firebase-svgrepo-com.svg" },
+      { "name": "VS Code", "icon": "vscode-svgrepo-com.svg" },
+      { "name": "Vim", "icon": "vim-svgrepo-com.svg" },
+      { "name": "Arduino", "icon": "arduino-svgrepo-com.svg" }
+    ]
+  }
+]

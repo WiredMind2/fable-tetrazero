@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import Container from './Container.astro';
+import SectionHeader from './SectionHeader.astro';
+
+const all = (await getCollection('projects')).map((entry) => entry.data);
+
+const featuredOrder = ['C-Compiler', 'OpenTrade', 'Chess2'];
+const featured = all
+	.filter((p) => p.featured)
+	.sort((a, b) => {
+		const rank = (p: (typeof all)[number]) => {
+			const i = featuredOrder.indexOf(p.title);
+			return i === -1 ? featuredOrder.length : i;
+		};
+		return rank(a) - rank(b);
+	});
+const categoryLabel: Record<string, string> = {
+	web: 'Web',
+	fullstack: 'Full-stack',
+	other: 'Other',
+};
+---
+
+<section id="projects" class="relative overflow-hidden py-24 md:py-32">
+	<Container>
+		<SectionHeader index="02" label="Selected Work" title="Projects" />
+
+		<!-- Featured showcases -->
+		<div class="grid gap-px border border-line bg-line md:grid-cols-2">
+			{
+				featured.map((project, i) => (
+					<a
+						data-reveal
+						href={project.githubUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class:list={[
+							'group relative flex min-h-[22rem] flex-col justify-between overflow-hidden bg-surface p-7 transition-colors hover:bg-raised md:p-10',
+							i === 0 && 'md:col-span-2',
+						]}
+					>
+						<span class="ghost-index absolute right-0 -bottom-8 text-[5rem] transition-colors group-hover:[-webkit-text-stroke-color:var(--color-acid-dim)] md:text-[11rem] lg:text-[13rem]">
+							0{i + 1}
+						</span>
+
+						<div class="relative">
+							<div class="flex items-start justify-between gap-4">
+								<p class="kicker">Featured / {categoryLabel[project.category]}</p>
+								<span class="font-mono text-lg text-muted transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-acid">
+									↗
+								</span>
+							</div>
+							<h3 class="mt-5 font-display text-2xl font-extrabold tracking-tight break-words uppercase transition-colors group-hover:text-acid md:text-3xl lg:text-4xl">
+								{project.title}
+							</h3>
+							<p
+								class:list={[
+									'mt-4 leading-relaxed text-muted md:text-lg',
+									i === 0 ? 'max-w-2xl' : 'max-w-md',
+								]}
+							>
+								{project.description}
+							</p>
+						</div>
+
+						<div class="relative mt-8 flex flex-wrap gap-2">
+							{project.techStack.map((tech) => (
+								<span class="tag">{tech}</span>
+							))}
+						</div>
+					</a>
+				))
+			}
+		</div>
+
+		<div data-reveal class="mt-12 flex flex-col items-center gap-4 md:mt-16">
+			<p class="font-mono text-xs tracking-[0.2em] text-muted uppercase">
+				And many more side projects
+			</p>
+			<a
+				href="https://github.com/WiredMind2?tab=repositories"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="btn-acid"
+			>
+				View all on GitHub ↗
+			</a>
+		</div>
+	</Container>
+</section>

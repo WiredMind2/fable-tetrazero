@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import ResumeCta from '../components/ResumeCta.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base>
+	<Nav />
+	<main>
+		<Hero />
+		<Stats />
+		<About />
+		<Projects />
+		<Experience />
+		<Skills />
+		<Contact />
+	</main>
+	<ResumeCta />
+	<Footer />
+</Base>
+
+<script>
+	import '../scripts/animations';
+	import '../scripts/scroll-spy';
+</script>

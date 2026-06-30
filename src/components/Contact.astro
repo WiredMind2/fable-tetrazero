@@ -1,0 +1,213 @@
+---
+import Container from './Container.astro';
+import SectionHeader from './SectionHeader.astro';
+
+const details = [
+	{ label: 'Availability', value: 'Consulting, 6-month internship, or full-time, from January 2027' },
+];
+
+const socials = [
+	{ href: 'https://github.com/WiredMind2', label: 'GitHub' },
+	{ href: 'https://linkedin.com/in/w-michaud', label: 'LinkedIn' },
+];
+---
+
+<section id="contact" class="relative overflow-hidden border-t border-line bg-surface py-24 md:py-32">
+	<div class="grid-field absolute inset-0 rotate-180"></div>
+
+	<Container class="relative">
+		<SectionHeader index="05" label="Let's Connect" title="Get In Touch" />
+
+		<div class="grid gap-14 md:grid-cols-12">
+			<div data-reveal class="md:col-span-5">
+				<p class="font-display text-2xl leading-snug font-bold md:text-3xl">
+					Always interested in new projects and opportunities<span class="text-acid">.</span>
+				</p>
+				<p class="mt-5 leading-relaxed text-muted md:text-lg">
+					Whether you have a consulting project, a question, or just want to say hi, feel free to
+					reach out.
+				</p>
+
+				<dl class="mt-10 space-y-px border border-line bg-line">
+					{
+						details.map((detail) => (
+							<div class="flex flex-col gap-y-1 bg-night px-5 py-4 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-4">
+								<dt class="font-mono text-xs tracking-[0.2em] text-muted uppercase">
+									{detail.label}
+								</dt>
+								<dd class="min-w-0 font-mono text-sm break-words sm:text-right">
+									{detail.href ? (
+										<a href={detail.href} class="text-ink transition-colors hover:text-acid">
+											{detail.value}
+										</a>
+									) : (
+										<span class="text-ink">{detail.value}</span>
+									)}
+								</dd>
+							</div>
+						))
+					}
+				</dl>
+
+				<div class="mt-8 flex items-center gap-6">
+					{
+						socials.map((s) => (
+							<a
+								href={s.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
+							>
+								{s.label} ↗
+							</a>
+						))
+					}
+				</div>
+			</div>
+
+			<form data-reveal id="contact-form" class="space-y-5 md:col-span-7" novalidate>
+				<div class="grid gap-5 sm:grid-cols-2">
+					<div>
+						<label for="cf-name" class="kicker mb-2 block text-[0.65rem]">Name *</label>
+						<input id="cf-name" name="name" type="text" class="field" placeholder="Your name" />
+						<p class="error-msg mt-1.5 hidden font-mono text-xs text-[#f25050]" data-for="name"></p>
+					</div>
+					<div>
+						<label for="cf-email" class="kicker mb-2 block text-[0.65rem]">Email *</label>
+						<input
+							id="cf-email"
+							name="email"
+							type="email"
+							class="field"
+							placeholder="your.email@example.com"
+						/>
+						<p class="error-msg mt-1.5 hidden font-mono text-xs text-[#f25050]" data-for="email"></p>
+					</div>
+				</div>
+				<div>
+					<label for="cf-subject" class="kicker mb-2 block text-[0.65rem]">Subject *</label>
+					<input
+						id="cf-subject"
+						name="subject"
+						type="text"
+						class="field"
+						placeholder="What's this about?"
+					/>
+					<p class="error-msg mt-1.5 hidden font-mono text-xs text-[#f25050]" data-for="subject"></p>
+				</div>
+				<div>
+					<label for="cf-message" class="kicker mb-2 block text-[0.65rem]">Message *</label>
+					<textarea
+						id="cf-message"
+						name="message"
+						rows="6"
+						class="field resize-y"
+						placeholder="Tell me more..."></textarea>
+					<p class="error-msg mt-1.5 hidden font-mono text-xs text-[#f25050]" data-for="message"></p>
+				</div>
+
+				<div class="flex flex-wrap items-center gap-5">
+					<button type="submit" class="btn-acid cursor-pointer disabled:cursor-wait disabled:opacity-60">
+						Send message
+					</button>
+					<p
+						id="form-status"
+						class="hidden font-mono text-xs tracking-[0.15em] uppercase"
+						role="status"
+					>
+					</p>
+				</div>
+			</form>
+		</div>
+	</Container>
+</section>
+
+<script>
+	import { configData } from '../config/settings';
+
+	const form = document.getElementById('contact-form') as HTMLFormElement;
+	const status = document.getElementById('form-status')!;
+	const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+
+	const setError = (name: string, message: string) => {
+		const input = form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement;
+		const msg = form.querySelector<HTMLParagraphElement>(`.error-msg[data-for="${name}"]`)!;
+		input.classList.toggle('error', !!message);
+		msg.textContent = message;
+		msg.classList.toggle('hidden', !message);
+	};
+
+	const validate = (data: Record<string, string>) => {
+		let ok = true;
+		const fail = (name: string, message: string) => {
+			setError(name, message);
+			ok = false;
+		};
+
+		if (!data.name.trim()) fail('name', 'Name is required');
+		else setError('name', '');
+
+		if (!data.email.trim()) fail('email', 'Email is required');
+		else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) fail('email', 'Please enter a valid email');
+		else setError('email', '');
+
+		if (!data.subject.trim()) fail('subject', 'Subject is required');
+		else setError('subject', '');
+
+		if (!data.message.trim()) fail('message', 'Message is required');
+		else if (data.message.trim().length < 10) fail('message', 'Message must be at least 10 characters');
+		else setError('message', '');
+
+		return ok;
+	};
+
+	const showStatus = (kind: 'success' | 'error', text: string) => {
+		status.textContent = text;
+		status.classList.remove('hidden');
+		status.style.color = kind === 'success' ? 'var(--color-acid)' : '#f25050';
+		setTimeout(() => status.classList.add('hidden'), 6000);
+	};
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+
+		const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+		if (!validate(data)) return;
+
+		submitBtn.disabled = true;
+		submitBtn.textContent = 'Sending...';
+
+		try {
+			const response = await fetch(atob(configData), {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					embeds: [
+						{
+							title: 'New Contact Form Submission',
+							color: 0xc8f750,
+							fields: [
+								{ name: 'Name', value: data.name, inline: true },
+								{ name: 'Email', value: data.email, inline: true },
+								{ name: 'Subject', value: data.subject, inline: false },
+								{ name: 'Message', value: data.message, inline: false },
+							],
+							timestamp: new Date().toISOString(),
+						},
+					],
+				}),
+			});
+
+			if (!response.ok) throw new Error(`Failed to send: ${response.status}`);
+
+			form.reset();
+			showStatus('success', '// Message sent. Thank you!');
+		} catch (error) {
+			console.error('Form submission error:', error);
+			showStatus('error', '// Something went wrong. Please try again.');
+		} finally {
+			submitBtn.disabled = false;
+			submitBtn.textContent = 'Send message';
+		}
+	});
+</script>

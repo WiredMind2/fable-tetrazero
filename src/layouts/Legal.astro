@@ -1,0 +1,69 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+	title: string;
+	heading: string;
+	effectiveDate: string;
+}
+
+const { title, heading, effectiveDate } = Astro.props;
+---
+
+<Base title={title}>
+	<main class="relative min-h-svh overflow-hidden">
+		<div class="grid-field absolute inset-0"></div>
+
+		<div class="relative mx-auto max-w-3xl px-5 py-20 md:px-10 md:py-28">
+			<a
+				href="/"
+				class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
+			>
+				← Back to portfolio
+			</a>
+
+			<h1 class="section-title mt-10">{heading}</h1>
+			<p class="mt-4 font-mono text-xs tracking-[0.2em] text-acid uppercase">
+				Effective date: {effectiveDate}
+			</p>
+
+			<div class="legal-body mt-12 border-t border-line pt-10">
+				<slot />
+			</div>
+		</div>
+	</main>
+</Base>
+
+<style is:global>
+	.legal-body h2 {
+		font-family: var(--font-display);
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: -0.01em;
+		font-size: 1.15rem;
+		margin-top: 2.5rem;
+		margin-bottom: 0.75rem;
+		color: var(--color-ink);
+	}
+	.legal-body p {
+		color: var(--color-muted);
+		line-height: 1.7;
+		margin-bottom: 0.75rem;
+	}
+	.legal-body ul {
+		color: var(--color-muted);
+		line-height: 1.7;
+		margin: 0.75rem 0 0.75rem 1.25rem;
+	}
+	.legal-body li {
+		position: relative;
+		padding-left: 1.25rem;
+		margin-bottom: 0.4rem;
+	}
+	.legal-body li::before {
+		content: "-";
+		position: absolute;
+		left: 0;
+		color: var(--color-acid);
+	}
+</style>

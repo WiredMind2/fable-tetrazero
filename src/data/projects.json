@@ -1,0 +1,192 @@
+[
+  {
+    "id": 30,
+    "title": "C-Compiler",
+    "description": "A compiler for a subset of C, built from scratch in C++20, ANTLR4 front end, custom 3-address IR, 7 optimization passes, and both x86-64 and ARM64 backends.",
+    "longDescription": "A compiler for a significant subset of C (types, pointers, arrays, control flow, functions, implicit conversions), developed with a team of 6 for INSA Lyon's PLD-Comp project. Source code is parsed with an ANTLR4 grammar, lowered to a custom 3-address intermediate representation built on control-flow graphs and basic blocks, run through 7 IR-level optimization passes (constant propagation, dead-code elimination, register promotion, copy-chain collapsing), and emitted as x86-64 or ARM64 assembly. Correctness is validated by an automated test suite comparing behavior against GCC across 20 test categories.",
+    "techStack": ["C++20", "ANTLR4", "Compilers"],
+    "githubUrl": "https://github.com/WiredMind2/C-Compiler",
+    "featured": true,
+    "category": "other"
+  },
+  {
+    "id": 4,
+    "title": "MarmiTonic",
+    "description": "Semantic web application leveraging Linked Data (DBpedia), SPARQL, and graph analysis for intelligent cocktail discovery, personalized recommendations, and bar inventory optimization.",
+    "longDescription": "MarmiTonic is a Python semantic web application for intelligent cocktail discovery and bar management, leveraging DBpedia's Linked Data, SPARQL queries, and graph analysis to provide personalized recommendations and ingredient optimization. It features smart inventory tracking, feasibility analysis for cocktails, and graph-based relationship visualization while offering advanced functionalities like custom SPARQL exploration and a \"Bar Minimum\" mode to maximize cocktail creation efficiency with minimal ingredients.",
+    "techStack": ["Python", "SPARQL", "Semantic Web"],
+    "githubUrl": "https://github.com/MonacoTac/MarmiTonic",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 6,
+    "title": "Tetrazero",
+    "description": "The site you are looking at, a bold, animation-heavy portfolio rebuilt from scratch with Astro, GSAP and Tailwind CSS.",
+    "longDescription": "Tetrazero is a static-first portfolio website built with Astro, Tailwind CSS and GSAP. It ships near-zero JavaScript outside of its scroll choreography: staggered hero reveals, ScrollTrigger-driven section entrances, animated counters and a filterable project grid powered by vanilla TypeScript.",
+    "techStack": ["Astro", "TypeScript", "GSAP"],
+    "githubUrl": "https://github.com/WiredMind2/tetrazero",
+    "featured": false,
+    "category": "web"
+  },
+  {
+    "id": 7,
+    "title": "Manga Reader",
+    "description": "FastAPI/SvelteKit web application for reading manga with multi-format archive support, authentication, reading modes, and progress tracking.",
+    "longDescription": "Manga-Reader is a Python-based FastAPI backend paired with a SvelteKit frontend that provides a full-featured platform for reading manga/manhwa with support for folders and archives (ZIP/RAR/CBZ/CBR). The application offers responsive multi-directional reading modes, user progress tracking, server-side image optimization, and multi-language OCR-based text translation directly on manga pages.",
+    "techStack": ["Python", "FastAPI", "SvelteKit"],
+    "githubUrl": "https://github.com/WiredMind2/Manga-Reader",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 8,
+    "title": "Helium",
+    "description": "Modular Python Discord bot using Pycord for entertainment and chaos via AI chat, image generation, moderation, leveling, and roleplay plugins.",
+    "longDescription": "Helium is a modular Discord bot built with Python and the Pycord library, designed to deliver fun and lighthearted chaos through a dynamic plugin system. It features AI-driven chat, image generation, moderation tools, leveling systems, and social roleplay elements, supporting both slash and prefix commands.",
+    "techStack": ["Python", "Pycord"],
+    "githubUrl": "https://github.com/WiredMind2/Helium",
+    "featured": false,
+    "category": "other"
+  },
+  {
+    "id": 9,
+    "title": "OpenTrade",
+    "description": "Algorithmic trading research platform combining news sentiment analysis with LightGBM models for multi-horizon price prediction, on top of a realistic intraday backtesting engine.",
+    "longDescription": "OpenTrade is a Python platform for developing and evaluating data-driven trading strategies. It integrates news sentiment analysis and LightGBM machine learning models for multi-horizon price predictions, on top of a realistic intraday backtesting engine that models slippage and commissions. Results are explored through interactive OHLC charts with confidence bands and aggregated prediction visualizations.",
+    "techStack": ["Python", "LightGBM", "ML"],
+    "githubUrl": "https://github.com/WiredMind2/OpenTrade",
+    "featured": true,
+    "category": "fullstack"
+  },
+  {
+    "id": 10,
+    "title": "AnimeManager",
+    "description": "All-in-one Python desktop app for anime discovery and library management, multi-source metadata aggregation, automated downloads, and built-in media playback.",
+    "longDescription": "AnimeManager is a comprehensive Python desktop application for anime discovery and library management. It aggregates metadata from multiple databases for rapid searches, automates content acquisition and file organization into a structured library, and provides built-in media players for seamless viewing, all through a single interface.",
+    "techStack": ["Python"],
+    "githubUrl": "https://github.com/WiredMind2/AnimeManager",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 11,
+    "title": "Chess2",
+    "description": "Three-player chess on a hexagonal 96-cell board, in C++, including an adaptation of the Stockfish engine to reason about two adversaries and hexagonal geometry.",
+    "longDescription": "Chess2 is a C++ implementation of three-player hexagonal chess, inspired by George R. Dekle Sr.'s variant: classic pieces on a 96-cell hexagonal board with three factions. The hard part was adapting the Stockfish engine, built for two-player square-board chess, to evaluate positions with three adversaries, hexagonal movement geometry, and the unique strategic dynamics that emerge, like double threats and temporary alliances.",
+    "techStack": ["C++", "Stockfish"],
+    "githubUrl": "https://github.com/WiredMind2/Chess2",
+    "featured": true,
+    "category": "other"
+  },
+  {
+    "id": 12,
+    "title": "InvertedPendulum",
+    "description": "PPO reinforcement learning agent balancing a CartPole inverted pendulum, with real-time visualization via a web interface.",
+    "longDescription": "A Python-based Reinforcement Learning project leveraging Stable Baselines3's PPO algorithm to train an agent for balancing a CartPole inverted pendulum system. Features a FastAPI backend with WebSocket communication and an interactive web UI (HTML5 Canvas) for real-time simulation visualization of the trained model in action.",
+    "techStack": ["Python", "RL", "FastAPI"],
+    "githubUrl": "https://github.com/WiredMind2/InvertedPendulum",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 13,
+    "title": "ForceDirectedGraphs",
+    "description": "High-performance Python library for visualizing large graphs using force-directed algorithms with multiprocessing, shared memory, and Deep Zoom output.",
+    "longDescription": "ForceDirectedGraphs offers a high-performance Python implementation for visualizing large-scale graphs through optimized force-directed layout algorithms, utilizing multiprocessing, shared memory, and SQLite integration to efficiently handle complex data. It generates interactive Deep Zoom Image (DZI) visualizations with smooth zoom/pan capabilities.",
+    "techStack": ["Python", "SQLite"],
+    "githubUrl": "https://github.com/WiredMind2/ForceDirectedGraphs",
+    "featured": false,
+    "category": "other"
+  },
+  {
+    "id": 14,
+    "title": "Projet ALIA",
+    "description": "Prolog-based Connect 4 implementation featuring customizable AI players and tournament support.",
+    "longDescription": "Projet ALIA is a Prolog-based implementation of the Connect Four game (Puissance 4), featuring customizable AI opponents and tournament configurations for competitive gameplay. It enables users to simulate AI-driven matches, validate game logic with automated tests, and analyze strategic interactions between multiple AI agents.",
+    "techStack": ["Prolog"],
+    "githubUrl": "https://github.com/WiredMind2/Projet-ALIA",
+    "featured": false,
+    "category": "other"
+  },
+  {
+    "id": 15,
+    "title": "Awale Game",
+    "description": "Modular C implementation of the Awale board game with separated client/server architecture and thread-safe concurrent gameplay.",
+    "longDescription": "Awale-Game is a modular C implementation of the traditional Awale (Oware/Mancala) board game, designed with a client/server architecture that cleanly separates game logic, networking, and UI components. Its features include single-socket TCP communication, automatic server discovery via UDP broadcasts, thread-safe concurrent gameplay, and compile-time internationalization support.",
+    "techStack": ["C", "TCP/UDP"],
+    "githubUrl": "https://github.com/WiredMind2/Awale-Game",
+    "featured": false,
+    "category": "other"
+  },
+  {
+    "id": 16,
+    "title": "OpenRouterClient",
+    "description": "Lightweight Python CLI for interacting with OpenRouter's OpenAI-compatible chat completions API.",
+    "longDescription": "OpenRouterClient is a lightweight Python CLI tool designed to interact with OpenRouter's OpenAI-compatible chat completions API, offering a minimal setup for synchronous API requests. It supports easy configuration via `.env` files or direct CLI argument input for API keys, model selection, and optional headers.",
+    "techStack": ["Python"],
+    "githubUrl": "https://github.com/WiredMind2/OpenRouterClient",
+    "featured": false,
+    "category": "other"
+  },
+  {
+    "id": 17,
+    "title": "PLD AGILE",
+    "description": "Modular and scalable FastAPI backend paired with a modern frontend for agile project management.",
+    "longDescription": "PLD-AGILE is a full-stack web application featuring a modular FastAPI backend built for scalability and extensibility, paired with a modern frontend framework. The backend offers robust REST API endpoints with interactive documentation via Swagger and Redoc, while the frontend delivers an intuitive user interface for agile project management tasks.",
+    "techStack": ["Python", "FastAPI"],
+    "githubUrl": "https://github.com/WiredMind2/PLD-AGILE",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 18,
+    "title": "GymTracker",
+    "description": "React and Tailwind CSS workout tracking app featuring progress charts, exercise templates, and set tracking.",
+    "longDescription": "GymTracker is a React-based workout management application featuring real-time progress charts with Chart.js, customizable templates, and an exercise library with 45+ pre-loaded exercises. Designed with Tailwind CSS, it supports dark mode, offers mobile-optimized responsive design, and includes PWA capabilities for offline use.",
+    "techStack": ["JavaScript", "React", "Tailwind"],
+    "githubUrl": "https://github.com/WiredMind2/GymTracker",
+    "featured": false,
+    "category": "web"
+  },
+  {
+    "id": 19,
+    "title": "Custom Agent",
+    "description": "Python-based AI agent supporting multiple LLMs like Ollama and OpenAI via MCP server integration, with an interactive CLI and web API.",
+    "longDescription": "Custom Agent is a Python-based AI agent offering versatile interaction with multiple large language models (LLMs), including Ollama, OpenAI, Anthropic, and GitHub Copilot CLI, alongside integration with MCP servers for extended functionality. It features an interactive CLI and a FastAPI-based web API, supporting real-time streaming responses, automatic tool calling, and persistent conversation management.",
+    "techStack": ["Python", "LLM", "MCP"],
+    "githubUrl": "https://github.com/WiredMind2/custom_agent",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 31,
+    "title": "CompAIny",
+    "description": "LLM-powered company simulation framework, autonomous AI agents organized in teams and hierarchies work through tickets, standups and sprints following AGILE methodology.",
+    "longDescription": "CompAIny is a Python framework simulating a complete corporate structure run by autonomous LLM agents: roles and seniority levels, cross-functional teams with leaders and subteams, ticket boards with priorities and subtasks, and recurring AGILE ceremonies (standups, planning, retrospectives, reviews). It enforces hierarchical communication rules between agents, includes a workflow engine for automated triggers, and supports multiple LLM providers including OpenRouter, Ollama and GitHub Copilot.",
+    "techStack": ["Python", "LLM", "Multi-Agent"],
+    "githubUrl": "https://github.com/WiredMind2/CompAIny",
+    "featured": false,
+    "category": "fullstack"
+  },
+  {
+    "id": 20,
+    "title": "AirWatcher",
+    "description": "C++ application that collects, analyzes, and displays air quality data to monitor and manage atmospheric pollution.",
+    "longDescription": "AirWatcher is a C++ application for monitoring and analyzing air quality data, enabling users to estimate pollution levels at specific locations, identify unreliable sensors, and evaluate purifier effectiveness. It offers statistical tools to assess air quality by zones or points and supports distinct user roles with tailored features.",
+    "techStack": ["C++"],
+    "githubUrl": "https://github.com/WiredMind2/AirWatcher",
+    "featured": false,
+    "category": "other"
+  },
+  {
+    "id": 26,
+    "title": "Flashcards",
+    "description": "Next.js and TypeScript web application for creating and studying flashcards.",
+    "longDescription": "Flashcards is a Next.js-based application built with TypeScript designed for creating and managing interactive study flashcards. Key features include dynamic flashcard sets, real-time editing with auto-updates, and optimized font loading for improved performance.",
+    "techStack": ["TypeScript", "Next.js"],
+    "githubUrl": "https://github.com/WiredMind2/flashcards",
+    "featured": false,
+    "category": "web"
+  }
+]

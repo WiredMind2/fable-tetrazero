@@ -1,0 +1,80 @@
+---
+import Container from './Container.astro';
+
+const socials = [
+	{ href: 'https://github.com/WiredMind2', label: 'GitHub' },
+	{ href: 'https://linkedin.com/in/w-michaud', label: 'LinkedIn' },
+	{ href: 'mailto:william@michaud.re', label: 'Email' },
+];
+---
+
+<section id="top" class="relative flex min-h-svh flex-col justify-end overflow-hidden">
+	<div class="grid-field absolute inset-0"></div>
+
+	<div
+		class="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-acid/10 blur-[80px] md:-top-24 md:-right-24 md:h-[28rem] md:w-[28rem] md:blur-[140px]"
+	>
+	</div>
+
+	<Container class="relative pt-32 pb-16 md:pb-20">
+		<p data-hero-fade class="kicker mb-6">Hi, I'm</p>
+
+		<h1
+			class="font-display text-[clamp(2.75rem,11vw,9.5rem)] leading-[0.92] font-extrabold tracking-[-0.03em] uppercase"
+		>
+			<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.06em]">
+				<span class="hero-line-inner block">William</span>
+			</span>
+			<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.06em]">
+				<span class="hero-line-inner block">
+					Michaud<span class="text-acid">.</span>
+				</span>
+			</span>
+		</h1>
+
+		<div class="mt-10 grid gap-10 md:grid-cols-12 md:items-end">
+			<div data-hero-fade class="md:col-span-6">
+				<p class="font-mono text-sm tracking-[0.12em] text-balance text-acid uppercase sm:tracking-[0.18em]">
+					CS Engineering @ INSA Lyon - Class of 2027
+				</p>
+				<p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+					I build compilers, trading systems, AI tooling, and consult on technical problems,
+					from AI adoption and security to low-level engineering. Currently CTO at Buddimm, I'm open to consulting missions, or starting from January 2027, I'm looking for a 6-month internship or
+					a full-time role.
+				</p>
+			</div>
+
+			<div data-hero-fade class="flex flex-wrap items-center gap-4 md:col-span-6 md:justify-end">
+				<a href="#projects" class="btn-acid">View work</a>
+				<a href="#contact" class="btn-ghost">Get in touch</a>
+			</div>
+		</div>
+
+		<div
+			data-hero-fade
+			class="mt-14 flex flex-col items-start gap-6 border-t border-line pt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
+		>
+			<div class="flex flex-wrap items-center gap-6">
+				{
+					socials.map((s) => (
+						<a
+							href={s.href}
+							target={s.href.startsWith('mailto') ? undefined : '_blank'}
+							rel="noopener noreferrer"
+							class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
+						>
+							{s.label} ↗
+						</a>
+					))
+				}
+			</div>
+			<a
+				href="#stats"
+				class="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-muted uppercase"
+			>
+				Scroll to explore
+				<span class="inline-block animate-bounce text-acid">↓</span>
+			</a>
+		</div>
+	</Container>
+</section>

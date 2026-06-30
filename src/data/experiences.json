@@ -1,0 +1,130 @@
+[
+  {
+    "id": "buddimm",
+    "group": "work",
+    "title": "Chief Technology Officer",
+    "org": "Buddimm - Real Estate Consulting Startup (~10 people)",
+    "period": "May 2026 - Present",
+    "description": "Joined as a software engineering intern; hired as CTO after the internship to own the company's entire technical operation.",
+    "achievements": [
+      "Built and run the company's full technical infrastructure: public website, internal tools, and the lead-generation pipeline",
+      "Rolled out Claude for Teams company-wide and designed ~20 custom AI skills and connectors automating recurring workflows",
+      "Defined which processes to automate with the CEO, cutting time wasted on repetitive tasks",
+      "Trained the team on effective AI usage, good and bad use cases, prompting, and process integration"
+    ],
+    "technologies": ["Web Development", "AI Automation", "Claude", "Lead Generation"]
+  },
+  {
+    "id": "bobst",
+    "group": "work",
+    "title": "Freelance Consultant",
+    "org": "BOBST",
+    "period": "January 2026 - April 2026",
+    "description": "Modernized the optimization algorithm of a production-line machine, software that computes the optimal output parameters of each component to maximize the line's working speed.",
+    "achievements": [
+      "Translated a 25,000+ line algorithm from CODESYS Structured Text to modern C++",
+      "Worked without access to the closed-source compiler or a way to run the original scripts, validated behavior entirely through systematic manual debugging",
+      "Re-optimized the ported algorithm and extended it with new complex features beyond the original scope"
+    ],
+    "technologies": ["C++", "CODESYS ST", "Industrial Automation", "Optimization"]
+  },
+  {
+    "id": "profundum-security",
+    "group": "work",
+    "title": "Freelance Consultant",
+    "org": "Profundum AI",
+    "period": "June 2026",
+    "description": "Independent security assessment of a live AI SaaS platform. Covered the full stack, web application, APIs, database access controls, billing integration, and AI chat layer.",
+    "achievements": [
+      "Mapped the production attack surface through full-stack reconnaissance without relying on internal documentation",
+      "Ran authorized, non-destructive penetration testing on production with live proof-of-concept validation",
+      "Performed LLM-specific security analysis across the AI chat pipeline (prompt injection, tool abuse, data integrity)",
+      "Delivered a structured report with prioritized remediation roadmap and post-fix verification guidance"
+    ],
+    "technologies": [
+      "Application Security",
+      "Penetration Testing",
+      "API Security",
+      "LLM Security",
+      "Technical Writing"
+    ]
+  },
+  {
+    "id": "vr-research",
+    "group": "research",
+    "title": "Research Intern - Behavioral Changes Caused by Virtual Reality",
+    "org": "Suwa University of Science, Nagano, Japan",
+    "period": "June 2023 - August 2023",
+    "description": "Two-month research internship on behavioral changes caused by Virtual Reality, working with Professor Yamaguchi Takehiko.",
+    "achievements": [
+      "Designed and executed VR experiments to study user behavior and psychological impacts of immersive technologies",
+      "Analyzed experimental data using statistical methods, identifying key behavioral patterns and correlations",
+      "Developed VR prototypes using Unity for research simulations and user testing",
+      "Presented research findings at university symposiums"
+    ],
+    "technologies": ["VR Development", "Unity", "Data Analysis", "Research Methodology"]
+  },
+  {
+    "id": "npu-carbon-fiber",
+    "group": "research",
+    "title": "Research Intern - CAD & Fabrication of Carbon Fiber Aircraft",
+    "org": "Northwestern Polytechnical University, Xi'an, China",
+    "period": "April 2024",
+    "description": "Participated in the 2024 NPU Sino-Euro Spring School at NPU, a leading aerospace engineering university. Worked with Professor Lubin Huo on carbon fiber applications in the aircraft industry.",
+    "achievements": [
+      "Leveraged computer tools for designing and manufacturing carbon fiber-reinforced composite laminated aircraft crafts",
+      "Studied advanced techniques for computer-aided design and fabrication of composite materials",
+      "Explored applications of carbon fiber composites in improving aircraft performance and fuel efficiency",
+      "Participated in hands-on sessions and research discussions with leading aerospace engineering professors"
+    ],
+    "technologies": ["CAD", "Composite Materials", "Carbon Fiber", "Aerospace Engineering"]
+  },
+  {
+    "id": "competitions",
+    "group": "competition",
+    "title": "Competitive Programming",
+    "org": "ICPC, Prologin, France-IOI & more",
+    "period": "2020 - 2026",
+    "description": "Competing in international and national computer science competitions since 2020.",
+    "achievements": [
+      "2nd in France, 40th in Europe at the 2026 ICPC European Championship",
+      "3rd in France at ICPC SWERC 2025, qualified for the European Championship",
+      "Competing again at SWERC 2026",
+      "Part of the INSA Lyon ICPC team (2024, 2025)",
+      "4-time finalist in Prologin (2022, 2023, 2024, 2025)",
+      "1st place in a France-IOI contest (Castor Informatique 2020) among 500,000+ participants",
+      "1st place in Match'Up Coding Battle 2020 among 2,000+ participants",
+      "Designing contest exercises for INSAlgo and Le Match'Up"
+    ],
+    "technologies": ["Algorithm Design", "C/C++", "Python", "Algorithm Optimization", "Problem Solving"]
+  },
+  {
+    "id": "insa-lyon",
+    "group": "education",
+    "title": "Computer Science & Engineering - Informatique (IF)",
+    "org": "INSA Lyon - LyonTech La Doua, Villeurbanne",
+    "period": "2022 - 2027",
+    "description": "Five-year engineering curriculum at one of France's leading public grandes écoles, specializing in the Informatique (IF) department, a reference CS track training multi-skilled engineers across algorithms, software, systems, networks, and AI.",
+    "achievements": [
+      "Three-year IF specialization after the common first cycle, fundamentals, team-based projects, and electives, with yearly industry internships growing in scope",
+      "Advanced coursework in algorithms, systems, networks, and software integration, reinforced through ICPC-level competitive programming practice",
+      "Project-based learning culture aligned with real-world engineering: data structures, large-scale software design, and cross-disciplinary team projects"
+    ],
+    "technologies": ["C++", "Algorithms", "Systems", "Software Engineering"]
+  },
+  {
+    "id": "leadership",
+    "group": "leadership",
+    "title": "Community Leader - INSAlgo & Tech Associations",
+    "org": "INSA Lyon",
+    "period": "2023 - 2025",
+    "description": "Active member and organizer in tech communities, leading initiatives to foster learning, collaboration, and professional development in computer science.",
+    "achievements": [
+      "President of INSAlgo (2025)",
+      "Vice-President of AEDI (2025)",
+      "Treasurer of INSAlgo (2024)",
+      "Treasurer of ADT (2023)"
+    ],
+    "technologies": ["Event Organization", "Team Coordination", "Leadership", "Mentorship"]
+  }
+]

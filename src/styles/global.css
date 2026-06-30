@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@theme {
+	--color-night: #08090b;
+	--color-surface: #0e1014;
+	--color-raised: #14171c;
+	--color-ink: #e8e6e1;
+	--color-muted: #8b919c;
+	--color-line: #20242b;
+	--color-acid: #c8f750;
+	--color-acid-dim: #8fb52e;
+
+	--font-display: "Syne", ui-sans-serif, sans-serif;
+	--font-body: "Bricolage Grotesque", ui-sans-serif, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+	scroll-behavior: smooth;
+	background-color: var(--color-night);
+	overflow-x: clip;
+	scrollbar-gutter: stable;
+}
+
+/* Larger type scale on big screens (everything is rem-based) */
+@media (min-width: 1280px) {
+	html {
+		font-size: 17.5px;
+	}
+}
+@media (min-width: 1800px) {
+	html {
+		font-size: 19.5px;
+	}
+}
+
+section[id] {
+	scroll-margin-top: 4rem;
+}
+
+/* Scroll-spy nav link highlighting */
+[data-nav-link] {
+	--nav-active: 0;
+	color: color-mix(
+		in srgb,
+		var(--color-muted) calc((1 - var(--nav-active)) * 100%),
+		var(--color-acid) calc(var(--nav-active) * 100%)
+	);
+}
+[data-nav-link] .nav-link-prefix {
+	color: color-mix(
+		in srgb,
+		color-mix(in srgb, var(--color-acid) 60%, transparent) calc((1 - var(--nav-active)) * 100%),
+		var(--color-acid) calc(var(--nav-active) * 100%)
+	);
+}
+[data-nav-link]:hover {
+	color: var(--color-acid);
+}
+[data-nav-link]:hover .nav-link-prefix {
+	color: var(--color-acid);
+}
+
+body {
+	font-family: var(--font-body);
+	color: var(--color-ink);
+	background-color: var(--color-night);
+}
+
+img,
+video {
+	max-width: 100%;
+}
+
+::selection {
+	background: var(--color-acid);
+	color: var(--color-night);
+}
+
+/* Engineered grid backdrop */
+.grid-field {
+	background-image:
+		linear-gradient(to right, color-mix(in srgb, var(--color-line) 55%, transparent) 1px, transparent 1px),
+		linear-gradient(to bottom, color-mix(in srgb, var(--color-line) 55%, transparent) 1px, transparent 1px);
+	background-size: 72px 72px;
+	mask-image: radial-gradient(ellipse 90% 80% at 50% 0%, black 30%, transparent 75%);
+}
+
+/* Film grain overlay */
+.grain::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 90;
+	pointer-events: none;
+	opacity: 0.05;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	background-size: 220px 220px;
+}
+
+/* Mono kicker labels: "01 / ABOUT" */
+.kicker {
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	font-weight: 500;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	color: var(--color-acid);
+}
+
+.section-title {
+	font-family: var(--font-display);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: -0.02em;
+	line-height: 0.95;
+	font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* Huge ghost numerals behind sections */
+.ghost-index {
+	font-family: var(--font-display);
+	font-weight: 800;
+	line-height: 1;
+	color: transparent;
+	-webkit-text-stroke: 1px var(--color-line);
+	user-select: none;
+	pointer-events: none;
+}
+
+.tag {
+	font-family: var(--font-mono);
+	font-size: 0.65rem;
+	font-weight: 500;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	padding: 0.3rem 0.65rem;
+	border: 1px solid var(--color-line);
+	color: var(--color-muted);
+	white-space: nowrap;
+}
+
+.btn-acid {
+	font-family: var(--font-mono);
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	padding: 0.9rem 1.75rem;
+	background: var(--color-acid);
+	color: var(--color-night);
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+.btn-acid:hover {
+	background: var(--color-ink);
+	transform: translateY(-2px);
+}
+
+.btn-ghost {
+	font-family: var(--font-mono);
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	padding: 0.9rem 1.75rem;
+	border: 1px solid var(--color-line);
+	color: var(--color-ink);
+	transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.btn-ghost:hover {
+	border-color: var(--color-acid);
+	color: var(--color-acid);
+	transform: translateY(-2px);
+}
+
+/* Reveal-on-scroll initial state (GSAP animates in; visible fallback without JS) */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+	[data-reveal] {
+		opacity: 0;
+		transform: translateY(36px);
+	}
+	[data-hero-line] .hero-line-inner {
+		transform: translateY(110%);
+	}
+	[data-hero-fade] {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+}
+
+/* Form fields */
+.field {
+	width: 100%;
+	background: var(--color-surface);
+	border: 1px solid var(--color-line);
+	padding: 0.85rem 1rem;
+	font-family: var(--font-body);
+	font-size: 0.95rem;
+	color: var(--color-ink);
+	transition: border-color 0.2s ease;
+}
+.field::placeholder {
+	color: color-mix(in srgb, var(--color-muted) 65%, transparent);
+}
+.field:focus {
+	outline: none;
+	border-color: var(--color-acid);
+}
+.field.error {
+	border-color: #f25050;
+}
