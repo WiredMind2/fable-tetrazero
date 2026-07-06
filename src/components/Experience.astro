@@ -10,7 +10,7 @@ const idOrder = [
 	'bobst',
 	'competitions',
 	'vr-research',
-	'npu-carbon-fiber',
+	// 'npu-carbon-fiber', // temporarily hidden
 	'insa-lyon',
 	'leadership',
 ];
@@ -23,8 +23,11 @@ const groupLabel = {
 	education: 'Education',
 } as const;
 
+const hiddenExperienceIds = new Set(['npu-carbon-fiber']); // temporarily hidden
+
 const experiences = (await getCollection('experiences'))
 	.map((entry) => entry.data)
+	.filter((exp) => !hiddenExperienceIds.has(exp.id))
 	.sort((a, b) => {
 		const rank = (id: string) => {
 			const i = idOrder.indexOf(id);
