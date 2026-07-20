@@ -1,0 +1,22 @@
+RewriteEngine On
+
+# Force HTTPS (direct origin hits; Cloudflare may already terminate TLS)
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# www → apex
+RewriteCond %{HTTP_HOST} ^www\.tetrazero\.com$ [NC]
+RewriteRule ^ https://tetrazero.com%{REQUEST_URI} [L,R=301]
+
+# Directory trailing slash with HTTPS Location (overrides Apache DirectorySlash http://)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.+)$ https://tetrazero.com/$1/ [L,R=301]
+
+# Non-file paths without trailing slash → HTTPS + slash
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{1,8}$
+RewriteRule ^(.+)$ https://tetrazero.com/$1/ [L,R=301]
