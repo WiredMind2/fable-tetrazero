@@ -6,7 +6,7 @@ import AcidText from './AcidText.astro';
 
 const all = (await getCollection('projects')).map((entry) => entry.data);
 
-const featuredOrder = ['C-Compiler', 'OpenTrade', 'Chess2'];
+const featuredOrder = ['C-Compiler', 'OpenTrade', 'AnimeManager'];
 const featured = all
 	.filter((p) => p.featured)
 	.sort((a, b) => {

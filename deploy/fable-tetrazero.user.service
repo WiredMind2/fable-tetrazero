@@ -1,0 +1,13 @@
+[Unit]
+Description=tetrazero.com static site + contact API (user)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/fable-tetrazero
+ExecStart=/usr/bin/python3 /var/www/fable-tetrazero/server/contact.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=tetrazero.com static site + contact API
+After=network.target
+
+[Service]
+Type=simple
+User=william
+Group=william
+WorkingDirectory=/var/www/fable-tetrazero
+ExecStart=/usr/bin/python3 /var/www/fable-tetrazero/server/contact.py
+Restart=on-failure
+RestartSec=3
+# Bind is hardcoded to 127.0.0.1:3080 in contact.py
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

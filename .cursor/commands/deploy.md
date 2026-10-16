@@ -13,7 +13,7 @@ Invoking `/deploy` without `dry-run` is explicit approval to commit (when needed
 
 ## Workflow
 
-1. Review `git status` and `git diff` briefly — warn if secret files (`.env`, credentials) would be committed; never deploy them.
+1. Review `git status` and `git diff` briefly — warn if secret files (`.env`, `contact.secret`, credentials) would be committed; never deploy them.
 2. Run the deploy script from the repo root:
 
 ```powershell
@@ -30,10 +30,10 @@ If `$ARGUMENTS` is empty, run `npm run deploy` with no extra args.
 |------|--------|
 | Commit | `git add -A` + `git commit` only when the working tree is dirty |
 | Push | `git push origin master` |
-| Remote | `ssh tetrazero` → `git pull`, `npm ci`, `npm run build` in `/var/www/fable-tetrazero` |
-| Verify | HTTP check on localhost with `Host: tetrazero.com` |
+| Remote | `ssh tetrazero` → `git pull`, `npm ci`, `npm run build`, restart `fable-tetrazero` (system or user systemd) |
+| Verify | `curl -sI http://127.0.0.1:3080/` |
 
-Apache already serves `/var/www/fable-tetrazero/dist` — no reload needed after build.
+Caddy proxies `tetrazero.com` → `127.0.0.1:3080` (Python static + contact API). See `deploy/CADDY.md`.
 
 ## Flags
 
@@ -50,4 +50,4 @@ Apache already serves `/var/www/fable-tetrazero/dist` — no reload needed after
 - Never update git config
 - Never skip hooks (`--no-verify`)
 - Never force-push
-- Never commit secret/credential files
+- Never commit secret/credential files (`contact.secret`, `.env`, …)

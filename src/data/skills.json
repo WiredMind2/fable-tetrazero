@@ -4,10 +4,11 @@
     "items": [
       { "name": "Python", "icon": "python-svgrepo-com.svg" },
       { "name": "C++", "icon": "cpp3-svgrepo-com.svg" },
-      { "name": "C#", "icon": "csharp2-svgrepo-com.svg" },
-      { "name": "Java", "icon": "jar-svgrepo-com.svg" },
       { "name": "TypeScript", "icon": "typescript-icon-svgrepo-com.svg" },
       { "name": "JavaScript", "icon": "js-official-svgrepo-com.svg" },
+      { "name": "Prolog", "icon": "prolog.svg" },
+      { "name": "C#", "icon": "csharp2-svgrepo-com.svg" },
+      { "name": "Java", "icon": "jar-svgrepo-com.svg" },
       { "name": "Kotlin", "icon": "kotlin-svgrepo-com.svg" },
       { "name": "Rust", "icon": "light-rust-svgrepo-com.svg" },
       { "name": "Swift", "icon": "swift-svgrepo-com.svg" },
@@ -34,9 +35,13 @@
   {
     "group": "Tools & Platforms",
     "items": [
+      { "name": "Linux", "icon": "linux.svg" },
       { "name": "Git", "icon": "git-svgrepo-com.svg" },
       { "name": "GitLab", "icon": "gitlab-svgrepo-com.svg" },
       { "name": "Docker", "icon": "docker-svgrepo-com.svg" },
+      { "name": "PostgreSQL", "icon": "postgres.svg" },
+      { "name": "Nginx", "icon": "nginx.svg" },
+      { "name": "Apache", "icon": "apache.svg" },
       { "name": "Conda", "icon": "conda-svgrepo-com.svg" },
       { "name": "Jupyter", "icon": "jupyter-svgrepo-com.svg" },
       { "name": "LangChain", "icon": "langchain-icon.svg" },
