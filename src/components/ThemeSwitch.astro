@@ -1,0 +1,86 @@
+<button
+	type="button"
+	class="theme-switch"
+	data-theme-switch
+	aria-label="Change color theme"
+	title="Change color theme"
+>
+	<span class="theme-switch-track" aria-hidden="true">
+		<svg class="theme-switch-icon theme-switch-sun" viewBox="0 0 16 16">
+			<circle cx="8" cy="8" r="2.5" />
+			<path d="M8 1.25V2.5M8 13.5v1.25M1.25 8H2.5M13.5 8h1.25M3.23 3.23l.88.88M11.89 11.89l.88.88M12.77 3.23l-.88.88M4.11 11.89l-.88.88" />
+		</svg>
+		<svg class="theme-switch-icon theme-switch-moon" viewBox="0 0 16 16">
+			<path d="M13.65 10.1A5.65 5.65 0 0 1 5.9 2.35 5.65 5.65 0 1 0 13.65 10.1Z" />
+		</svg>
+		<span class="theme-switch-thumb"></span>
+	</span>
+</button>
+
+<script>
+	type Theme = 'light' | 'dark';
+
+	const preference = window.matchMedia('(prefers-color-scheme: dark)');
+	const schemeMeta = document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]')!;
+	const themeMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+	const switches = [...document.querySelectorAll<HTMLButtonElement>('[data-theme-switch]')];
+
+	const getStoredTheme = (): Theme | null => {
+		try {
+			const stored = localStorage.getItem('color-scheme');
+			return stored === 'light' || stored === 'dark' ? stored : null;
+		} catch {
+			return null;
+		}
+	};
+
+	const getResolvedTheme = (): Theme => {
+		if (schemeMeta.content === 'light' || schemeMeta.content === 'dark') {
+			return schemeMeta.content;
+		}
+		return preference.matches ? 'dark' : 'light';
+	};
+
+	const syncControls = () => {
+		const resolved = getResolvedTheme();
+		const dark = resolved === 'dark';
+
+		document.documentElement.dataset.resolvedTheme = resolved;
+		if (themeMeta) themeMeta.content = dark ? '#0d1117' : '#f4f5f7';
+
+		for (const control of switches) {
+			const label = `Switch to ${dark ? 'light' : 'dark'} theme`;
+			control.setAttribute('aria-label', label);
+			control.setAttribute('aria-pressed', String(dark));
+			control.title = label;
+		}
+	};
+
+	const applyTheme = (theme: Theme | null) => {
+		schemeMeta.content = theme ?? 'light dark';
+		syncControls();
+	};
+
+	for (const control of switches) {
+		control.addEventListener('click', () => {
+			const target: Theme = getResolvedTheme() === 'dark' ? 'light' : 'dark';
+			const systemTheme: Theme = preference.matches ? 'dark' : 'light';
+			const override = target === systemTheme ? null : target;
+
+			try {
+				if (override) localStorage.setItem('color-scheme', override);
+				else localStorage.removeItem('color-scheme');
+				applyTheme(override);
+			} catch {
+				applyTheme(target);
+			}
+		});
+	}
+
+	preference.addEventListener('change', syncControls);
+	window.addEventListener('storage', (event) => {
+		if (event.key === 'color-scheme' || event.key === null) applyTheme(getStoredTheme());
+	});
+
+	syncControls();
+</script>

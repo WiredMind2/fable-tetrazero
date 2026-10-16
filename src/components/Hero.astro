@@ -1,6 +1,6 @@
 ---
 import Container from './Container.astro';
-import AcidText from './AcidText.astro';
+import SystemLandscape from './SystemLandscape.astro';
 
 const socials = [
 	{ href: 'https://github.com/WiredMind2', label: 'GitHub' },
@@ -11,82 +11,62 @@ const socials = [
 
 <section
 	id="top"
-	class="relative flex min-h-dvh flex-col lg:grid lg:h-dvh lg:min-h-0 lg:grid-rows-[minmax(0,1fr)_auto] lg:overflow-hidden"
+	class="relative border-b border-line pt-[var(--nav-height)]"
 >
-	<div class="grid-field absolute inset-0"></div>
-
-	<div
-		class="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-acid/10 blur-[80px] md:-top-24 md:-right-24 md:h-[28rem] md:w-[28rem] md:blur-[140px]"
-	>
-	</div>
-
-	<Container
-		class="relative flex min-w-0 flex-1 flex-col justify-start pt-20 lg:min-h-0 lg:justify-center lg:pt-16 lg:pb-4"
-	>
-		<div class="flex min-w-0 flex-col items-start lg:items-center">
-			<div class="w-fit max-w-full">
-				<p data-hero-fade class="kicker mb-6">Hi, I'm</p>
-
+	<Container class="py-12 md:py-16 lg:py-20">
+		<div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-16">
+			<div data-hero-copy class="lg:col-span-6 xl:col-span-7">
+				<p class="context-label">Software engineer · Lyon / Bethlehem</p>
 				<h1
-					class="hero-title font-display leading-[0.92] font-extrabold tracking-[-0.03em] uppercase"
+					class="mt-5 max-w-[12ch] font-display text-[clamp(3.35rem,7.5vw,7.75rem)] leading-[0.94] font-semibold tracking-[-0.065em]"
 				>
-					<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.2em]">
-						<span class="hero-line-inner block">William</span>
-					</span>
-					<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.2em]">
-						<span class="hero-line-inner block">
-							Michaud<span class="text-acid">.</span>
-						</span>
-					</span>
+					I build compilers, trading systems, and AI tooling.
 				</h1>
-			</div>
-		</div>
-
-		<div class="mt-6 grid gap-8 md:mt-10 md:grid-cols-12 md:items-end md:gap-10 lg:mt-6">
-			<div data-hero-fade class="md:col-span-6">
-				<p class="font-mono text-sm tracking-[0.12em] text-balance text-acid uppercase sm:tracking-[0.18em]">
-					CS Engineering @ INSA Lyon - Class of 2027
+				<p class="mt-7 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+					CTO at Buddimm and a computer science engineering student at INSA Lyon, currently on
+					exchange at Lehigh University. Seeking a six-month internship from January 2027.
 				</p>
-				<AcidText
-					as="p"
-					class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg"
-					text="I build compilers, trading systems, AI tooling, and consult on technical problems, from AI adoption and security to low-level engineering. Currently CTO at Buddimm, I'm open to consulting missions, or starting from January 2027, I'm looking for a 6-month internship or a full-time role."
-				/>
+				<div class="mt-8 flex flex-wrap items-center gap-5">
+					<a href="#projects" class="button button-primary">
+						Explore selected work <span aria-hidden="true">↓</span>
+					</a>
+					<a
+						href="/Resume.pdf"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-link"
+					>
+						Open résumé <span class="link-mark" aria-hidden="true">↗</span>
+					</a>
+				</div>
 			</div>
-
-			<div data-hero-fade class="flex flex-wrap items-center gap-4 md:col-span-6 md:justify-end">
-				<a href="#projects" class="btn-acid">View work</a>
-				<a href="#contact" class="btn-ghost">Get in touch</a>
+			<div class="lg:col-span-6 xl:col-span-5">
+				<SystemLandscape />
 			</div>
 		</div>
 	</Container>
 
-	<Container class="relative shrink-0 border-t border-line pt-6 pb-6 md:pb-8">
-		<div
-			data-hero-fade
-			class="flex flex-col items-start gap-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
-		>
-			<div class="flex flex-wrap items-center gap-6">
+	<div class="border-t border-line bg-paper">
+		<Container class="flex flex-col gap-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+			<p class="text-sm font-medium">
+				INSA Lyon ’27 <span class="mx-2 text-line">/</span> Lehigh University ’26
+			</p>
+			<ul class="flex flex-wrap gap-x-6 gap-y-2">
 				{
-					socials.map((s) => (
-						<a
-							href={s.href}
-							target={s.href.startsWith('mailto') ? undefined : '_blank'}
-							rel="noopener noreferrer"
-							class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
-						>
-							{s.label} ↗
-						</a>
+					socials.map((social) => (
+						<li>
+							<a
+								href={social.href}
+								target={social.href.startsWith('mailto') ? undefined : '_blank'}
+								rel="noopener noreferrer"
+								class="text-link text-sm text-muted hover:text-ink"
+							>
+								{social.label} <span class="link-mark" aria-hidden="true">↗</span>
+							</a>
+						</li>
 					))
 				}
-			</div>
-			<a
-				href="#stats"
-				class="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-muted uppercase"
-			>
-				Scroll to explore
-				<span class="inline-block animate-bounce text-acid">↓</span>
-			</a>
-		</div>
-	</Container>
+			</ul>
+		</Container>
+	</div>
 </section>

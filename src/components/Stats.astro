@@ -1,13 +1,12 @@
 ---
 import Container from './Container.astro';
-import AcidText from './AcidText.astro';
 
 const stats = [
 	{
 		value: 2,
 		prefix: '#',
 		suffix: '',
-		caption: 'Ranked 2nd best in France, 40th in Europe - ICPC European Championship 2026',
+		caption: 'Ranked 2nd in France, 40th / 53 - ICPC European Championship 2026, Warsaw',
 	},
 	{
 		value: 500,
@@ -30,23 +29,28 @@ const stats = [
 ];
 ---
 
-<section id="stats" class="overflow-hidden border-y border-line">
+<section id="stats" class="section-space border-b border-line bg-paper">
 	<Container>
-		<div class="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
-		{
-			stats.map((stat) => (
-				<div data-reveal class="min-w-0 bg-night px-5 py-10 md:px-8 md:py-14">
-					<div class="font-display text-5xl font-extrabold tracking-tight text-acid md:text-6xl">
-						{stat.prefix && <span class="text-[0.65em]">{stat.prefix}</span>}<span data-count={stat.value}>{stat.value}</span>{stat.suffix && <span class="text-[0.65em]">{stat.suffix}</span>}
-					</div>
-					<AcidText
-						as="p"
-						class="mt-4 max-w-[30ch] font-mono text-xs leading-relaxed tracking-wide break-words text-muted uppercase md:text-sm"
-						text={stat.caption}
-					/>
-				</div>
-			))
-		}
+		<div class="grid gap-14 lg:grid-cols-12 lg:gap-10">
+			<div class="lg:col-span-4">
+				<p class="context-label">A few useful signals</p>
+				<h2 class="mt-4 max-w-[9ch] text-4xl leading-[1.02] font-semibold tracking-[-0.045em] md:text-5xl">
+					Evidence over adjectives.
+				</h2>
+			</div>
+
+			<dl class="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
+				{
+					stats.map((stat) => (
+						<div class="border-t border-line py-7 md:py-9">
+							<dt class="text-[clamp(2.6rem,5vw,4.75rem)] leading-none font-semibold tracking-[-0.06em] text-blue"><span class="text-[0.7em]">{stat.prefix}</span>{stat.value}<span class="text-[0.7em]">{stat.suffix}</span></dt>
+							<dd class="mt-4 max-w-[34ch] text-sm leading-relaxed text-muted md:text-base">
+								{stat.caption}
+							</dd>
+						</div>
+					))
+				}
+			</dl>
 		</div>
 	</Container>
 </section>

@@ -1,0 +1,506 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+const kind = title === 'C-Compiler' ? 'compiler' : title === 'OpenTrade' ? 'trading' : 'chess';
+
+const labels = {
+	compiler: 'Diagram of C source moving through a typed intermediate representation and optimization passes into two assembly targets',
+	trading: 'Market research chart combining a price range, prediction signal, sentiment, and backtest result',
+	chess: 'Hexagonal three-player chess board showing three opposing sides and engine search paths',
+} as const;
+---
+
+<div class:list={['project-visual', `project-visual--${kind}`]} role="img" aria-label={labels[kind]}>
+	{
+		kind === 'compiler' && (
+			<>
+				<div class="compiler-source">
+					<p>source.c</p>
+					<code>
+						<span>int main() {'{'}</span>
+						<span>&nbsp;&nbsp;int x = 21 * 2;</span>
+						<span>&nbsp;&nbsp;return x;</span>
+						<span>{'}'}</span>
+					</code>
+				</div>
+
+				<div class="compiler-ir">
+					<p>typed IR</p>
+					<ol>
+						<li>
+							<span>entry</span>
+							<b>%0 = const 42</b>
+						</li>
+						<li>
+							<span>return</span>
+							<b>ret %0</b>
+						</li>
+					</ol>
+				</div>
+
+				<div class="compiler-passes">
+					<span>constant propagation</span>
+					<span>dead-code elimination</span>
+					<span>register promotion</span>
+					<span>copy-chain collapse</span>
+				</div>
+
+				<div class="compiler-targets">
+					<span>x86-64</span>
+					<span>ARM64</span>
+				</div>
+
+				<svg class="compiler-route" viewBox="0 0 700 360" aria-hidden="true">
+					<path d="M186 112 C260 112 254 178 326 178" />
+					<path d="M493 178 C551 178 548 118 610 118" />
+					<path d="M493 178 C551 178 548 254 610 254" />
+				</svg>
+			</>
+		)
+	}
+
+	{
+		kind === 'trading' && (
+			<>
+				<div class="trade-header">
+					<div>
+						<p>Multi-horizon research</p>
+						<strong>Signal / price</strong>
+					</div>
+					<span>Intraday · realistic costs</span>
+				</div>
+
+				<svg class="trade-chart" viewBox="0 0 760 360" aria-hidden="true">
+					<g class="trade-grid">
+						<path d="M0 72H760M0 144H760M0 216H760M0 288H760" />
+						<path d="M126 0V360M252 0V360M378 0V360M504 0V360M630 0V360" />
+					</g>
+					<path
+						class="trade-range"
+						d="M10 272 C78 246 102 261 153 221 S251 240 292 174 S382 193 430 148 S519 154 557 98 S650 108 750 48"
+					/>
+					<path
+						class="trade-price"
+						d="M10 286 C78 259 110 265 153 235 S247 213 292 191 S382 172 430 159 S512 128 557 113 S654 78 750 63"
+					/>
+					<path
+						class="trade-signal"
+						d="M10 299 C74 278 103 281 153 260 S247 225 292 210 S380 183 430 173 S517 145 557 127 S651 101 750 78"
+					/>
+				</svg>
+
+				<div class="trade-readouts">
+					<div>
+						<span>News sentiment</span>
+						<strong>Scored</strong>
+					</div>
+					<div>
+						<span>Forecast window</span>
+						<strong>Multi-horizon</strong>
+					</div>
+					<div>
+						<span>Evaluation</span>
+						<strong>Backtested</strong>
+					</div>
+				</div>
+			</>
+		)
+	}
+
+	{
+		kind === 'chess' && (
+			<>
+				<div class="chess-copy">
+					<p>Engine state</p>
+					<strong>Three sides.<br />One evaluation.</strong>
+					<span>96-cell hexagonal board</span>
+				</div>
+				<svg class="chess-board" viewBox="0 0 430 420" aria-hidden="true">
+					<defs>
+						<path id="project-hex" d="M27 2h30l15 25-15 25H27L12 27z" />
+					</defs>
+					<g>
+						<use href="#project-hex" x="100" y="10" />
+						<use href="#project-hex" x="148" y="10" />
+						<use href="#project-hex" x="196" y="10" class="side-a" />
+						<use href="#project-hex" x="244" y="10" />
+						<use href="#project-hex" x="76" y="51" />
+						<use href="#project-hex" x="124" y="51" class="side-b" />
+						<use href="#project-hex" x="172" y="51" />
+						<use href="#project-hex" x="220" y="51" />
+						<use href="#project-hex" x="268" y="51" />
+						<use href="#project-hex" x="52" y="92" />
+						<use href="#project-hex" x="100" y="92" />
+						<use href="#project-hex" x="148" y="92" />
+						<use href="#project-hex" x="196" y="92" class="side-c" />
+						<use href="#project-hex" x="244" y="92" />
+						<use href="#project-hex" x="292" y="92" />
+						<use href="#project-hex" x="76" y="133" />
+						<use href="#project-hex" x="124" y="133" />
+						<use href="#project-hex" x="172" y="133" />
+						<use href="#project-hex" x="220" y="133" />
+						<use href="#project-hex" x="268" y="133" class="side-a" />
+						<use href="#project-hex" x="100" y="174" />
+						<use href="#project-hex" x="148" y="174" class="side-b" />
+						<use href="#project-hex" x="196" y="174" />
+						<use href="#project-hex" x="244" y="174" />
+						<path class="search-path" d="M175 76 C214 112 210 152 235 198 S284 253 307 294" />
+						<circle class="search-node" cx="175" cy="76" r="7" />
+						<circle class="search-node" cx="235" cy="198" r="7" />
+						<circle class="search-node" cx="307" cy="294" r="7" />
+					</g>
+				</svg>
+				<div class="chess-legend">
+					<span><i class="side-a"></i> Side A</span>
+					<span><i class="side-b"></i> Side B</span>
+					<span><i class="side-c"></i> Side C</span>
+				</div>
+			</>
+		)
+	}
+</div>
+
+<style>
+	.project-visual {
+		position: relative;
+		min-height: clamp(29rem, 55vw, 43rem);
+		overflow: hidden;
+		border-radius: var(--radius-stage);
+	}
+
+	.project-visual--compiler {
+		background: var(--color-blue-surface);
+		color: var(--color-ink);
+	}
+
+	.compiler-source,
+	.compiler-ir,
+	.compiler-passes,
+	.compiler-targets {
+		position: absolute;
+		z-index: 2;
+	}
+
+	.compiler-source {
+		top: 9%;
+		left: 6%;
+		width: 31%;
+		border-radius: 1rem;
+		background: var(--color-night);
+		padding: 1.2rem;
+		color: var(--color-white);
+	}
+
+	.compiler-source p,
+	.compiler-ir > p {
+		margin-bottom: 1.2rem;
+		font-size: 0.74rem;
+		font-weight: 650;
+	}
+
+	.compiler-source code {
+		display: grid;
+		gap: 0.45rem;
+		font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+		font-size: clamp(0.6rem, 1.2vw, 0.78rem);
+		line-height: 1.4;
+	}
+
+	.compiler-ir {
+		top: 27%;
+		left: 43%;
+		width: 29%;
+		border-radius: 1rem;
+		background: var(--color-paper);
+		padding: 1.2rem;
+	}
+
+	.compiler-ir ol {
+		display: grid;
+		gap: 0.7rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.compiler-ir li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.7rem;
+		border-top: 1px solid var(--color-line);
+		padding-top: 0.7rem;
+		font-size: clamp(0.58rem, 1.1vw, 0.72rem);
+	}
+
+	.compiler-ir b {
+		font-weight: 550;
+	}
+
+	.compiler-passes {
+		right: 6%;
+		bottom: 9%;
+		display: grid;
+		width: 34%;
+		gap: 0.4rem;
+	}
+
+	.compiler-passes span {
+		border-radius: 0.55rem;
+		background: var(--color-blue-soft);
+		padding: 0.55rem 0.7rem;
+		font-size: clamp(0.58rem, 1.1vw, 0.74rem);
+		font-weight: 550;
+	}
+
+	.compiler-targets {
+		top: 10%;
+		right: 5%;
+		display: flex;
+		gap: 0.45rem;
+	}
+
+	.compiler-targets span {
+		border: 1px solid rgba(255, 255, 255, 0.45);
+		border-radius: 0.5rem;
+		padding: 0.45rem 0.6rem;
+		color: var(--color-white);
+		font-size: 0.7rem;
+		font-weight: 600;
+	}
+
+	.compiler-route {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.compiler-route path {
+		fill: none;
+		stroke: rgba(255, 255, 255, 0.7);
+		stroke-width: 2;
+		stroke-dasharray: 6 7;
+	}
+
+	.project-visual--trading {
+		background: var(--color-orange);
+		color: var(--color-night);
+		padding: clamp(1.35rem, 4vw, 3rem);
+	}
+
+	.trade-header {
+		display: flex;
+		align-items: start;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.trade-header p,
+	.trade-header > span {
+		font-size: clamp(0.7rem, 1.2vw, 0.82rem);
+		font-weight: 600;
+	}
+
+	.trade-header strong {
+		display: block;
+		margin-top: 0.4rem;
+		font-size: clamp(1.25rem, 3vw, 2.25rem);
+		letter-spacing: -0.04em;
+	}
+
+	.trade-chart {
+		width: 100%;
+		margin-top: clamp(2.5rem, 8vw, 6rem);
+	}
+
+	.trade-grid path {
+		stroke: rgba(17, 19, 24, 0.14);
+		stroke-width: 1;
+	}
+
+	.trade-range {
+		fill: none;
+		stroke: rgba(255, 255, 255, 0.45);
+		stroke-width: 34;
+		stroke-linecap: round;
+	}
+
+	.trade-price,
+	.trade-signal {
+		fill: none;
+		stroke-linecap: round;
+	}
+
+	.trade-price {
+		stroke: var(--color-night);
+		stroke-width: 4;
+	}
+
+	.trade-signal {
+		stroke: var(--color-white);
+		stroke-width: 3;
+		stroke-dasharray: 5 8;
+	}
+
+	.trade-readouts {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1px;
+		margin-top: 2rem;
+		background: rgba(17, 19, 24, 0.18);
+	}
+
+	.trade-readouts div {
+		background: var(--color-orange);
+		padding: 1rem 0.5rem 0.25rem;
+	}
+
+	.trade-readouts span,
+	.trade-readouts strong {
+		display: block;
+	}
+
+	.trade-readouts span {
+		font-size: clamp(0.58rem, 1.1vw, 0.72rem);
+	}
+
+	.trade-readouts strong {
+		margin-top: 0.3rem;
+		font-size: clamp(0.7rem, 1.4vw, 0.94rem);
+	}
+
+	.project-visual--chess {
+		background: var(--color-night);
+		color: var(--color-white);
+	}
+
+	.chess-copy {
+		position: absolute;
+		top: 9%;
+		left: 7%;
+		z-index: 2;
+		display: grid;
+		gap: 1.1rem;
+	}
+
+	.chess-copy p,
+	.chess-copy span {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: clamp(0.68rem, 1.2vw, 0.82rem);
+	}
+
+	.chess-copy strong {
+		font-size: clamp(1.75rem, 4vw, 3.5rem);
+		line-height: 1;
+		letter-spacing: -0.05em;
+	}
+
+	.chess-board {
+		position: absolute;
+		right: -2%;
+		bottom: -3%;
+		width: min(68%, 35rem);
+	}
+
+	.chess-board use {
+		fill: #252932;
+		stroke: rgba(255, 255, 255, 0.18);
+		stroke-width: 1;
+	}
+
+	.chess-board .side-a,
+	.chess-legend .side-a {
+		fill: var(--color-white);
+		background: var(--color-white);
+	}
+
+	.chess-board .side-b,
+	.chess-legend .side-b {
+		fill: var(--color-blue);
+		background: var(--color-blue);
+	}
+
+	.chess-board .side-c,
+	.chess-legend .side-c {
+		fill: var(--color-orange);
+		background: var(--color-orange);
+	}
+
+	.search-path {
+		fill: none;
+		stroke: var(--color-white);
+		stroke-width: 3;
+		stroke-dasharray: 4 7;
+	}
+
+	.search-node {
+		fill: var(--color-white);
+	}
+
+	.chess-legend {
+		position: absolute;
+		bottom: 7%;
+		left: 7%;
+		display: grid;
+		gap: 0.55rem;
+		color: rgba(255, 255, 255, 0.68);
+		font-size: 0.72rem;
+	}
+
+	.chess-legend span {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.chess-legend i {
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 50%;
+	}
+
+	@media (max-width: 639px) {
+		.compiler-source {
+			width: 48%;
+		}
+
+		.compiler-ir {
+			top: 38%;
+			left: 31%;
+			width: 51%;
+		}
+
+		.compiler-passes {
+			right: 5%;
+			bottom: 7%;
+			width: 51%;
+		}
+
+		.compiler-route {
+			display: none;
+		}
+
+		.trade-readouts {
+			grid-template-columns: 1fr;
+		}
+
+		.trade-readouts div {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 1rem;
+		}
+
+		.chess-board {
+			right: -24%;
+			width: 100%;
+		}
+
+		.chess-legend {
+			display: none;
+		}
+	}
+</style>
