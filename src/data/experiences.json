@@ -3,55 +3,66 @@
     "id": "buddimm",
     "group": "work",
     "title": "Chief Technology Officer",
-    "org": "Buddimm - Real-estate consulting company (~10 people)",
-    "period": "May 2026 - Jan 2027",
-    "description": "Joined as an intern and then hired as CTO. Own the full technical stack: public website, internal tools, and the lead-generation pipeline.",
+    "org": "Buddimm - Real Estate Consulting Startup (~10 people)",
+    "period": "May 2026 - Present",
+    "description": "Joined as a software engineering intern; hired as CTO after the internship to own the company's entire technical operation.",
     "achievements": [
-      "Lead AI tooling: Claude for Teams company-wide, a custom company MCP for internal tools and data, and ~20 skills based on internal processes",
-      "Train the team on effective AI usage. Some tasks now run up to 8 times faster",
-      "Maintain the public website and its SEO, which increased traffic by nearly 10x in two weeks"
+      "Built and run the company's full technical infrastructure: public website, internal tools, and the lead-generation pipeline",
+      "Rolled out Claude for Teams company-wide and designed ~20 custom AI skills and connectors automating recurring workflows",
+      "Defined which processes to automate with the CEO, cutting time wasted on repetitive tasks",
+      "Trained the team on effective AI usage, good and bad use cases, prompting, and process integration"
     ],
-    "technologies": ["Web Development", "AI Automation", "Claude", "MCP", "SEO"]
+    "technologies": ["Web Development", "AI Automation", "Claude", "Lead Generation"]
   },
   {
     "id": "bobst",
     "group": "work",
-    "title": "Freelance Software Engineer",
+    "title": "Freelance Consultant",
     "org": "BOBST",
     "period": "January 2026 - April 2026",
-    "description": "ST-to-C++ toolchain for a production optimizer that computes the optimal output parameters of each component to maximize the line's working speed.",
+    "description": "Modernized the optimization algorithm of a production-line machine, software that computes the optimal output parameters of each component to maximize the line's working speed.",
     "achievements": [
-      "Reimplemented a 25,000-line industrial optimizer written in CODESYS Structured Text, without access to its proprietary compiler or a runnable source of truth",
-      "Built an ST-to-C++ compilation pipeline: source extraction, syntax rewrites, C++17 codegen, and a runtime harness",
-      "Extended the optimizer so it derived configuration values instead of taking them as manual inputs, considerably speeding up the sale process"
+      "Translated a 25,000+ line algorithm from CODESYS Structured Text to modern C++",
+      "Worked without access to the closed-source compiler or a way to run the original scripts, validated behavior entirely through systematic manual debugging",
+      "Re-optimized the ported algorithm and extended it with new complex features beyond the original scope"
     ],
-    "technologies": ["C++17", "CODESYS ST", "Industrial Automation", "Optimization"]
+    "technologies": ["C++", "CODESYS ST", "Industrial Automation", "Optimization"]
   },
   {
     "id": "profundum-security",
     "group": "work",
-    "title": "Cybersecurity Consultant",
+    "title": "Freelance Consultant",
     "org": "Profundum AI",
-    "period": "January 2026",
-    "description": "Security assessment of a live AI SaaS platform.",
+    "period": "June 2026",
+    "description": "Independent security assessment of a live AI SaaS platform. Covered the full stack, web application, APIs, database access controls, billing integration, and AI chat layer.",
     "achievements": [
-      "Produced a full security audit of an AI chatbot web platform",
-      "Identified multiple severe issues, notably in the subscription system",
-      "Performed a second audit on security and good practices for the LLM chat pipeline (prompt injection, tool abuse, data integrity)"
+      "Mapped the production attack surface through full-stack reconnaissance without relying on internal documentation",
+      "Ran authorized, non-destructive penetration testing on production with live proof-of-concept validation",
+      "Performed LLM-specific security analysis across the AI chat pipeline (prompt injection, tool abuse, data integrity)",
+      "Delivered a structured report with prioritized remediation roadmap and post-fix verification guidance"
     ],
-    "technologies": ["Application Security", "LLM Security", "Technical Writing"]
+    "technologies": [
+      "Application Security",
+      "Penetration Testing",
+      "API Security",
+      "LLM Security",
+      "Technical Writing"
+    ]
   },
   {
     "id": "vr-research",
     "group": "research",
-    "title": "Research Intern - Behavioral Changes Induced by Virtual Reality",
+    "title": "Research Intern - Behavioral Changes Caused by Virtual Reality",
     "org": "Suwa University of Science, Nagano, Japan",
-    "period": "Summer 2025",
-    "description": "Research internship on behavioral changes induced by virtual reality.",
+    "period": "June 2023 - August 2023",
+    "description": "Two-month research internship on behavioral changes caused by Virtual Reality, working with Professor Yamaguchi Takehiko.",
     "achievements": [
-      "Designed and ran Unity-based VR experiments, then analyzed participant data to study behavioral changes in immersive environments"
+      "Designed and executed VR experiments to study user behavior and psychological impacts of immersive technologies",
+      "Analyzed experimental data using statistical methods, identifying key behavioral patterns and correlations",
+      "Developed VR prototypes using Unity for research simulations and user testing",
+      "Presented research findings at university symposiums"
     ],
-    "technologies": ["VR Development", "Unity", "Data Analysis"]
+    "technologies": ["VR Development", "Unity", "Data Analysis", "Research Methodology"]
   },
   {
     "id": "npu-carbon-fiber",
@@ -59,10 +70,12 @@
     "title": "Research Intern - CAD & Fabrication of Carbon Fiber Aircraft",
     "org": "Northwestern Polytechnical University, Xi'an, China",
     "period": "April 2024",
-    "description": "Research internship on computer-aided design and fabrication of carbon fiber aircraft.",
+    "description": "Participated in the 2024 NPU Sino-Euro Spring School at NPU, a leading aerospace engineering university. Worked with Professor Lubin Huo on carbon fiber applications in the aircraft industry.",
     "achievements": [
-      "Used computer tools for designing and manufacturing carbon fiber-reinforced composite laminated aircraft",
-      "Studied CAD and fabrication techniques for composite materials in aerospace"
+      "Leveraged computer tools for designing and manufacturing carbon fiber-reinforced composite laminated aircraft crafts",
+      "Studied advanced techniques for computer-aided design and fabrication of composite materials",
+      "Explored applications of carbon fiber composites in improving aircraft performance and fuel efficiency",
+      "Participated in hands-on sessions and research discussions with leading aerospace engineering professors"
     ],
     "technologies": ["CAD", "Composite Materials", "Carbon Fiber", "Aerospace Engineering"]
   },
@@ -74,38 +87,30 @@
     "period": "2020 - 2026",
     "description": "Competing in international and national computer science competitions since 2020.",
     "achievements": [
-      "2nd in France, 40th / 53 at the 2026 ICPC European Championship in Warsaw",
-      "3rd in France, 18th / 142 at ICPC SWERC 2025",
+      "2nd in France, 40th in Europe at the 2026 ICPC European Championship",
+      "3rd in France at ICPC SWERC 2025, qualified for the European Championship",
       "Competing again at SWERC 2026",
+      "Part of the INSA Lyon ICPC team (2024, 2025)",
       "4-time finalist in Prologin (2022, 2023, 2024, 2025)",
-      "1st place in Castor Informatique 2020 among 500,000+ participants",
-      "1st place in Match'Up 2022 among 2,000+ participants",
-      "Problem setter for the last two editions of Match'Up"
+      "1st place in a France-IOI contest (Castor Informatique 2020) among 500,000+ participants",
+      "1st place in Match'Up Coding Battle 2020 among 2,000+ participants",
+      "Designing contest exercises for INSAlgo and Le Match'Up"
     ],
     "technologies": ["Algorithm Design", "C/C++", "Python", "Algorithm Optimization", "Problem Solving"]
   },
   {
-    "id": "lehigh",
-    "group": "education",
-    "title": "Exchange Semester",
-    "org": "Lehigh University, Bethlehem, PA",
-    "period": "Fall 2026",
-    "description": "Exchange semester in Bethlehem, Pennsylvania, during the final year of the INSA Lyon engineering degree.",
-    "achievements": [],
-    "technologies": []
-  },
-  {
     "id": "insa-lyon",
     "group": "education",
-    "title": "Engineering Degree in Computer Science",
+    "title": "Computer Science & Engineering - Informatique (IF)",
     "org": "INSA Lyon - LyonTech La Doua, Villeurbanne",
     "period": "2022 - 2027",
-    "description": "Diplôme d'ingénieur in computer science. GPA 3.9/4.0, graduating June 2027.",
+    "description": "Five-year engineering curriculum at one of France's leading public grandes écoles, specializing in the Informatique (IF) department, a reference CS track training multi-skilled engineers across algorithms, software, systems, networks, and AI.",
     "achievements": [
-      "Specialized in algorithms, machine learning, and agentic AI",
-      "Five-year engineering curriculum in the Informatique (IF) department, with team-based projects and yearly industry internships"
+      "Three-year IF specialization after the common first cycle, fundamentals, team-based projects, and electives, with yearly industry internships growing in scope",
+      "Advanced coursework in algorithms, systems, networks, and software integration, reinforced through ICPC-level competitive programming practice",
+      "Project-based learning culture aligned with real-world engineering: data structures, large-scale software design, and cross-disciplinary team projects"
     ],
-    "technologies": ["C++", "Algorithms", "Machine Learning", "Agentic AI"]
+    "technologies": ["C++", "Algorithms", "Systems", "Software Engineering"]
   },
   {
     "id": "leadership",

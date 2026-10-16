@@ -1,0 +1,13 @@
+---
+import { acidifyText } from '../utils/acid-text';
+
+interface Props {
+	text: string;
+	class?: string;
+	as?: 'p' | 'span' | 'div';
+}
+
+const { text, class: className, as: Tag = 'p' } = Astro.props;
+---
+
+<Tag class={className} set:html={acidifyText(text)} />

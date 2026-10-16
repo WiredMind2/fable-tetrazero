@@ -2,8 +2,8 @@
   {
     "id": 30,
     "title": "C-Compiler",
-    "description": "A compiler for a subset of C, from ANTLR4 parsing through typed three-address IR and seven optimization passes to x86-64 and ARM64 backends. Semantic analysis covers types, pointers, arrays, implicit conversions, and invalid programs, with differential testing against GCC.",
-    "longDescription": "A compiler for a significant subset of C, developed with a team of 6 for INSA Lyon's PLD-Comp project. Source code is parsed with an ANTLR4 grammar, lowered to a typed three-address intermediate representation built on control-flow graphs and basic blocks, run through 7 IR-level optimization passes (constant propagation, dead-code elimination, register promotion, copy-chain collapsing), and emitted as x86-64 or ARM64 assembly. Semantic analysis covers types, pointers, arrays, implicit conversions, and diagnostics for invalid programs. Differential testing against GCC checks both valid programs and programs that should be rejected.",
+    "description": "A compiler for a subset of C, built from scratch in C++20, ANTLR4 front end, custom 3-address IR, 7 optimization passes, and both x86-64 and ARM64 backends.",
+    "longDescription": "A compiler for a significant subset of C (types, pointers, arrays, control flow, functions, implicit conversions), developed with a team of 6 for INSA Lyon's PLD-Comp project. Source code is parsed with an ANTLR4 grammar, lowered to a custom 3-address intermediate representation built on control-flow graphs and basic blocks, run through 7 IR-level optimization passes (constant propagation, dead-code elimination, register promotion, copy-chain collapsing), and emitted as x86-64 or ARM64 assembly. Correctness is validated by an automated test suite comparing behavior against GCC across 20 test categories.",
     "techStack": ["C++20", "ANTLR4", "Compilers"],
     "githubUrl": "https://github.com/WiredMind2/C-Compiler",
     "featured": true,
@@ -22,8 +22,8 @@
   {
     "id": 6,
     "title": "Tetrazero",
-    "description": "The site you are looking at, a static-first portfolio built around authored technical visuals and a responsive editorial system.",
-    "longDescription": "Tetrazero is a static-first portfolio website built with Astro, Tailwind CSS and GSAP. It uses data-driven project and experience collections, custom SVG technical illustrations, an accessible contact flow, and a restrained hero sequence while keeping client-side JavaScript intentionally small.",
+    "description": "The site you are looking at, a bold, animation-heavy portfolio rebuilt from scratch with Astro, GSAP and Tailwind CSS.",
+    "longDescription": "Tetrazero is a static-first portfolio website built with Astro, Tailwind CSS and GSAP. It ships near-zero JavaScript outside of its scroll choreography: staggered hero reveals, ScrollTrigger-driven section entrances, animated counters and a filterable project grid powered by vanilla TypeScript.",
     "techStack": ["Astro", "TypeScript", "GSAP"],
     "githubUrl": "https://github.com/WiredMind2/tetrazero",
     "featured": false,
@@ -52,8 +52,8 @@
   {
     "id": 9,
     "title": "OpenTrade",
-    "description": "Algorithmic trading research platform combining news sentiment analysis with LightGBM models for multi-horizon price prediction, on top of a realistic intraday backtesting engine. Tested strategies include MACD, LightGBM, reinforcement learning, and pairs trading.",
-    "longDescription": "OpenTrade is a Python platform for developing and evaluating data-driven trading strategies. It integrates news sentiment analysis and LightGBM machine learning models for multi-horizon price predictions, on top of a realistic intraday backtesting engine that models slippage and commissions. Implemented and tested strategies include MACD, LightGBM, reinforcement learning, and pairs trading. Results are explored through interactive OHLC charts with confidence bands and aggregated prediction visualizations.",
+    "description": "Algorithmic trading research platform combining news sentiment analysis with LightGBM models for multi-horizon price prediction, on top of a realistic intraday backtesting engine.",
+    "longDescription": "OpenTrade is a Python platform for developing and evaluating data-driven trading strategies. It integrates news sentiment analysis and LightGBM machine learning models for multi-horizon price predictions, on top of a realistic intraday backtesting engine that models slippage and commissions. Results are explored through interactive OHLC charts with confidence bands and aggregated prediction visualizations.",
     "techStack": ["Python", "LightGBM", "ML"],
     "githubUrl": "https://github.com/WiredMind2/OpenTrade",
     "featured": true,
@@ -62,8 +62,8 @@
   {
     "id": 10,
     "title": "AnimeManager",
-    "description": "Multi-platform app for searching, downloading, and watching series, with metadata from multiple provider APIs and built-in players on a shared backend.",
-    "longDescription": "AnimeManager is a Python app for searching, downloading, and watching series. Metadata comes from multiple provider APIs, and built-in media players sit on a shared backend used by both desktop and web clients.",
+    "description": "All-in-one Python desktop app for anime discovery and library management, multi-source metadata aggregation, automated downloads, and built-in media playback.",
+    "longDescription": "AnimeManager is a comprehensive Python desktop application for anime discovery and library management. It aggregates metadata from multiple databases for rapid searches, automates content acquisition and file organization into a structured library, and provides built-in media players for seamless viewing, all through a single interface.",
     "techStack": ["Python"],
     "githubUrl": "https://github.com/WiredMind2/AnimeManager",
     "featured": false,
