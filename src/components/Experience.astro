@@ -82,7 +82,7 @@ const seenGroups = new Set<string>();
 							>
 								<span
 									class:list={[
-										'experience-item-marker absolute top-1.5 left-[5.5px] h-[9px] w-[9px] rotate-45 bg-ink',
+										'experience-item-marker absolute top-1.5 left-[5.5px] h-[9px] w-[9px] rotate-45 bg-accent',
 										i % 2 === 0
 											? 'md:left-auto md:right-0 md:translate-x-1/2'
 											: 'md:left-0 md:-translate-x-1/2',
@@ -120,7 +120,7 @@ const seenGroups = new Set<string>();
 									<ul class="mt-5 space-y-2.5">
 										{exp.achievements.map((achievement) => (
 											<li class="flex max-w-2xl items-start gap-3 text-sm leading-relaxed text-ink/85 md:text-base">
-												<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ink/70" />
+												<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
 												<span>{achievement}</span>
 											</li>
 										))}

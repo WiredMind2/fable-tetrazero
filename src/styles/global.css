@@ -16,6 +16,8 @@
 	--color-line: #ffffff14;
 	--color-line-strong: #ffffff26;
 	--color-glow: #ffffff12;
+	/* The single accent: electric cyan on monochrome (micro-details only) */
+	--color-accent: #4cc9ff;
 
 	--font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
 	--font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -69,7 +71,7 @@ video {
 }
 
 ::selection {
-	background: var(--color-ink);
+	background: var(--color-accent);
 	color: var(--color-night);
 }
 
@@ -167,9 +169,9 @@ video {
 	white-space: nowrap;
 }
 .tag--status {
-	border-color: #ffffff2e;
-	background-color: #ffffff12;
-	color: var(--color-ink);
+	border-color: #4cc9ff4d;
+	background-color: #4cc9ff14;
+	color: #a5dcff;
 }
 
 /* ---------------------------------------------------------------- buttons */
@@ -225,7 +227,7 @@ video {
 	color: color-mix(
 		in srgb,
 		var(--color-muted) calc((1 - var(--nav-active)) * 100%),
-		var(--color-ink) calc(var(--nav-active) * 100%)
+		#a5dcff calc(var(--nav-active) * 100%)
 	);
 	transition: color 0.2s ease;
 }
@@ -234,7 +236,7 @@ video {
 	position: absolute;
 	inset: 0;
 	border-radius: 99px;
-	background-color: #ffffff14;
+	background-color: #4cc9ff1c;
 	opacity: var(--nav-active);
 	transition: opacity 0.25s ease;
 	z-index: -1;
@@ -258,7 +260,7 @@ video {
 	height: 100%;
 	width: 100%;
 	overflow: visible;
-	filter: drop-shadow(0 18px 28px #ffffff0d);
+	filter: drop-shadow(0 18px 28px #4cc9ff12);
 }
 .iso polygon {
 	stroke: hsl(0 0% 82% / 0.5);
@@ -268,17 +270,17 @@ video {
 	fill-opacity: 0.5;
 }
 .iso polygon.face--accent {
-	fill: hsl(0 0% 96%);
+	fill: var(--color-accent);
 }
 
 /* ----------------------------------------------------------------- hero */
 
-/* Triple white bloom on the hero name (sriramph's cyan glow, mono) */
+/* Triple cyan bloom on the hero name (sriramph's glow recipe) */
 .name-glow {
 	text-shadow:
-		#ffffffcc 0 0 16px,
-		#ffffff59 0 0 32px,
-		#ffffff26 0 0 64px;
+		#4cc9ffcc 0 0 16px,
+		#4cc9ff59 0 0 32px,
+		#4cc9ff26 0 0 64px;
 }
 
 /* Giant ghost watermark: gradient clip fading the word out downward */
@@ -420,12 +422,12 @@ video {
 .cursor--dot {
 	width: 6px;
 	height: 6px;
-	background: #ffffffcc;
+	background: #4cc9ffd9;
 }
 .cursor--ring {
 	width: 28px;
 	height: 28px;
-	border: 1px solid #ffffff2e;
+	border: 1px solid #4cc9ff45;
 	transition:
 		width 0.25s var(--ease-spring),
 		height 0.25s var(--ease-spring),
@@ -435,8 +437,8 @@ video {
 .cursor--ring.is-highlight {
 	width: 44px;
 	height: 44px;
-	border-color: #ffffff45;
-	background-color: #ffffff0a;
+	border-color: #4cc9ff73;
+	background-color: #4cc9ff12;
 }
 
 /* --------------------------------------------------------------- motion */
@@ -473,7 +475,7 @@ video {
 }
 .field:focus {
 	outline: none;
-	border-color: #ffffff3d;
+	border-color: #4cc9ff66;
 	background: #ffffff0a;
 }
 .field.error {
