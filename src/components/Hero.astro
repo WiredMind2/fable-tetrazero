@@ -20,7 +20,7 @@ const socials = [
 	</div>
 
 	<Container
-		class="relative flex min-w-0 flex-1 flex-col justify-start pt-28 md:pt-32 lg:min-h-0 lg:justify-center lg:pt-16 lg:pb-4"
+		class="relative z-1 flex min-w-0 flex-1 flex-col justify-start pt-28 md:pt-32 lg:min-h-0 lg:justify-center lg:pt-16 lg:pb-4"
 	>
 		<!-- Ghost watermark + name stack -->
 		<div class="relative flex min-w-0 flex-col items-start lg:items-center">
@@ -34,7 +34,10 @@ const socials = [
 					Hello.
 				</p>
 
-				<h1 class="hero-title relative font-display leading-[0.95] font-extrabold tracking-[0.02em] uppercase">
+				<h1
+					data-hero-fade
+					class="hero-title relative font-display leading-[0.95] font-extrabold tracking-[0.02em] uppercase"
+				>
 					<span class="sr-only">William Michaud</span>
 					<span
 						aria-hidden="true"
@@ -55,33 +58,46 @@ const socials = [
 			</div>
 		</div>
 
-		<div class="mt-10 grid gap-10 md:mt-14 md:grid-cols-12 md:items-center lg:mt-12">
-			<div data-hero-fade class="md:col-span-7">
-				<p class="font-mono text-xs tracking-[0.14em] text-ink/80 uppercase sm:tracking-[0.18em]">
-					INSA Lyon, class of 2027 · Lehigh exchange, Fall 2026
-				</p>
-				<p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-					I build compilers, trading systems, and AI tooling, from agentic workflows to
-					low-level engineering. CTO at Buddimm through January 2027. Seeking a 6-month
-					internship starting January 2027.
-				</p>
-				<div class="mt-7 flex flex-wrap items-center gap-4">
-					<a href="#projects" class="btn-solid">View work</a>
-					<a href="#contact" class="btn-ghost">Get in touch</a>
-				</div>
+		<div data-hero-fade class="mt-10 max-w-xl md:mt-14 lg:mt-12">
+			<p class="font-mono text-xs tracking-[0.14em] text-ink/80 uppercase sm:tracking-[0.18em]">
+				INSA Lyon, class of 2027 · Lehigh exchange, Fall 2026
+			</p>
+			<p class="mt-4 text-base leading-relaxed text-muted md:text-lg">
+				I build compilers, trading systems, and AI tooling, from agentic workflows to
+				low-level engineering. CTO at Buddimm through January 2027. Seeking a 6-month
+				internship starting January 2027.
+			</p>
+			<div class="mt-7 flex flex-wrap items-center gap-4">
+				<a href="#projects" class="btn-solid">View work</a>
+				<a href="#contact" class="btn-ghost">Get in touch</a>
 			</div>
 
-			<div data-hero-fade class="flex justify-center md:col-span-5 md:justify-end">
+			<!-- Tablet/mobile: module inline below the text -->
+			<div class="mt-12 flex justify-center lg:hidden">
 				<div
 					data-iso-zone
 					data-cursor="highlight"
-					class="iso w-[250px] md:w-[280px] xl:w-[330px]"
+					class="iso w-[250px] md:w-[280px]"
 					data-module="mark"
 				>
 				</div>
 			</div>
 		</div>
 	</Container>
+
+	<!-- Signature isometric mark, vertically centered on the right (lg+) -->
+	<div
+		class="pointer-events-none absolute inset-y-0 right-10 hidden w-[320px] items-center justify-center lg:flex xl:w-[360px]"
+		aria-hidden="true"
+	>
+		<div
+			data-iso-zone
+			data-cursor="highlight"
+			class="iso pointer-events-auto w-[280px] xl:w-[340px]"
+			data-module="mark"
+		>
+		</div>
+	</div>
 
 	<Container class="relative shrink-0 border-t border-line pt-6 pb-24 md:pb-8">
 		<div
