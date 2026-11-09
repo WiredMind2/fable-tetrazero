@@ -1,19 +1,34 @@
 /*
-	Text scramble: resolves a string from random glyphs, left to right.
+	Text scramble: resolves a string from random WORDS, left to right.
 	Used for the hero name and section headings.
 
-	Layout stability: before scrambling, each character is wrapped in an
-	inline-block span whose width is measured from the FINAL glyph (fonts
-	are settled by the time this runs). Random glyphs then swap inside
-	fixed-width boxes, so the text can never re-wrap, change line count,
-	or shift the content below it. The spans are replaced by plain text
-	again once the scramble resolves.
+	Placeholder words always have exactly the same number of letters as
+	the word they stand in for, so the glitch reads as fixed-length words
+	cycling ("KZQWOXB OMRHAPT" for "WILLIAM MICHAUD") rather than
+	per-character letter soup.
+
+	Layout stability: each word is wrapped in an inline-block span locked
+	to its final width (fonts are settled by the time this runs), so
+	swapping whole words can never re-wrap, change the line count, or
+	shift the content below. Plain text is restored when the scramble
+	resolves, recovering natural kerning.
 */
 
-const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/\\*#%&';
+// Moderate-width uppercase letters only: dropping the extreme glyphs
+// (I, M, W) keeps random words close to the final word's width.
+const LETTERS = 'ABCDEFGHJKLNOPQRSTUVXYZ';
+const REFRESH_MS = 70;
 
 export function prefersReducedMotion(): boolean {
 	return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function randomWord(length: number): string {
+	let out = '';
+	for (let i = 0; i < length; i++) {
+		out += LETTERS[(Math.random() * LETTERS.length) | 0];
+	}
+	return out;
 }
 
 export function scramble(el: HTMLElement, durationMs = 900): void {
@@ -25,41 +40,57 @@ export function scramble(el: HTMLElement, durationMs = 900): void {
 		return;
 	}
 
-	// Build one inline-block per character, laid out with the final glyphs
-	// first so each box can be locked to its final width.
-	const chars: HTMLSpanElement[] = [];
-	const frag = document.createDocumentFragment();
-	for (const ch of final) {
-		const span = document.createElement('span');
-		if (ch !== ' ') span.style.display = 'inline-block';
-		span.textContent = ch;
-		frag.appendChild(span);
-		chars.push(span);
-	}
-	el.replaceChildren(frag);
-
-	// Lock every non-space character to its final width.
-	for (const span of chars) {
-		if (span.textContent !== ' ') {
-			span.style.width = `${span.getBoundingClientRect().width.toFixed(2)}px`;
+	// One inline-block span per word; spaces stay as plain text nodes so
+	// wrapping between words keeps working exactly as with plain text.
+	const words: { text: string; span: HTMLSpanElement; end: number }[] = [];
+	const nodes: Node[] = [];
+	let end = 0;
+	for (const token of final.split(/(\s+)/)) {
+		if (!token) continue;
+		if (/^\s+$/.test(token)) {
+			nodes.push(document.createTextNode(token));
+			end += token.length;
+			continue;
 		}
+		const span = document.createElement('span');
+		span.style.display = 'inline-block';
+		span.style.textAlign = 'center';
+		span.textContent = token;
+		nodes.push(span);
+		end += token.length;
+		words.push({ text: token, span, end });
+	}
+	el.replaceChildren(...nodes);
+
+	// Lock each word box to its final width, measured with the real text.
+	for (const word of words) {
+		word.span.style.width = `${word.span.getBoundingClientRect().width.toFixed(2)}px`;
 	}
 
-	const randomGlyph = () => GLYPHS[(Math.random() * GLYPHS.length) | 0];
 	const start = performance.now();
+	let lastRefresh = 0;
 
 	const tick = (now: number) => {
 		const t = Math.min(1, (now - start) / durationMs);
 		const revealed = Math.floor(t * final.length);
-		for (let i = 0; i < chars.length; i++) {
-			const ch = final[i];
-			if (ch === ' ') continue;
-			chars[i].textContent = i < revealed ? ch : randomGlyph();
+
+		// Fresh random words at a fixed cadence (not every frame) so the
+		// cycling reads as words flipping, not flicker.
+		const refresh = now - lastRefresh >= REFRESH_MS;
+		if (refresh) lastRefresh = now;
+
+		for (const word of words) {
+			if (revealed >= word.end) {
+				if (word.span.textContent !== word.text) word.span.textContent = word.text;
+			} else if (refresh) {
+				word.span.textContent = randomWord(word.text.length);
+			}
 		}
+
 		if (t < 1) {
 			requestAnimationFrame(tick);
 		} else {
-			// Restore plain text (and balanced wrapping) when done.
+			// Restore plain text (natural kerning, balanced wrapping).
 			el.textContent = final;
 		}
 	};
