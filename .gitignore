@@ -27,3 +27,6 @@ contact.secret
 
 # jetbrains setting folder
 .idea/
+
+# linked worktrees
+.worktrees/
