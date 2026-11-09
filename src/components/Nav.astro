@@ -1,94 +1,121 @@
 ---
-import Container from './Container.astro';
+const socials = [
+	{ href: 'https://github.com/WiredMind2', label: 'GitHub', external: true },
+	{ href: 'https://linkedin.com/in/w-michaud', label: 'LinkedIn', external: true },
+	{ href: 'mailto:william@michaud.re', label: 'Email', external: false },
+	{ href: '/Resume.pdf', label: 'Resume', external: true },
+];
 
 const links = [
 	{ href: '#about', label: 'About' },
-	{ href: '#projects', label: 'Projects' },
+	{ href: '#projects', label: 'Work' },
 	{ href: '#experience', label: 'Experience' },
 	{ href: '#skills', label: 'Skills' },
 	{ href: '#contact', label: 'Contact' },
 ];
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-night/80 backdrop-blur-md">
-	<Container class="flex h-16 items-center justify-between">
-		<a href="#top" class="shrink-0 font-mono text-sm font-semibold tracking-[0.25em] text-ink uppercase">
-			Tetra<span class="text-acid">zero</span>
-		</a>
+<!-- Top: wordmark pill left, contact pill right (desktop), hamburger (mobile) -->
+<header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-start justify-between gap-4 p-4 md:p-6">
+	<a
+		href="#top"
+		class="glass pointer-events-auto flex items-center rounded-pill px-4 py-2 font-mono text-xs font-semibold tracking-[0.22em] text-ink uppercase transition-colors hover:text-white"
+		aria-label="Tetrazero — back to top"
+	>
+		tetra<span class="text-muted">zero</span>
+	</a>
 
-		<div id="nav-links" class="relative hidden items-center gap-5 lg:flex lg:gap-8">
-			<ul class="flex items-center gap-5 lg:gap-8">
+	<nav
+		aria-label="Contact links"
+		class="glass pointer-events-auto hidden items-center gap-1 rounded-pill p-1.5 md:flex"
+	>
+		{
+			socials.map((s) => (
+				<a
+					href={s.href}
+					target={s.external ? '_blank' : undefined}
+					rel={s.external ? 'noopener noreferrer' : undefined}
+					class="rounded-pill px-3.5 py-2 font-mono text-xs tracking-[0.14em] text-muted uppercase transition-colors hover:bg-white/5 hover:text-ink"
+				>
+					{s.label}
+				</a>
+			))
+		}
+	</nav>
+
+	<button
+		id="nav-toggle"
+		class="glass pointer-events-auto flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-pill md:hidden"
+		aria-label="Toggle menu"
+		aria-expanded="false"
+		aria-controls="nav-menu"
+	>
+		<span class="nav-bar block h-px w-5 bg-ink transition-transform"></span>
+		<span class="nav-bar block h-px w-5 bg-ink transition-opacity"></span>
+		<span class="nav-bar block h-px w-5 bg-ink transition-transform"></span>
+	</button>
+</header>
+
+<!-- Mobile sheet -->
+<div id="nav-menu" class="glass fixed top-16 right-4 left-4 z-50 hidden rounded-2xl p-2 md:hidden">
+	<ul class="flex flex-col">
+		{
+			links.map((link) => (
+				<li>
+					<a
+						href={link.href}
+						data-nav-link
+						data-section={link.href.slice(1)}
+						class="block rounded-xl px-4 py-3 font-mono text-sm tracking-[0.16em] uppercase"
+					>
+						{link.label}
+					</a>
+				</li>
+			))
+		}
+		<li class="mt-1 border-t border-line pt-1">
+			<ul class="flex flex-wrap gap-2 px-4 py-2">
 				{
-					links.map((link, i) => (
+					socials.map((s) => (
 						<li>
 							<a
-								href={link.href}
-								data-nav-link
-								data-section={link.href.slice(1)}
-								class="nav-link font-mono text-xs tracking-[0.18em] uppercase"
+								href={s.href}
+								target={s.external ? '_blank' : undefined}
+								rel={s.external ? 'noopener noreferrer' : undefined}
+								class="tag transition-colors hover:text-ink"
 							>
-								<span class="nav-link-prefix">0{i + 1}<span class="text-acid">.</span></span> {link.label}
+								{s.label} ↗
 							</a>
 						</li>
 					))
 				}
 			</ul>
-			<span
-				id="nav-indicator"
-				class="pointer-events-none absolute bottom-0 left-0 h-px bg-acid opacity-0"
-				aria-hidden="true"
-			></span>
-			<a
-				href="/Resume.pdf"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="border border-acid/60 px-3.5 py-1.5 font-mono text-xs tracking-[0.18em] text-acid uppercase transition-colors hover:bg-acid hover:text-night"
-			>
-				Resume ↗
-			</a>
-		</div>
+		</li>
+	</ul>
+</div>
 
-		<button
-			id="nav-toggle"
-			class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
-			aria-label="Toggle menu"
-			aria-expanded="false"
-		>
-			<span class="nav-bar block h-px w-6 bg-ink transition-transform"></span>
-			<span class="nav-bar block h-px w-6 bg-ink transition-opacity"></span>
-			<span class="nav-bar block h-px w-6 bg-ink transition-transform"></span>
-		</button>
-	</Container>
-
-	<div id="nav-menu" class="hidden border-t border-line bg-night lg:hidden">
-		<ul class="flex flex-col px-5 py-4">
-			{
-				links.map((link, i) => (
-					<li>
-						<a
-							href={link.href}
-							data-nav-link
-							data-section={link.href.slice(1)}
-							class="nav-link block py-3 font-mono text-sm tracking-[0.18em] uppercase"
-						>
-							<span class="nav-link-prefix">0{i + 1}<span class="text-acid">.</span></span> {link.label}
-						</a>
-					</li>
-				))
-			}
-			<li>
-				<a
-					href="/Resume.pdf"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="block py-3 font-mono text-sm tracking-[0.18em] text-acid uppercase"
-				>
-					Resume ↗
-				</a>
-			</li>
-		</ul>
-	</div>
-</header>
+<!-- Bottom: floating section dock -->
+<nav
+	aria-label="Sections"
+	class="pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center px-4 md:bottom-6"
+>
+	<ul class="glass pointer-events-auto flex max-w-full items-center gap-0.5 rounded-pill p-1.5 shadow-[0_16px_40px_-12px_#000000d9] md:gap-1">
+		{
+			links.map((link) => (
+				<li>
+					<a
+						href={link.href}
+						data-nav-link
+						data-section={link.href.slice(1)}
+						class="relative z-1 flex items-center rounded-pill px-2.5 py-2 font-mono text-[0.65rem] font-medium tracking-[0.08em] whitespace-nowrap uppercase md:px-3.5 md:text-[0.7rem] md:tracking-[0.1em]"
+					>
+						{link.label}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>
 
 <script>
 	const toggle = document.getElementById('nav-toggle')!;

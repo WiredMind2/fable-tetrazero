@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { scramble } from './scramble';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -8,7 +9,7 @@ function nextFrame(): Promise<void> {
 }
 
 async function init(): Promise<void> {
-	// Wait for webfonts (Syne) so hero clamp sizing uses final metrics
+	// Wait for webfonts (Inter) so hero clamp sizing uses final metrics
 	if (document.fonts?.ready) {
 		await document.fonts.ready;
 	}
@@ -19,20 +20,20 @@ async function init(): Promise<void> {
 	const mm = gsap.matchMedia();
 
 	mm.add('(prefers-reduced-motion: no-preference)', () => {
-		// Hero entrance
+		// Hero entrance: fade supports + scramble the name from glyphs
 		const intro = gsap.timeline({ defaults: { ease: 'power4.out' } });
-		intro
-			.to('[data-hero-line] .hero-line-inner', {
-				y: 0,
-				duration: 1.1,
-				stagger: 0.12,
-				delay: 0.15,
-			})
-			.to(
-				'[data-hero-fade]',
-				{ opacity: 1, y: 0, duration: 0.9, stagger: 0.1 },
-				'-=0.7'
-			);
+		intro.to('[data-hero-fade]', {
+			opacity: 1,
+			y: 0,
+			duration: 0.9,
+			stagger: 0.1,
+			delay: 0.15,
+		});
+
+		const heroName = document.querySelector<HTMLElement>('#top [data-scramble]');
+		if (heroName) {
+			gsap.delayedCall(0.35, () => scramble(heroName, 1100));
+		}
 
 		// Generic scroll reveals
 		gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
@@ -66,6 +67,17 @@ async function init(): Promise<void> {
 				onUpdate: () => {
 					el.textContent = String(Math.round(counter.value));
 				},
+			});
+		});
+
+		// Section headings resolve from scrambled glyphs, once, on entry
+		gsap.utils.toArray<HTMLElement>('[data-scramble]').forEach((el) => {
+			if (el.closest('#top')) return; // hero name is handled above
+			ScrollTrigger.create({
+				trigger: el,
+				start: 'top 88%',
+				once: true,
+				onEnter: () => scramble(el, 700),
 			});
 		});
 

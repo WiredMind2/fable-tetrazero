@@ -1,65 +1,103 @@
 ---
 import Container from './Container.astro';
 import SectionHeader from './SectionHeader.astro';
-import AcidText from './AcidText.astro';
 
-const details = [
+const tracks = [
 	{
+		num: '01',
+		title: 'Systems & Compilers',
+		chip: 'Low-level · C++20',
+		module: 'stack',
+		intro: 'From ANTLR grammars to ARM64 codegen — I like when every layer of the stack is mine to build.',
+		steps: [
+			'Built a C-subset compiler: custom 3-address IR, 7 optimization passes, x86-64 and ARM64 backends.',
+			'Ported BOBST’s 25,000-line ST optimizer to C++ during a freelance engagement.',
+			'Wrote an intraday trading backtester that models slippage and commissions.',
+		],
+	},
+	{
+		num: '02',
+		title: 'AI Tooling',
+		chip: 'Agents · daily driver',
+		module: 'agents',
+		intro: 'AI is how I work and what I ship: agentic workflows running in production, not just prototypes.',
+		steps: [
+			'As CTO at Buddimm, rolled out Claude for Teams and company-wide MCP servers.',
+			'Built an AI-driven SEO workflow that grew organic reach 10x.',
+			'Audited AI SaaS platforms for security issues at Profundum AI.',
+		],
+	},
+	{
+		num: '03',
 		title: 'Competitive Programming',
-		text: '2nd in France and 40th of 53 at the 2026 ICPC European Championship in Warsaw. At SWERC 2025, 3rd in France and 18th of 142. Four-time Prologin finalist, and 1st of 2,000+ at Match\u2019Up 2022, where I also set problems for the last two editions.',
-	},
-	{
-		title: 'Background',
-		text: 'Computer science engineering student at INSA Lyon, GPA 3.9/4.0, graduating June 2027, specialized in algorithms, machine learning, and agentic AI. Exchange semester at Lehigh University, Fall 2026. I served as president of INSAlgo and vice-president of AEDI. CTO at Buddimm through January 2027; earlier work includes a security assessment at Profundum AI and an ST-to-C++ toolchain at BOBST.',
-	},
-	{
-		title: 'Languages & Interests',
-		text: 'I speak five languages: French (native), Creole (native), English (C2), German (B2) and Japanese (JLPT N4). Off the keyboard: mathematics, video games, the gym and running.',
+		chip: 'ICPC · Prologin',
+		module: 'board',
+		intro: 'Algorithms as a sport: I train, I compete, and I set problems for others to solve.',
+		steps: [
+			'2nd in France, 40th of 53 at the ICPC European Championship 2026, Warsaw.',
+			'3rd in France at SWERC 2025; four-time Prologin finalist.',
+			'1st of 2,000+ at Match’Up 2022, then problem-setter for two editions.',
+		],
 	},
 ];
 ---
 
 <section id="about" class="relative overflow-hidden py-24 md:py-32">
 	<Container>
-		<SectionHeader index="01" label="Get To Know Me" title="About" />
+		<SectionHeader index="01" label="Practice" title="What I do" />
 
-		<div class="grid min-w-0 gap-14 md:grid-cols-12">
-			<div data-reveal class="min-w-0 md:col-span-5">
-				<AcidText
-					as="p"
-					class="font-display text-2xl leading-snug font-bold break-words md:text-3xl"
-					text="Hey there, I'm William, I write code for work, for sport, and for fun."
-				/>
-				<AcidText
-					as="p"
-					class="mt-6 leading-relaxed break-words text-muted md:text-lg"
-					text="I build things ranging from compilers and trading systems to three-player chess engines, all open-source on my GitHub. I've also consulted on engineering, AI automation, and cybersecurity: from porting production algorithms to rolling out AI workflows and auditing AI SaaS platforms. When I'm not shipping side projects, I'm grinding algorithm problems or designing contest exercises for others to solve."
-				/>
-				<a
-					href="/Resume.pdf"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="btn-ghost mt-8 inline-block">Resume ↗</a
-				>
-			</div>
+		<p data-reveal class="mb-12 max-w-2xl text-lg leading-relaxed text-muted md:mb-16 md:text-xl">
+			Hey there, I'm William — I write code for work, for sport, and for fun. Three
+			things I keep coming back to:
+		</p>
 
-			<div class="min-w-0 space-y-px border border-line bg-line md:col-span-7">
-				{
-					details.map((detail, i) => (
-						<div data-reveal class="min-w-0 bg-surface p-7 md:p-8">
-							<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-								<span class="shrink-0 font-mono text-xs tracking-[0.25em] uppercase text-muted">
-									01<span class="text-acid">.</span>{i + 1}
-								</span>
-								<h3 class="min-w-0 font-display text-lg font-extrabold tracking-tight break-words uppercase">
-									{detail.title}
-								</h3>
-							</div>
-							<AcidText as="p" class="mt-3 leading-relaxed break-words text-muted" text={detail.text} />
-						</div>
-					))
-				}
-			</div>
+		<div class="grid min-w-0 gap-5 md:grid-cols-3">
+			{
+				tracks.map((track) => (
+					<article
+						data-reveal
+						data-iso-zone
+						data-cursor="highlight"
+						class="card card-lift relative flex flex-col p-6 md:p-7"
+					>
+						<span
+							class="ghost-index pointer-events-none absolute top-3 right-4 text-[3.4rem] md:text-[4rem]"
+							aria-hidden="true"
+						>
+							{track.num}
+						</span>
+
+						<h3 class="relative min-w-0 pr-16 font-display text-2xl font-semibold tracking-[-0.03em] text-balance md:pr-14">
+							{track.title}
+						</h3>
+						<p class="tag mt-3 w-fit">{track.chip}</p>
+
+						<div class="iso my-2 mx-auto w-full max-w-[280px]" data-module={track.module} />
+
+						<p class="relative leading-relaxed text-muted">{track.intro}</p>
+
+						<ul class="mt-4 grid gap-2.5 border-t border-line pt-4 text-sm leading-relaxed text-ink/80">
+							{track.steps.map((step) => (
+								<li class="flex items-start gap-3">
+									<span class="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-ink/70" />
+									<span>{step}</span>
+								</li>
+							))}
+						</ul>
+					</article>
+				))
+			}
+		</div>
+
+		<div data-reveal class="mt-12 flex justify-center md:mt-16">
+			<a
+				href="/Resume.pdf"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="btn-ghost"
+			>
+				Resume ↗
+			</a>
 		</div>
 	</Container>
 </section>

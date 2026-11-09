@@ -1,11 +1,8 @@
 ---
 import Container from './Container.astro';
 import SectionHeader from './SectionHeader.astro';
-import AcidText from './AcidText.astro';
 
-const details = [
-	{ label: 'Availability', value: '6-month internship starting January 2027' },
-];
+const details = [{ label: 'Availability', value: '6-month internship starting January 2027' }];
 
 const socials = [
 	{ href: 'https://github.com/WiredMind2', label: 'GitHub' },
@@ -14,39 +11,30 @@ const socials = [
 ---
 
 <section id="contact" class="relative overflow-hidden border-t border-line bg-surface py-24 md:py-32">
-	<div class="grid-field absolute inset-0 rotate-180"></div>
+	<div class="grid-field absolute inset-0 rotate-180" aria-hidden="true"></div>
 
 	<Container class="relative">
-		<SectionHeader index="05" label="Let's Connect" title="Get In Touch" />
+		<SectionHeader index="05" label="Let's Connect" title="Get in touch" />
 
 		<div class="grid gap-14 md:grid-cols-12">
 			<div data-reveal class="md:col-span-5">
-				<AcidText
-					as="p"
-					class="font-display text-2xl leading-snug font-bold md:text-3xl"
-					text="Always interested in new projects and opportunities."
-				/>
-				<AcidText
-					as="p"
-					class="mt-5 leading-relaxed text-muted md:text-lg"
-					text="Whether you have a consulting project, a question, or just want to say hi, feel free to reach out."
-				/>
+				<p class="font-display text-2xl leading-snug font-semibold tracking-[-0.02em] md:text-3xl">
+					Always interested in new projects and opportunities.
+				</p>
+				<p class="mt-5 leading-relaxed text-muted md:text-lg">
+					Whether you have a consulting project, a question, or just want to say hi, feel
+					free to reach out.
+				</p>
 
-				<dl class="mt-10 space-y-px border border-line bg-line">
+				<dl class="card mt-10 grid gap-px overflow-hidden rounded-2xl">
 					{
 						details.map((detail) => (
-							<div class="flex flex-col gap-y-1 bg-night px-5 py-4 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-4">
+							<div class="flex flex-col gap-y-1 bg-raised px-5 py-4 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-4">
 								<dt class="font-mono text-xs tracking-[0.2em] text-muted uppercase">
 									{detail.label}
 								</dt>
 								<dd class="min-w-0 font-mono text-sm break-words sm:text-right">
-									{detail.href ? (
-										<a href={detail.href} class="text-ink transition-colors hover:text-acid">
-											{detail.value}
-										</a>
-									) : (
-										<span class="text-ink">{detail.value}</span>
-									)}
+									<span class="text-ink">{detail.value}</span>
 								</dd>
 							</div>
 						))
@@ -60,7 +48,7 @@ const socials = [
 								href={s.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
+								class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-ink"
 							>
 								{s.label} ↗
 							</a>
@@ -69,7 +57,7 @@ const socials = [
 				</div>
 			</div>
 
-			<form data-reveal id="contact-form" class="space-y-5 md:col-span-7" novalidate>
+			<form data-reveal id="contact-form" class="card grid gap-5 rounded-2xl p-6 md:col-span-7 md:p-8" novalidate>
 				<div class="grid gap-5 sm:grid-cols-2">
 					<div>
 						<label for="cf-name" class="kicker mb-2 block text-[0.65rem]">Name *</label>
@@ -111,7 +99,7 @@ const socials = [
 				</div>
 
 				<div class="flex flex-wrap items-center gap-5">
-					<button type="submit" class="btn-acid cursor-pointer disabled:cursor-wait disabled:opacity-60">
+					<button type="submit" class="btn-solid cursor-pointer disabled:cursor-wait disabled:opacity-60">
 						Send message
 					</button>
 					<p
@@ -168,7 +156,7 @@ const socials = [
 	const showStatus = (kind: 'success' | 'error', text: string) => {
 		status.textContent = text;
 		status.classList.remove('hidden');
-		status.style.color = kind === 'success' ? 'var(--color-acid)' : '#f25050';
+		status.style.color = kind === 'success' ? 'var(--color-ink)' : '#f25050';
 		setTimeout(() => status.classList.add('hidden'), 6000);
 	};
 
@@ -189,7 +177,7 @@ const socials = [
 					embeds: [
 						{
 							title: 'New Contact Form Submission',
-							color: 0xc8f750,
+							color: 0xf5f5f5,
 							fields: [
 								{ name: 'Name', value: data.name, inline: true },
 								{ name: 'Email', value: data.email, inline: true },

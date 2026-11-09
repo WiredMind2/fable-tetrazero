@@ -1,67 +1,89 @@
 ---
 import Container from './Container.astro';
-import AcidText from './AcidText.astro';
 
 const socials = [
-	{ href: 'https://github.com/WiredMind2', label: 'GitHub' },
-	{ href: 'https://linkedin.com/in/w-michaud', label: 'LinkedIn' },
-	{ href: 'mailto:william@michaud.re', label: 'Email' },
+	{ href: 'https://github.com/WiredMind2', label: 'GitHub', external: true },
+	{ href: 'https://linkedin.com/in/w-michaud', label: 'LinkedIn', external: true },
+	{ href: 'mailto:william@michaud.re', label: 'Email', external: false },
 ];
 ---
 
 <section
 	id="top"
-	class="relative flex min-h-dvh flex-col lg:grid lg:h-dvh lg:min-h-0 lg:grid-rows-[minmax(0,1fr)_auto] lg:overflow-hidden"
+	class="relative flex min-h-dvh flex-col overflow-hidden lg:grid lg:h-dvh lg:min-h-0 lg:grid-rows-[minmax(0,1fr)_auto]"
 >
-	<div class="grid-field absolute inset-0"></div>
-
+	<div class="grid-field absolute inset-0" aria-hidden="true"></div>
 	<div
-		class="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-acid/10 blur-[80px] md:-top-24 md:-right-24 md:h-[28rem] md:w-[28rem] md:blur-[140px]"
+		class="pointer-events-none absolute -top-32 right-0 h-[26rem] w-[26rem] rounded-full bg-white/4 blur-[120px] md:h-[34rem] md:w-[34rem]"
+		aria-hidden="true"
 	>
 	</div>
 
 	<Container
-		class="relative flex min-w-0 flex-1 flex-col justify-start pt-20 lg:min-h-0 lg:justify-center lg:pt-16 lg:pb-4"
+		class="relative flex min-w-0 flex-1 flex-col justify-start pt-28 md:pt-32 lg:min-h-0 lg:justify-center lg:pt-16 lg:pb-4"
 	>
-		<div class="flex min-w-0 flex-col items-start lg:items-center">
-			<div class="w-fit max-w-full">
-				<p data-hero-fade class="kicker mb-6">Hi, I'm</p>
-
-				<h1
-					class="hero-title font-display leading-[0.92] font-extrabold tracking-[-0.03em] uppercase"
+		<!-- Ghost watermark + name stack -->
+		<div class="relative flex min-w-0 flex-col items-start lg:items-center">
+			<div class="relative w-fit max-w-full pt-20 md:pt-28 lg:pt-24">
+				<p
+					data-hero-fade
+					class="hello-fade pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 font-display text-[6rem] leading-none font-black italic whitespace-nowrap select-none md:text-[9.5rem]"
+					style="--hello-stop: 24%"
+					aria-hidden="true"
 				>
-					<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.2em]">
-						<span class="hero-line-inner block">William</span>
-					</span>
-					<span data-hero-line class="-mb-[0.08em] block overflow-hidden pb-[0.08em] pr-[0.2em]">
-						<span class="hero-line-inner block">
-							Michaud<span class="text-acid">.</span>
-						</span>
+					Hello.
+				</p>
+
+				<h1 class="hero-title relative font-display leading-[0.95] font-extrabold tracking-[0.02em] uppercase">
+					<span class="sr-only">William Michaud</span>
+					<span
+						aria-hidden="true"
+						data-scramble
+						data-scramble-text="WILLIAM MICHAUD"
+						class="name-glow block"
+					>
+						WILLIAM MICHAUD
 					</span>
 				</h1>
+
+				<p
+					data-hero-fade
+					class="relative mt-4 font-mono text-[0.7rem] font-medium tracking-[0.32em] text-ink/75 uppercase md:text-xs"
+				>
+					Systems · AI Tooling · Competitive Programming
+				</p>
 			</div>
 		</div>
 
-		<div class="mt-6 grid gap-8 md:mt-10 md:grid-cols-12 md:items-end md:gap-10 lg:mt-6">
-			<div data-hero-fade class="md:col-span-6">
-				<p class="font-mono text-sm tracking-[0.12em] text-balance text-acid uppercase sm:tracking-[0.18em]">
+		<div class="mt-10 grid gap-10 md:mt-14 md:grid-cols-12 md:items-center lg:mt-12">
+			<div data-hero-fade class="md:col-span-7">
+				<p class="font-mono text-xs tracking-[0.14em] text-ink/80 uppercase sm:tracking-[0.18em]">
 					INSA Lyon, class of 2027 · Lehigh exchange, Fall 2026
 				</p>
-				<AcidText
-					as="p"
-					class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg"
-					text="I build compilers, trading systems, and AI tooling, from agentic workflows to low-level engineering. CTO at Buddimm through January 2027. Seeking a 6-month internship starting January 2027."
-				/>
+				<p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+					I build compilers, trading systems, and AI tooling, from agentic workflows to
+					low-level engineering. CTO at Buddimm through January 2027. Seeking a 6-month
+					internship starting January 2027.
+				</p>
+				<div class="mt-7 flex flex-wrap items-center gap-4">
+					<a href="#projects" class="btn-solid">View work</a>
+					<a href="#contact" class="btn-ghost">Get in touch</a>
+				</div>
 			</div>
 
-			<div data-hero-fade class="flex flex-wrap items-center gap-4 md:col-span-6 md:justify-end">
-				<a href="#projects" class="btn-acid">View work</a>
-				<a href="#contact" class="btn-ghost">Get in touch</a>
+			<div data-hero-fade class="flex justify-center md:col-span-5 md:justify-end">
+				<div
+					data-iso-zone
+					data-cursor="highlight"
+					class="iso w-[250px] md:w-[280px] xl:w-[330px]"
+					data-module="mark"
+				>
+				</div>
 			</div>
 		</div>
 	</Container>
 
-	<Container class="relative shrink-0 border-t border-line pt-6 pb-6 md:pb-8">
+	<Container class="relative shrink-0 border-t border-line pt-6 pb-24 md:pb-8">
 		<div
 			data-hero-fade
 			class="flex flex-col items-start gap-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
@@ -71,9 +93,9 @@ const socials = [
 					socials.map((s) => (
 						<a
 							href={s.href}
-							target={s.href.startsWith('mailto') ? undefined : '_blank'}
-							rel="noopener noreferrer"
-							class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
+							target={s.external ? '_blank' : undefined}
+							rel={s.external ? 'noopener noreferrer' : undefined}
+							class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-ink"
 						>
 							{s.label} ↗
 						</a>
@@ -82,10 +104,10 @@ const socials = [
 			</div>
 			<a
 				href="#stats"
-				class="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-muted uppercase"
+				class="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-ink"
 			>
 				Scroll to explore
-				<span class="inline-block animate-bounce text-acid">↓</span>
+				<span class="inline-block animate-bounce text-ink" aria-hidden="true">↓</span>
 			</a>
 		</div>
 	</Container>

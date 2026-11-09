@@ -6,17 +6,36 @@ import skills from '../data/skills.json';
 
 <section id="skills" class="relative overflow-hidden border-t border-line py-24 md:py-32">
 	<Container>
-		<SectionHeader index="04" label="Toolbox" title="Skills" />
+		<div class="relative flex items-end justify-between gap-8">
+			<div class="section-header relative mb-14 min-w-0 flex-1 md:mb-20">
+				<span
+					class="ghost-index absolute -top-6 right-0 hidden text-[4rem] sm:text-[5.5rem] md:-top-10 md:block md:text-[9rem] lg:text-[12rem]"
+					aria-hidden="true"
+				>
+					04
+				</span>
+				<p class="kicker mb-4">04. Toolbox</p>
+				<h2 class="section-title">Skills</h2>
+			</div>
+			<div
+				data-iso-zone
+				data-cursor="highlight"
+				class="iso mb-14 hidden w-[150px] shrink-0 md:mb-20 lg:block"
+				data-module="podium"
+				aria-hidden="true"
+			>
+			</div>
+		</div>
 
 		<div class="space-y-14">
 			{
 				skills.map((group, i) => (
 					<div data-reveal>
 						<div class="mb-6 flex items-baseline gap-4">
-							<span class="font-mono text-xs tracking-[0.25em] uppercase text-muted">
-								04<span class="text-acid">.</span>{i + 1}
+							<span class="font-mono text-xs tracking-[0.25em] text-faint uppercase">
+								04.{i + 1}
 							</span>
-							<h3 class="font-display text-xl font-extrabold tracking-tight uppercase md:text-2xl">
+							<h3 class="font-display text-xl font-semibold tracking-[-0.02em] md:text-2xl">
 								{group.group}
 							</h3>
 							<span class="hidden h-px flex-1 bg-line md:block" />
@@ -24,14 +43,14 @@ import skills from '../data/skills.json';
 
 						<ul class="grid grid-cols-2 gap-px sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7">
 							{group.items.map((item) => (
-								<li class="group flex min-w-0 items-center gap-3 bg-night px-4 py-3.5 shadow-[0_0_0_1px_var(--color-line)] transition-colors hover:bg-surface">
+								<li class="group flex min-w-0 items-center gap-3 rounded-lg bg-surface px-4 py-3.5 shadow-[0_0_0_1px_var(--color-line)] transition-colors hover:bg-raised">
 									<img
 										src={`/tech_icons/${item.icon}`}
 										alt=""
 										width="22"
 										height="22"
 										loading="lazy"
-										class="h-[22px] w-[22px] opacity-70 transition-opacity group-hover:opacity-100"
+										class="h-[22px] w-[22px] opacity-60 grayscale transition-[opacity,filter] group-hover:opacity-100 group-hover:grayscale-0"
 									/>
 									<span class="truncate font-mono text-xs tracking-wide text-muted transition-colors group-hover:text-ink">
 										{item.name}

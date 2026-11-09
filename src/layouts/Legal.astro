@@ -12,18 +12,18 @@ const { title, heading, effectiveDate } = Astro.props;
 
 <Base title={title}>
 	<main class="relative min-h-dvh overflow-hidden">
-		<div class="grid-field absolute inset-0"></div>
+		<div class="grid-field absolute inset-0" aria-hidden="true"></div>
 
 		<div class="relative mx-auto max-w-3xl px-5 py-20 md:px-10 md:py-28">
 			<a
 				href="/"
-				class="font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-acid"
+				class="glass inline-block rounded-pill px-4 py-2 font-mono text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-ink"
 			>
 				← Back to portfolio
 			</a>
 
 			<h1 class="section-title mt-10">{heading}</h1>
-			<p class="mt-4 font-mono text-xs tracking-[0.2em] text-acid uppercase">
+			<p class="mt-4 font-mono text-xs tracking-[0.2em] text-muted uppercase">
 				Effective date: {effectiveDate}
 			</p>
 
@@ -37,8 +37,7 @@ const { title, heading, effectiveDate } = Astro.props;
 <style is:global>
 	.legal-body h2 {
 		font-family: var(--font-display);
-		font-weight: 800;
-		text-transform: uppercase;
+		font-weight: 700;
 		letter-spacing: -0.01em;
 		font-size: 1.15rem;
 		margin-top: 2.5rem;
@@ -61,9 +60,9 @@ const { title, heading, effectiveDate } = Astro.props;
 		margin-bottom: 0.4rem;
 	}
 	.legal-body li::before {
-		content: "•";
+		content: '•';
 		position: absolute;
 		left: 0;
-		color: var(--color-acid);
+		color: var(--color-ink);
 	}
 </style>
