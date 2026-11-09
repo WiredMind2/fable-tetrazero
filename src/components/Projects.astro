@@ -5,7 +5,7 @@ import SectionHeader from './SectionHeader.astro';
 
 const all = (await getCollection('projects')).map((entry) => entry.data);
 
-const featuredOrder = ['C-Compiler', 'OpenTrade', 'AnimeManager'];
+const featuredOrder = ['C-Compiler', 'Fuzzing Infrastructure', 'OpenTrade'];
 const featured = all
 	.filter((p) => p.featured)
 	.sort((a, b) => {
@@ -25,6 +25,7 @@ const categoryLabel: Record<string, string> = {
 // Each featured project gets its own isometric mark
 const moduleByTitle: Record<string, string> = {
 	'C-Compiler': 'pipeline',
+	'Fuzzing Infrastructure': 'board',
 	OpenTrade: 'chart',
 	AnimeManager: 'shelf',
 };

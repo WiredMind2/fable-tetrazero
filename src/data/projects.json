@@ -22,10 +22,10 @@
   {
     "id": 6,
     "title": "Tetrazero",
-    "description": "The site you are looking at, a bold, animation-heavy portfolio rebuilt from scratch with Astro, GSAP and Tailwind CSS.",
-    "longDescription": "Tetrazero is a static-first portfolio website built with Astro, Tailwind CSS and GSAP. It ships near-zero JavaScript outside of its scroll choreography: staggered hero reveals, ScrollTrigger-driven section entrances, animated counters and a filterable project grid powered by vanilla TypeScript.",
+    "description": "The site you are looking at: a monochrome portfolio with hand-rolled isometric SVG 3D modules, built with Astro, GSAP and Tailwind CSS.",
+    "longDescription": "Tetrazero is this portfolio: a static-first Astro site with Tailwind CSS 4 and GSAP. Its signature is a dependency-free isometric SVG engine — phase-clock explode/collapse loops, hover-to-rest seeking, a shared requestAnimationFrame that fully sleeps — plus scramble reveals, a floating glass dock and a custom cursor.",
     "techStack": ["Astro", "TypeScript", "GSAP"],
-    "githubUrl": "https://github.com/WiredMind2/tetrazero",
+    "githubUrl": "https://github.com/WiredMind2/fable-tetrazero",
     "featured": false,
     "category": "web"
   },
@@ -52,8 +52,8 @@
   {
     "id": 9,
     "title": "OpenTrade",
-    "description": "Trading backtester with news sentiment, LightGBM multi-horizon price prediction, and an intraday engine that models slippage and commissions.",
-    "longDescription": "OpenTrade is a Python platform for developing and evaluating data-driven trading strategies. It integrates news sentiment analysis and LightGBM models for multi-horizon price prediction, on top of a realistic intraday backtesting engine that models slippage and commissions. Strategies implemented and tested include MACD, LightGBM, reinforcement learning, and pairs trading. Results are explored through interactive OHLC charts with confidence bands and aggregated prediction visualizations.",
+    "description": "Trading backtester built for non-technical users: ~15 strategies from technical indicators and ML to reinforcement learning and news sentiment, on a realistic intraday engine.",
+    "longDescription": "OpenTrade is a Python platform for developing and evaluating data-driven trading strategies, designed so non-technical users can easily experiment with automated trading. It integrates news sentiment analysis and LightGBM models for multi-horizon price prediction, on top of a realistic intraday backtesting engine that models slippage and commissions. About 15 strategies are implemented across technical indicators, machine learning, reinforcement learning, and news sentiment on various horizons, with results explored through interactive OHLC charts with confidence bands.",
     "techStack": ["Python", "LightGBM", "ML"],
     "githubUrl": "https://github.com/WiredMind2/OpenTrade",
     "featured": true,
@@ -66,8 +66,28 @@
     "longDescription": "AnimeManager is a Python streaming app for searching, downloading, and watching series. It pulls metadata from multiple provider APIs, includes built-in media players, and serves desktop and web clients from a shared backend.",
     "techStack": ["Python"],
     "githubUrl": "https://github.com/WiredMind2/AnimeManager",
-    "featured": true,
+    "featured": false,
     "category": "fullstack"
+  },
+  {
+    "id": 32,
+    "title": "Fuzzing Infrastructure",
+    "description": "A personal fuzzing bot powered by LLM agents that hunts and reports bugs in my code before it merges; a self-hosted GitHub App fuzzes every pull request.",
+    "longDescription": "A personal fuzzing infrastructure built on a local Docker ClusterFuzz (no GCP), with LLM agents doing smart, targeted and efficient testing — they often detect issues deeply embedded within the code. A self-hosted GitHub App fuzzes pull requests and posts the reports automatically.",
+    "techStack": ["Python", "Docker", "LLM Agents", "Fuzzing"],
+    "githubUrl": "https://github.com/WiredMind2/clusterfuzz",
+    "featured": true,
+    "category": "other"
+  },
+  {
+    "id": 33,
+    "title": "Voice Control for Windows",
+    "description": "Fully local, real-time voice control for Windows: on-screen options detected via OCR, speech transcribed with Whisper, Kev picks the action, a local LLM does the typing.",
+    "longDescription": "Kev-control is a fully local, real-time voice control tool for Windows, based on an open-source equivalent of Jev. It detects on-screen options via OCR, transcribes speech in real time with Whisper, lets Kev pick the action, and uses a local LLM to do the typing — Caps Lock armed, no cloud required.",
+    "techStack": ["Python", "Whisper", "OCR", "Local LLM"],
+    "githubUrl": "https://github.com/WiredMind2/kev-control",
+    "featured": false,
+    "category": "other"
   },
   {
     "id": 11,
@@ -163,7 +183,7 @@
     "id": 31,
     "title": "CompAIny",
     "description": "LLM-powered company simulation framework, autonomous AI agents organized in teams and hierarchies work through tickets, standups and sprints following AGILE methodology.",
-    "longDescription": "CompAIny is a Python framework simulating a complete corporate structure run by autonomous LLM agents: roles and seniority levels, cross-functional teams with leaders and subteams, ticket boards with priorities and subtasks, and recurring AGILE ceremonies (standups, planning, retrospectives, reviews). It enforces hierarchical communication rules between agents, includes a workflow engine for automated triggers, and supports multiple LLM providers including OpenRouter, Ollama and GitHub Copilot.",
+    "longDescription": "CompAIny is a Python framework simulating a complete corporate structure run by autonomous LLM agents — based on the idea that a classical company is a very efficient multi-agent system improved over time by humans. Roles and seniority levels, cross-functional teams with leaders and subteams, ticket boards with priorities and subtasks, and recurring AGILE ceremonies (standups, planning, retrospectives, reviews). It explores variants that improve agent performance and task completion, notably a self-improvement mechanism, and supports multiple LLM providers including OpenRouter, Ollama and GitHub Copilot.",
     "techStack": ["Python", "LLM", "Multi-Agent"],
     "githubUrl": "https://github.com/WiredMind2/CompAIny",
     "featured": false,
