@@ -255,30 +255,47 @@ class IsoScene {
 			});
 	}
 
-	/** Fixed viewBox over rotation + explosion extremes: no layout breathing. */
+	/**
+	 * Fixed viewBox over rotation + explosion extremes: no layout breathing.
+	 * Measured on the assembled geometry (the drop-in overshoot is excluded),
+	 * and the window is biased toward the resting (exploded) pose so the
+	 * drawing reads vertically centered most of the time instead of sinking
+	 * to the bottom of its box whenever the layers collapse.
+	 */
 	private fit() {
+		const savedAsm = this.asm;
+		this.asm = 1;
 		let x0 = Infinity;
-		let y0 = Infinity;
 		let x1 = -Infinity;
-		let y1 = -Infinity;
-		const open = this.offsets(0);
-		for (const yaw of [-FIT_YAW, 0, FIT_YAW]) {
-			for (const g of this.geometry(yaw, open)) {
-				for (const p of g.pts) {
-					const q = project(p);
-					x0 = Math.min(x0, q[0]);
-					x1 = Math.max(x1, q[0]);
-					y0 = Math.min(y0, q[1]);
-					y1 = Math.max(y1, q[1]);
+		let bottom = -Infinity;
+		const measureTop = (offsets: number[]) => {
+			let top = Infinity;
+			for (const yaw of [-FIT_YAW, 0, FIT_YAW]) {
+				for (const g of this.geometry(yaw, offsets)) {
+					for (const p of g.pts) {
+						const q = project(p);
+						x0 = Math.min(x0, q[0]);
+						x1 = Math.max(x1, q[0]);
+						bottom = Math.max(bottom, q[1]);
+						top = Math.min(top, q[1]);
+					}
 				}
 			}
-		}
+			return top;
+		};
+		const openTop = measureTop(this.offsets(0));
+		const closedTop = measureTop(this.offsets(0.5));
+		this.asm = savedAsm;
+
 		const pad = 8;
+		const openCenter = (openTop + bottom) / 2;
+		const closedCenter = (closedTop + bottom) / 2;
+		const center = openCenter + (closedCenter - openCenter) * 0.25;
+		const width = x1 - x0 + pad * 2;
+		const height = bottom - openTop + pad * 2;
 		this.svg.setAttribute(
 			'viewBox',
-			[x0 - pad, y0 - pad, x1 - x0 + pad * 2, y1 - y0 + pad * 2]
-				.map((v) => v.toFixed(1))
-				.join(' '),
+			[x0 - pad, center - height / 2, width, height].map((v) => v.toFixed(1)).join(' '),
 		);
 	}
 
