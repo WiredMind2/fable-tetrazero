@@ -1,30 +1,29 @@
 ---
 import Container from './Container.astro';
-import AcidText from './AcidText.astro';
 
 const stats = [
 	{
 		value: 2,
 		prefix: '#',
 		suffix: '',
-		caption: '2nd in France, 40th of 53 - ICPC European Championship 2026, Warsaw',
+		caption: '2nd in France, 40th of 53 — ICPC European Championship 2026, Warsaw',
 	},
 	{
 		value: 500,
 		prefix: '',
 		suffix: 'K+',
-		caption: 'Won 1st place against 500k+ participants, Castor Informatique (national high school CS contest)',
+		caption: 'Won 1st place against 500k+ participants, Castor Informatique',
 	},
 	{
 		value: 4,
 		prefix: '',
 		suffix: '×',
-		caption: 'Prologin finalist - 2022, 2023, 2024, 2025',
+		caption: 'Prologin finalist — 2022, 2023, 2024, 2025',
 	},
 	{
-		value: 33,
+		value: 60,
 		prefix: '',
-		suffix: '',
+		suffix: '+',
 		caption: 'open-source projects shipped, and still many more to come...',
 	},
 ];
@@ -33,20 +32,18 @@ const stats = [
 <section id="stats" class="overflow-hidden border-y border-line">
 	<Container>
 		<div class="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
-		{
-			stats.map((stat) => (
-				<div data-reveal class="min-w-0 bg-night px-5 py-10 md:px-8 md:py-14">
-					<div class="font-display text-5xl font-extrabold tracking-tight text-acid md:text-6xl">
-						{stat.prefix && <span class="text-[0.65em]">{stat.prefix}</span>}<span data-count={stat.value}>{stat.value}</span>{stat.suffix && <span class="text-[0.65em]">{stat.suffix}</span>}
+			{
+				stats.map((stat) => (
+					<div data-reveal class="min-w-0 bg-night px-5 py-10 md:px-8 md:py-14">
+						<div class="font-display text-5xl font-bold tracking-tight text-ink md:text-6xl">
+							{stat.prefix && <span class="text-[0.65em] text-muted">{stat.prefix}</span>}<span data-count={stat.value}>{stat.value}</span>{stat.suffix && <span class="text-[0.65em] text-muted">{stat.suffix}</span>}
+						</div>
+						<p class="mt-4 max-w-[30ch] font-mono text-xs leading-relaxed tracking-wide break-words text-muted uppercase md:text-sm">
+							{stat.caption}
+						</p>
 					</div>
-					<AcidText
-						as="p"
-						class="mt-4 max-w-[30ch] font-mono text-xs leading-relaxed tracking-wide break-words text-muted uppercase md:text-sm"
-						text={stat.caption}
-					/>
-				</div>
-			))
-		}
+				))
+			}
 		</div>
 	</Container>
 </section>

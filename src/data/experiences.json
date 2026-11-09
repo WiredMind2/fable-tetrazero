@@ -8,10 +8,26 @@
     "description": "Joined as an intern, then hired as CTO. Own the full technical stack: public website, internal tools, and the lead-generation pipeline.",
     "achievements": [
       "Lead AI tooling: Claude for Teams company-wide, a custom company MCP for internal tools and data, and ~20 skills based on internal processes",
+      "Built a LangChain + LangSmith testing pipeline benchmarking 10 models on real-usage scenarios, delivering insights on stability, performance and cost",
       "Train the team on effective AI usage. Some tasks now run up to 8 times faster",
-      "Maintain the public website and its SEO, which increased traffic by nearly 10x in two weeks"
+      "Maintain the public website and its SEO, growing traffic from ~200 to ~2,000 visits in two weeks"
     ],
-    "technologies": ["Web Development", "AI Automation", "Claude", "MCP", "SEO"]
+    "technologies": ["Web Development", "AI Automation", "Claude", "MCP", "LangChain", "SEO"]
+  },
+  {
+    "id": "citeos",
+    "group": "work",
+    "title": "Freelance AI Engineer",
+    "org": "Citeos Guyane (VINCI Energies) - Public-lighting audit by imagery + AI",
+    "period": "September 2026 - Present",
+    "description": "Replacing manual streetlight audits with an AI pipeline over satellite imagery.",
+    "achievements": [
+      "Lamppost detection and streetlight-level analysis from satellite imagery using multiple image-processing AI models",
+      "7-step data cleaning and processing pipeline that generates a full audit report end to end",
+      "Custom large-scale street data collection tool, efficient even in rural areas",
+      "Cut the audit from a month of field work per city to a few hours of desk work"
+    ],
+    "technologies": ["Python", "Computer Vision", "Satellite Imagery", "Automation"]
   },
   {
     "id": "bobst",
@@ -75,7 +91,7 @@
     "description": "Competing in international and national computer science contests.",
     "achievements": [
       "ICPC European Championship 2026 (Warsaw): 2nd in France, 40th of 53",
-      "ICPC SWERC 2025: 3rd in France, 18th of 142",
+      "ICPC SWERC 2025: 3rd in France, 18th of 142. Qualified to compete again in December 2026",
       "Prologin: 4-time finalist (2022 - 2025)",
       "Castor Informatique 2020: 1st of 500,000+",
       "Match'Up 2022: 1st of 2,000+. Problem setter for the last two editions"
