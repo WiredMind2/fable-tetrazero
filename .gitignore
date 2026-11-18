@@ -30,3 +30,8 @@ contact.secret
 
 # linked worktrees
 .worktrees/
+
+# local agent tooling (was swept in by deploy.ps1's `git add -A` — keep out)
+.agents/
+.zcode/
+skills-lock.json
