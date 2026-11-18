@@ -8,13 +8,17 @@
 
 export type Box = [number, number, number, number, number, number, number, number?];
 
-const T_BAR: Box[] = [
-	// Two-step plinth ...
-	[0, 0, 0, 5.6, 2.8, 0.35, 0],
-	[0.4, 0.4, 0.35, 4.8, 2.0, 0.35, 1],
-	// ... carrying an upright, chunky "T" (one layer, so it never splits)
-	[2.0, 0.8, 0.7, 1.6, 1.2, 2.8, 2, 1],
-	[0.4, 0.8, 3.5, 4.8, 1.2, 1.3, 2, 1],
+const ZIGGURAT: Box[] = [
+	// Signature mark: a stepped ziggurat — "tetra", four tiers on a
+	// plinth, capped by an accent spire. Every tier is its own layer, so
+	// the explode loop pulls the monument apart like a hologram stack;
+	// collapsed it reads as one solid mass.
+	[0, 0, 0, 5.6, 5.6, 0.3, 0],
+	[0.35, 0.35, 0.3, 4.9, 4.9, 0.85, 1],
+	[0.95, 0.95, 1.15, 3.7, 3.7, 0.85, 2],
+	[1.55, 1.55, 2.0, 2.5, 2.5, 0.85, 3],
+	[2.15, 2.15, 2.85, 1.3, 1.3, 0.85, 4],
+	[2.35, 2.35, 3.7, 0.9, 0.9, 1.4, 4, 1],
 ];
 
 const STACK: Box[] = [
@@ -32,10 +36,10 @@ const AGENTS: Box[] = [
 	// The model in the middle ...
 	[2.3, 2.3, 0.3, 1.4, 1.4, 2.2, 1, 1],
 	// ... wired to four tool nodes (same layer, so links never break)
-	[1.0, 2.8, 0.3, 1.3, 0.4, 0.3, 1],
-	[3.7, 2.8, 0.3, 1.3, 0.4, 0.3, 1],
-	[2.8, 1.0, 0.3, 0.4, 1.3, 0.3, 1],
-	[2.8, 3.7, 0.3, 0.4, 1.3, 0.3, 1],
+	[1.0, 2.7, 0.3, 1.3, 0.6, 0.35, 1],
+	[3.7, 2.7, 0.3, 1.3, 0.6, 0.35, 1],
+	[2.7, 1.0, 0.3, 0.6, 1.3, 0.35, 1],
+	[2.7, 3.7, 0.3, 0.6, 1.3, 0.35, 1],
 	[0.2, 2.6, 0.3, 0.8, 0.8, 0.8, 1],
 	[5.0, 2.6, 0.3, 0.8, 0.8, 0.8, 1],
 	[2.6, 0.2, 0.3, 0.8, 0.8, 0.8, 1],
@@ -52,22 +56,23 @@ const BOARD: Box[] = (() => {
 		const y = 0.3 + Math.floor(i / 3) * 1.7;
 		tiles.push([x, y, 0.3, 1.4, 1.4, 0.25, 1]);
 		if (win.includes(i)) {
-			tiles.push([x + 0.25, y + 0.25, 0.55, 0.9, 0.9, 1.0, 2, i === 4 ? 1 : 0]);
+			tiles.push([x + 0.3, y + 0.3, 0.55, 0.8, 0.8, 1.1, 2, i === 4 ? 1 : 0]);
 		}
 	}
 	return tiles;
 })();
 
 const PIPELINE: Box[] = [
-	// Front-end -> IR -> back-end -> binary, shrinking down-right along +x
-	[0, 0, 0, 6.3, 2.4, 0.3, 0],
-	[0.2, 0.55, 0.3, 1.3, 1.3, 1.3, 1],
-	[1.5, 1.0, 0.3, 0.7, 0.4, 0.3, 1],
-	[2.2, 0.675, 0.3, 1.05, 1.05, 1.05, 1],
-	[3.25, 1.0, 0.3, 0.7, 0.4, 0.3, 1],
-	[3.95, 0.775, 0.3, 0.85, 0.85, 0.85, 1],
-	[4.8, 1.0, 0.3, 0.7, 0.4, 0.3, 1],
-	[5.5, 0.875, 0.3, 0.65, 0.65, 0.65, 1, 1],
+	// Front-end -> IR -> back-end -> binary, shrinking down-right along +x;
+	// connectors are chunky enough to read as links at card size
+	[0, 0, 0, 7.05, 2.4, 0.3, 0],
+	[0.15, 0.55, 0.3, 1.3, 1.3, 1.3, 1],
+	[1.55, 0.9, 0.3, 0.7, 0.6, 0.35, 1],
+	[2.35, 0.675, 0.3, 1.05, 1.05, 1.05, 1],
+	[3.5, 0.9, 0.3, 0.7, 0.6, 0.35, 1],
+	[4.3, 0.775, 0.3, 0.9, 0.9, 0.9, 1],
+	[5.3, 0.9, 0.3, 0.7, 0.6, 0.35, 1],
+	[6.1, 0.8, 0.3, 0.8, 0.8, 0.8, 1, 1],
 ];
 
 const CHART: Box[] = (() => {
@@ -97,8 +102,8 @@ const SHELF: Box[] = (() => {
 			0.3,
 			1.6,
 			0.9,
-			playing ? 0.8 : 0.2,
-			playing ? 2 : 1,
+			playing ? 1.0 : 0.3,
+			1,
 			playing ? 1 : 0,
 		]);
 	}
@@ -106,15 +111,17 @@ const SHELF: Box[] = (() => {
 })();
 
 const PODIUM: Box[] = [
-	// 2-1-3 podium across the screen (left = high y), winner accented
-	[0, 0, 0, 2.6, 5.6, 0.3, 0],
-	[0.6, 3.6, 0.3, 1.4, 1.6, 1.4, 1],
-	[0.6, 2.0, 0.3, 1.4, 1.6, 2.4, 1, 1],
-	[0.6, 0.4, 0.3, 1.4, 1.6, 0.8, 1],
+	// 2-1-3 podium on the anti-diagonal, which renders as a level row
+	// left-to-right: with x+y constant, the projected column tops depend
+	// only on height, so the stepped profile survives the iso squash.
+	[0, 0, 0, 5.2, 5.2, 0.3, 0],
+	[1.05, 3.75, 0.3, 1.3, 1.3, 1.2, 1],
+	[2.45, 2.45, 0.3, 1.3, 1.3, 2.4, 1, 1],
+	[3.85, 1.15, 0.3, 1.3, 1.3, 0.6, 1],
 ];
 
 export const MODULES: Record<string, Box[]> = {
-	mark: T_BAR,
+	mark: ZIGGURAT,
 	stack: STACK,
 	agents: AGENTS,
 	board: BOARD,
