@@ -60,7 +60,10 @@ if [ -d /var/www/calendar ]; then
   mkdir -p dist/calendar
   cp -a /var/www/calendar/. dist/calendar/
 fi
-pkill -f 'python3 .*server/contact.py' 2>/dev/null || true
+# [c] bracket so this pattern can't match the ssh bash -c command line that
+# carries this script's own text (self-match killed the deploy session and
+# left the site down with ssh exit 255).
+pkill -f 'python3 .*server/[c]ontact.py' 2>/dev/null || true
 if sudo -n true 2>/dev/null; then
   sudo cp deploy/fable-tetrazero.service /etc/systemd/system/fable-tetrazero.service
   sudo systemctl daemon-reload
