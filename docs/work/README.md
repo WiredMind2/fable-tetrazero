@@ -19,7 +19,7 @@ Index of item files for the tetrazero.com v2 redesign (sriramph-style monochrome
 | [US-010](items/US-010.md) | Build verification, visual review, README, close-out | 3 | Done |
 | [US-011](items/US-011.md) | Google Analytics on all pages | 1 | Done |
 | [US-012](items/US-012.md) | Isometric modules read as recognizable objects | 5 | In progress |
-| [US-013](items/US-013.md) | Serve Google Tag Manager container instead of GA4 gtag | 1 | In progress |
+| [US-013](items/US-013.md) | Serve Google Tag Manager container instead of GA4 gtag | 1 | Done |
 
 ## Notes
 
