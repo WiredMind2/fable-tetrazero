@@ -17,6 +17,7 @@ Index of item files for the tetrazero.com v2 redesign (sriramph-style monochrome
 | [US-008](items/US-008.md) | Contact, footer, legal pages, resume CTA | 3 | Done |
 | [US-009](items/US-009.md) | Motion polish: scramble headings, card-lift, custom cursor | 5 | Done |
 | [US-010](items/US-010.md) | Build verification, visual review, README, close-out | 3 | Done |
+| [US-011](items/US-011.md) | Google Analytics on all pages | 1 | Done |
 
 ## Notes
 
