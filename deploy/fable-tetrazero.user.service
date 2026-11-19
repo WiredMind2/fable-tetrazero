@@ -8,6 +8,17 @@ WorkingDirectory=/var/www/fable-tetrazero
 ExecStart=/usr/bin/python3 /var/www/fable-tetrazero/server/contact.py
 Restart=on-failure
 RestartSec=3
+# Sandbox: the server only reads dist/ + contact.secret and needs no write
+# access and no new privileges.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6
 
 [Install]
 WantedBy=default.target

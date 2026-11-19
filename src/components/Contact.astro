@@ -98,6 +98,17 @@ const socials = [
 					<p class="error-msg mt-1.5 hidden font-mono text-xs text-[#f25050]" data-for="message"></p>
 				</div>
 
+				<!-- Honeypot: humans never see or fill this; bots do. -->
+				<input
+					type="text"
+					name="website"
+					id="cf-website"
+					class="hidden"
+					tabindex="-1"
+					autocomplete="off"
+					aria-hidden="true"
+				/>
+
 				<div class="flex flex-wrap items-center gap-5">
 					<button type="submit" class="btn-solid cursor-pointer disabled:cursor-wait disabled:opacity-60">
 						Send message
@@ -114,10 +125,8 @@ const socials = [
 	</Container>
 </section>
 
-<script>
-	import { configData } from '../config/settings';
-
-	const form = document.getElementById('contact-form') as HTMLFormElement;
+	<script>
+		const form = document.getElementById('contact-form') as HTMLFormElement;
 	const status = document.getElementById('form-status')!;
 	const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
 
@@ -170,33 +179,38 @@ const socials = [
 		submitBtn.textContent = 'Sending...';
 
 		try {
-			const response = await fetch(atob(configData), {
+			const response = await fetch('/api/contact', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					embeds: [
-						{
-							title: 'New Contact Form Submission',
-							color: 0xf5f5f5,
-							fields: [
-								{ name: 'Name', value: data.name, inline: true },
-								{ name: 'Email', value: data.email, inline: true },
-								{ name: 'Subject', value: data.subject, inline: false },
-								{ name: 'Message', value: data.message, inline: false },
-							],
-							timestamp: new Date().toISOString(),
-						},
-					],
+					name: data.name,
+					email: data.email,
+					subject: data.subject,
+					message: data.message,
+					website: (data.website ?? '') as string,
 				}),
 			});
 
-			if (!response.ok) throw new Error(`Failed to send: ${response.status}`);
+			if (!response.ok) {
+				let reason = `Failed to send: ${response.status}`;
+				try {
+					const payload = await response.json();
+					if (payload && typeof payload.error === 'string') reason = payload.error;
+				} catch {
+					/* keep the status-line fallback */
+				}
+				throw new Error(reason);
+			}
 
 			form.reset();
 			showStatus('success', '// Message sent. Thank you!');
 		} catch (error) {
 			console.error('Form submission error:', error);
-			showStatus('error', '// Something went wrong. Please try again.');
+			const reason =
+				error instanceof Error && error.message
+					? error.message
+					: 'Something went wrong. Please try again.';
+			showStatus('error', `// ${reason}`);
 		} finally {
 			submitBtn.disabled = false;
 			submitBtn.textContent = 'Send message';

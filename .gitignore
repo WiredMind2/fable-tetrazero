@@ -22,6 +22,9 @@ pnpm-debug.log*
 .env.production
 contact.secret
 
+# update_projects cache (deploy.ps1's `git add -A` would sweep it in)
+scripts/cache.db
+
 # macOS-specific files
 .DS_Store
 
