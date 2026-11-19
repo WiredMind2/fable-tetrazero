@@ -21,10 +21,10 @@ Index of item files for the tetrazero.com v2 redesign (sriramph-style monochrome
 | [US-012](items/US-012.md) | Isometric modules read as recognizable objects | 5 | Done |
 | [US-013](items/US-013.md) | Serve Google Tag Manager container instead of GA4 gtag | 1 | Done |
 | [US-014](items/US-014.md) | Replace hero T mark with a monumental ziggurat | 2 | Done |
-| [US-015](items/US-015.md) | Harden the origin server and site response hygiene | 5 | In progress |
+| [US-015](items/US-015.md) | Harden the origin server and site response hygiene | 5 | Done |
 | [US-016](items/US-016.md) | Clear non-breaking dependency advisories | 2 | Done |
 | [US-017](items/US-017.md) | Privacy policy matches actual data flows | 2 | Done |
-| [US-018](items/US-018.md) | Contact form goes through the server relay, webhook hidden from clients | 3 | In progress |
+| [US-018](items/US-018.md) | Contact form goes through the server relay, webhook hidden from clients | 3 | Done |
 
 ## Notes
 

@@ -96,3 +96,24 @@ git worktree list   # only the main checkout should remain
 the console open (normal browsing for a few days); if no violations appear beyond the
 policy's allowances, rename the header key to `Content-Security-Policy` in
 `SECURITY_HEADERS` and deploy.
+
+## 10. Optional: full sandboxing via the system unit
+
+The user unit can only enforce `NoNewPrivileges` + `PrivateTmp` (capability-based
+options exit 218/CAPABILITIES in user units — learned the hard way, `9bf0839`). The
+system unit supports the full set:
+
+```bash
+sudo cp /var/www/fable-tetrazero/deploy/fable-tetrazero.service /etc/systemd/system/fable-tetrazero.service
+sudo systemctl daemon-reload
+systemctl --user disable --now fable-tetrazero   # avoid two owners of port 3080
+sudo systemctl enable --now fable-tetrazero
+curl -sI http://127.0.0.1:3080/ | head -1
+```
+
+Caveat: `deploy.ps1` only maintains the system unit when passwordless `sudo -n` works;
+otherwise each deploy re-installs and restarts the **user** unit. If you keep the system
+unit, either grant `william` NOPASSWD for the specific systemctl commands, or expect to
+re-run the two `systemctl` lines above after deploys (the user unit will fail to bind
+3080 harmlessly while the system unit serves).
+

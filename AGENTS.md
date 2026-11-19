@@ -1,6 +1,15 @@
 # AGENTS.md — fable-tetrazero (tetrazero.com)
 
-Astro 6 + Tailwind 4 static portfolio. Deploy with `npm run deploy` (see `scripts/deploy.ps1`).
+Astro 7 + Tailwind 4 static portfolio. Deploy with `npm run deploy` (see `scripts/deploy.ps1`).
+
+## Lessons
+
+- systemd *user* units cannot enforce capability-based sandboxing (ProtectSystem=strict,
+  ProtectHome, ProtectKernel*, RestrictSUIDSGID, RestrictAddressFamilies → exit 218/
+  CAPABILITIES, "Failed to drop capabilities"). Only NoNewPrivileges/PrivateTmp are safe
+  there; full sandboxing needs the sudo-installed system unit. Verify unit changes on the
+  host before walking away — this one crash-looped the origin into a ~2 min 502 outage
+  (2026-11-19, fixed in `9bf0839`).
 
 ## Work register
 
