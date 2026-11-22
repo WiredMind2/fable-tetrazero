@@ -1,22 +1,23 @@
 ---
 import Legal from '../layouts/Legal.astro';
+import { brand } from '../config/site';
 ---
 
 <Legal
-	title="Terms of Service - Tetrazero"
+	title={`Terms of Service - ${brand.legalName}`}
 	heading="Terms of Service"
 	effectiveDate="November 17, 2025"
 >
 	<h2>1. Acceptance of Terms</h2>
 	<p>
-		By accessing and using Tetrazero's website ("Service"), you accept and agree to be bound by the
+		By accessing and using {brand.legalName}'s website ("Service"), you accept and agree to be bound by the
 		terms and provision of this agreement. If you do not agree to abide by the above, please do not
 		use this service.
 	</p>
 
 	<h2>2. Description of Service</h2>
 	<p>
-		Tetrazero provides a portfolio website showcasing our web development services and projects.
+		{brand.legalName} provides a portfolio website showcasing our web development services and projects.
 		The Service includes access to our portfolio, contact information, and related content.
 	</p>
 
@@ -48,7 +49,7 @@ import Legal from '../layouts/Legal.astro';
 	<h2>5. Intellectual Property</h2>
 	<p>
 		The Service and its original content, features, and functionality are and will remain the
-		exclusive property of Tetrazero and its licensors. The Service is protected by copyright,
+		exclusive property of {brand.legalName} and its licensors. The Service is protected by copyright,
 		trademark, and other laws. Our trademarks and trade dress may not be used in connection with
 		any product or service without our prior written consent.
 	</p>
@@ -68,7 +69,7 @@ import Legal from '../layouts/Legal.astro';
 
 	<h2>8. Limitation of Liability</h2>
 	<p>
-		In no event shall Tetrazero, nor its directors, employees, partners, agents, suppliers, or
+		In no event shall {brand.legalName}, nor its directors, employees, partners, agents, suppliers, or
 		affiliates, be liable for any indirect, incidental, special, consequential, or punitive
 		damages, including without limitation, loss of profits, data, use, goodwill, or other
 		intangible losses, resulting from your use of the Service.
@@ -85,7 +86,7 @@ import Legal from '../layouts/Legal.astro';
 	<h2>10. Governing Law</h2>
 	<p>
 		These Terms shall be interpreted and governed by the laws of the jurisdiction in which
-		Tetrazero operates, without regard to its conflict of law provisions.
+		{brand.legalName} operates, without regard to its conflict of law provisions.
 	</p>
 
 	<h2>11. Changes</h2>

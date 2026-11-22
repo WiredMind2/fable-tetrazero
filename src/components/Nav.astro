@@ -1,4 +1,6 @@
 ---
+import { brand } from '../config/site';
+
 const socials = [
 	{ href: 'https://github.com/WiredMind2', label: 'GitHub', external: true },
 	{ href: 'https://linkedin.com/in/w-michaud', label: 'LinkedIn', external: true },
@@ -19,9 +21,9 @@ const links = [
 	<a
 		href="#top"
 		class="glass pointer-events-auto flex items-center rounded-pill px-4 py-2 font-mono text-xs font-semibold tracking-[0.22em] text-ink uppercase transition-colors hover:text-white"
-		aria-label="Tetrazero — back to top"
+		aria-label={brand.backToTopLabel}
 	>
-		tetra<span class="text-muted">zero</span>
+		{brand.wordmarkBold}<span class="text-muted">{brand.wordmarkMuted}</span>
 	</a>
 
 	<nav

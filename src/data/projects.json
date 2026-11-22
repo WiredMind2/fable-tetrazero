@@ -21,9 +21,9 @@
   },
   {
     "id": 6,
-    "title": "Tetrazero",
+    "title": "This Portfolio",
     "description": "The site you are looking at: a monochrome portfolio with hand-rolled isometric SVG 3D modules, built with Astro, GSAP and Tailwind CSS.",
-    "longDescription": "Tetrazero is this portfolio: a static-first Astro site with Tailwind CSS 4 and GSAP. Its signature is a dependency-free isometric SVG engine — phase-clock explode/collapse loops, hover-to-rest seeking, a shared requestAnimationFrame that fully sleeps — plus scramble reveals, a floating glass dock and a custom cursor.",
+    "longDescription": "This portfolio: a static-first Astro site with Tailwind CSS 4 and GSAP. Its signature is a dependency-free isometric SVG engine — phase-clock explode/collapse loops, hover-to-rest seeking, a shared requestAnimationFrame that fully sleeps — plus scramble reveals, a floating glass dock and a custom cursor.",
     "techStack": ["Astro", "TypeScript", "GSAP"],
     "githubUrl": "https://github.com/WiredMind2/fable-tetrazero",
     "featured": false,

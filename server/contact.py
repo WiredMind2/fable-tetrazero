@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Localhost static + contact API for tetrazero.com (stdlib only)."""
+"""Localhost static + contact API for tetrazero.com + iamwilli.am (stdlib only)."""
 
 from __future__ import annotations
 
@@ -21,7 +21,9 @@ from urllib.parse import unquote, urlparse
 HOST = "127.0.0.1"
 PORT = 3080
 ROOT = Path(__file__).resolve().parent.parent
-DIST = ROOT / "dist"
+DIST = ROOT / "dist"  # tetrazero.com build (npm run build)
+DIST_WM = ROOT / "dist-william"  # iamwilli.am build (npm run build:william)
+WILLIAM_HOSTS = {"iamwilli.am", "www.iamwilli.am"}
 NYC_TRIP_ROOT = Path("/var/www/nyc_trip")
 NYC_TRIP_PREFIX = "/nyc_trip"
 CALENDAR_ROOT = Path("/var/www/calendar")
@@ -126,7 +128,13 @@ def _safe_root_path(url_path: str, root: Path) -> Path | None:
     return resolved if resolved.is_file() else None
 
 
-def _lookup_static(url_path: str) -> Path | None:
+def _dist_for_host(host: str | None) -> Path:
+    """Pick the build output by Host: iamwilli.am serves the William variant."""
+    h = (host or "").split(":")[0].strip().lower()
+    return DIST_WM if h in WILLIAM_HOSTS else DIST
+
+
+def _lookup_static(url_path: str, dist: Path) -> Path | None:
     raw = unquote(url_path)
     if raw.startswith("/api/"):
         return None
@@ -139,11 +147,11 @@ def _lookup_static(url_path: str) -> Path | None:
             found = _safe_root_path(suffix, CALENDAR_ROOT)
             if found is not None:
                 return found
-    return _safe_root_path(raw, DIST)
+    return _safe_root_path(raw, dist)
 
 
-def _safe_dist_path(url_path: str) -> Path | None:
-    return _lookup_static(url_path)
+def _safe_dist_path(url_path: str, dist: Path) -> Path | None:
+    return _lookup_static(url_path, dist)
 
 
 def _discord_embed(data: dict[str, str]) -> dict:
@@ -169,7 +177,7 @@ def _post_discord(webhook: str, payload: dict) -> None:
     req = urllib.request.Request(
         webhook,
         data=body,
-        headers={"Content-Type": "application/json", "User-Agent": "tetrazero-contact/1.0"},
+        headers={"Content-Type": "application/json", "User-Agent": "fable-contact/1.0"},
         method="POST",
     )
     with urllib.request.urlopen(req, timeout=10) as resp:
@@ -178,7 +186,7 @@ def _post_discord(webhook: str, payload: dict) -> None:
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "tetrazero-contact/1.1"
+    server_version = "fable-contact/1.1"
 
     def log_message(self, fmt: str, *args) -> None:
         print(f"[{self.log_date_time_string()}] {fmt % args}", file=sys.stderr)
@@ -214,16 +222,16 @@ class Handler(BaseHTTPRequestHandler):
 
     def _send_404(self) -> None:
         """Branded 404 (dist/404.html when the build provides it)."""
-        page = DIST / "404.html"
+        page = _dist_for_host(self.headers.get("Host")) / "404.html"
         try:
             body = page.read_bytes()
             ctype = "text/html; charset=utf-8"
         except OSError:
             body = (
                 b"<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\">"
-                b"<title>404 - Tetrazero</title></head>"
+                b"<title>404</title></head>"
                 b"<body><h1>404</h1><p>Nothing here.</p>"
-                b"<p><a href=\"/\">Back to tetrazero.com</a></p></body></html>"
+                b"<p><a href=\"/\">Back to home</a></p></body></html>"
             )
             ctype = "text/html; charset=utf-8"
         self.send_response(HTTPStatus.NOT_FOUND)
@@ -278,7 +286,7 @@ class Handler(BaseHTTPRequestHandler):
             self._send_security_headers()
             self.end_headers()
             return
-        path = _safe_dist_path(parsed.path)
+        path = _safe_dist_path(parsed.path, _dist_for_host(self.headers.get("Host")))
         if path is None:
             self.send_response(HTTPStatus.NOT_FOUND)
             self._send_security_headers()
@@ -301,7 +309,7 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json(HTTPStatus.METHOD_NOT_ALLOWED, {"ok": False, "error": "Method not allowed"})
             return
 
-        path = _safe_dist_path(parsed.path)
+        path = _safe_dist_path(parsed.path, _dist_for_host(self.headers.get("Host")))
         if path is None:
             self._send_404()
             return

@@ -25,6 +25,7 @@ Index of item files for the tetrazero.com v2 redesign (sriramph-style monochrome
 | [US-016](items/US-016.md) | Clear non-breaking dependency advisories | 2 | Done |
 | [US-017](items/US-017.md) | Privacy policy matches actual data flows | 2 | Done |
 | [US-018](items/US-018.md) | Contact form goes through the server relay, webhook hidden from clients | 3 | Done |
+| [US-028](items/US-028.md) | iamwilli.am serves the portfolio with personal branding | 3 | Done |
 
 ## Notes
 

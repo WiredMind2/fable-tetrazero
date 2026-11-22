@@ -1,15 +1,16 @@
 ---
 import Legal from '../layouts/Legal.astro';
+import { brand } from '../config/site';
 ---
 
 <Legal
-	title="Privacy Policy - Tetrazero"
+	title={`Privacy Policy - ${brand.legalName}`}
 	heading="Privacy Policy"
 	effectiveDate="November 18, 2026"
 >
 	<h2>1. Introduction</h2>
 	<p>
-		Welcome to Tetrazero ("we," "our," or "us"). We respect your privacy and are committed to
+		Welcome to {brand.legalName} ("we," "our," or "us"). We respect your privacy and are committed to
 		protecting your personal information. This Privacy Policy explains how we collect, use,
 		disclose, and safeguard your information when you visit our portfolio website.
 	</p>

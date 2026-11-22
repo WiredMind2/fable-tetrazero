@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:william": "PUBLIC_SITE_VARIANT=william astro build --config astro.iamwilliam.config.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/deploy.ps1"

@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
+import { brand } from '../config/site';
 ---
 
-<Base title="404 - Tetrazero">
+<Base title={`404 - ${brand.legalName}`}>
 	<main class="flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
 		<p class="font-mono text-xs tracking-[0.2em] text-muted uppercase">Error 404</p>
 		<h1 class="font-display text-4xl font-semibold tracking-[-0.02em] md:text-5xl">
@@ -14,7 +15,7 @@ import Base from '../layouts/Base.astro';
 		<a
 			href="/"
 			class="btn-solid mt-2 inline-flex cursor-pointer items-center"
-			>Back to tetrazero.com</a
+			>Back to home</a
 		>
 	</main>
 </Base>

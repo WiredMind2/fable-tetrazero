@@ -52,6 +52,7 @@ cd $REMOTE_PATH
 git pull origin $BRANCH
 npm ci
 npm run build
+npm run build:william
 if [ -d /var/www/nyc_trip ]; then
   mkdir -p dist/nyc_trip
   cp -a /var/www/nyc_trip/. dist/nyc_trip/

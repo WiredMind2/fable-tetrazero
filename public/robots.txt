@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://tetrazero.com/sitemap-index.xml
