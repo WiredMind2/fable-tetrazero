@@ -333,6 +333,7 @@ class Handler(BaseHTTPRequestHandler):
         path = _safe_dist_path(parsed.path, _dist_for_host(self.headers.get("Host")))
         if path is None:
             self.send_response(HTTPStatus.NOT_FOUND)
+            self.send_header("Cache-Control", "no-cache")
             self._send_security_headers()
             self.end_headers()
             return
