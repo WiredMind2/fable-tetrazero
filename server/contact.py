@@ -13,6 +13,7 @@ import time
 import urllib.error
 import urllib.request
 from collections import defaultdict, deque
+from email.utils import formatdate, parsedate_to_datetime
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -154,6 +155,33 @@ def _safe_dist_path(url_path: str, dist: Path) -> Path | None:
     return _lookup_static(url_path, dist)
 
 
+def _http_date(mtime: float) -> str:
+    return formatdate(mtime, usegmt=True)
+
+
+def _not_modified(handler: BaseHTTPRequestHandler, path: Path) -> bool:
+    """304 when If-Modified-Since matches the file mtime (second granularity)."""
+    try:
+        mtime = path.stat().st_mtime
+    except OSError:
+        return False
+    ims = handler.headers.get("If-Modified-Since")
+    if not ims:
+        return False
+    try:
+        since = parsedate_to_datetime(ims).timestamp()
+    except (TypeError, ValueError):
+        return False
+    if int(mtime) > int(since):
+        return False
+    handler.send_response(HTTPStatus.NOT_MODIFIED)
+    handler.send_header("Last-Modified", _http_date(mtime))
+    handler.send_header("Cache-Control", "no-cache")
+    handler._send_security_headers()
+    handler.end_headers()
+    return True
+
+
 def _discord_embed(data: dict[str, str]) -> dict:
     return {
         "embeds": [
@@ -237,6 +265,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(HTTPStatus.NOT_FOUND)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-cache")
         self._send_security_headers()
         self.end_headers()
         self.wfile.write(body)
@@ -264,10 +293,25 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", self._content_type(path))
         self.send_header("Content-Length", str(len(data)))
-        if path.suffix.lower() == ".ics":
-            self.send_header("Cache-Control", "no-cache, must-revalidate")
+        self._cache_headers(path)
         self._send_security_headers()
         self.end_headers()
+
+    def _cache_headers(self, path: Path) -> None:
+        """Fingerprinted _astro assets cache forever; everything else
+        revalidates (Last-Modified + no-cache) so deploys show up on
+        ordinary refreshes instead of waiting out heuristic caching."""
+        if path.suffix.lower() == ".ics":
+            self.send_header("Cache-Control", "no-cache, must-revalidate")
+            return
+        if "_astro" in path.parts:
+            self.send_header("Cache-Control", "public, max-age=31536000, immutable")
+        else:
+            self.send_header("Cache-Control", "no-cache")
+        try:
+            self.send_header("Last-Modified", _http_date(path.stat().st_mtime))
+        except OSError:
+            pass
 
     def _send_file(self, path: Path) -> None:
         data = path.read_bytes()
@@ -292,6 +336,8 @@ class Handler(BaseHTTPRequestHandler):
             self._send_security_headers()
             self.end_headers()
             return
+        if _not_modified(self, path):
+            return
         try:
             data = path.read_bytes()
         except OSError:
@@ -312,6 +358,8 @@ class Handler(BaseHTTPRequestHandler):
         path = _safe_dist_path(parsed.path, _dist_for_host(self.headers.get("Host")))
         if path is None:
             self._send_404()
+            return
+        if _not_modified(self, path):
             return
         try:
             self._send_file(path)
