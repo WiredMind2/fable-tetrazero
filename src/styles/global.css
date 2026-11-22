@@ -305,13 +305,17 @@ video {
 	}
 }
 
+/* Cap the title by the content column (Container max-w-7xl = 80rem), not the
+   viewport: past ~1390px wide the name no longer fits on one line in the
+   column, wraps to two, and the hero content overflows its exact-height lg
+   grid (name pinned to the top, CTA row buried under the bottom bar). */
 .hero-title {
 	font-size: clamp(
 		1.75rem,
 		min(
 			11vw,
 			calc((100dvh - var(--hero-reserved)) / 1.85),
-			calc((100vw - 2.5rem) / 9.25)
+			calc((min(100vw, 80rem) - 2.5rem) / 9.25)
 		),
 		8.5rem
 	);
