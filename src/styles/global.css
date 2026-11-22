@@ -295,26 +295,34 @@ video {
 	color: transparent;
 }
 
-/* Hero display sizing (height-budget clamp) */
+/* Hero display sizing (height-budget clamp).
+   --hero-reserved = every hero height that is NOT the two-line name:
+   container paddings, ghost clearance, tagline, intro paragraph, CTA row,
+   and the bottom link bar — measured ~29rem + ~7rem bar at lg (2026-11-22).
+   The previous 22rem let the width-driven title overflow the exact-dvh lg
+   grid on 720-900px-tall viewports (name pinned to the top, CTA row under
+   the bar). Below lg the section is min-height flow; the value only tunes
+   the font on short screens. */
 #top {
 	--hero-reserved: 26rem;
 }
 @media (min-width: 1024px) {
 	#top {
-		--hero-reserved: 22rem;
+		--hero-reserved: 36rem;
 	}
 }
 
-/* Cap the title by the content column (Container max-w-7xl = 80rem), not the
-   viewport: past ~1390px wide the name no longer fits on one line in the
-   column, wraps to two, and the hero content overflows its exact-height lg
-   grid (name pinned to the top, CTA row buried under the bottom bar). */
+/* Title width term: size against the content column (Container max-w-7xl =
+   80rem, root-font scaled), not the raw viewport, so the name never outgrows
+   its column on wide screens. The name ("WILLIAM MICHAUD", ~9.5em wide)
+   intentionally wraps into the two-line stack; the height term budgets
+   1.9 line-heights (2 lines x leading-[0.95]) for it. */
 .hero-title {
 	font-size: clamp(
 		1.75rem,
 		min(
 			11vw,
-			calc((100dvh - var(--hero-reserved)) / 1.85),
+			calc((100dvh - var(--hero-reserved)) / 1.9),
 			calc((min(100vw, 80rem) - 2.5rem) / 9.25)
 		),
 		8.5rem
