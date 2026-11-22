@@ -17,6 +17,7 @@ export const brand = {
 	ogImageAlt: isWilliam ? 'William Michaud' : 'Tetrazero',
 	// Keep the tetrazero version in sync with siteConfig.ogImageVersion.
 	ogImagePath: isWilliam ? '/og-image-william.png?v=1' : '/og-image.png?v=2',
+	appleTouchIcon: isWilliam ? '/og-image-william.png' : '/og-image.png',
 	fallbackSiteUrl: isWilliam ? 'https://iamwilli.am' : 'https://tetrazero.com',
 	copyrightName: isWilliam ? 'William Michaud' : 'William Michaud — Tetrazero',
 	legalName: isWilliam ? 'William Michaud' : 'Tetrazero',
